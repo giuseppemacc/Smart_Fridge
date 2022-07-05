@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;SmartFridge/src/struct.h&apos; to &apos;types.h&apos;" description="Rename resource &apos;struct.h&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/struct.h" name="types.h" stamp="1656164748371" updateReferences="true"/>
+</session>

@@ -1,0 +1,46 @@
+#ifndef TYPES_H_
+#define TYPES_H_
+
+
+
+typedef enum{
+	NONE_CAT, CARNE, PESCE, VERDURA, PASTA
+} categorie; //TODO: cambiare in t_categoria
+
+
+
+typedef enum{
+  NONE_UNIT, N_UNIT, PESO_GR, PESO_KG, PESO_ML, PESO_L,
+} unita_misura;
+
+
+typedef struct {
+	char nome[50];
+  int quantita;
+  unita_misura unita;
+	int dispensa;  //0=alimento in frigo  1=alimento in dispensa
+} t_alimento;
+
+
+
+typedef struct {
+	char nome[50];
+	int n_ingredienti;
+	t_alimento ingredienti[50];
+	categorie categoria;
+	char procedimento[200];
+	int valutazione;
+	int proposta; // V/F
+} t_ricetta;
+
+
+
+unita_misura getUnita(char *str);
+char *returnUnita(unita_misura unita);
+
+
+categorie getCategoria(char* str);
+char *returnCategoria(categorie categoria);
+
+
+#endif /* TYPES_H_ */

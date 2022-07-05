@@ -1,0 +1,36 @@
+#ifndef GESTIONE_RICETTE_H_
+#define GESTIONE_RICETTE_H_
+
+#include "types.h"
+
+categorie getCategoria(char* str);
+
+void print_ricetta(t_ricetta ricetta);
+void print_ricette();
+
+t_ricetta input_ricetta();
+void aggiungi_ricette();
+
+
+void ordinaFileRicette_AZ(char *file_name);
+
+int ricerca_ricetta(char* nome, t_ricetta* ricetta, FILE* file_ricette);
+
+
+void modifica_ricette();
+
+int isAlimento_compatibile(t_alimento alimento1, t_alimento alimento2);
+
+
+int isPreparabile(t_ricetta ricetta, char* filename_alimenti );
+
+
+int isContained(t_alimento alimenti1[], t_alimento alimenti2[], int n_alimenti1, int n_alimenti2);
+
+void ricettePreparabili();
+
+void ricetteCompatibili();
+
+
+
+#endif /* GESTIONE_RICETTE_H_ */

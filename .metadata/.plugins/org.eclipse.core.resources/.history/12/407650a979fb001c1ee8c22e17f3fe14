@@ -1,0 +1,262 @@
+#include <ctype.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#include "file_names.h"
+#include "gestione_alimenti.h"
+#include "gestione_ricette.h"
+#include "types.h"
+#include "utils.h"
+#include "check_input.h"
+
+
+// ?TODO: dichiarare un nuovo tipo bool come enum {false, true}  (false=0,
+// true=1)
+
+//#ifndef HOME_VALUE
+#define HOME_VALUE -1
+//#endif
+
+//   tutte queste funzioni le ho messe qui per comodit� poi andranno spostate
+//   nei vari file
+// --------------------------------------------------------------------------------------------
+
+
+
+t_alimento inputAlimento(int *flag_home) {
+  int flag_errore;
+  t_alimento alimento;
+  float f_quantita=0;
+
+  flag_errore = 0;
+  *flag_home = 0;
+
+
+  //---NOME---
+
+  do{
+    printf("\tnome >> ");
+    inputStr(alimento.nome, 50, &flag_errore, &(*flag_home) );
+
+
+    if( ! (*flag_home) ){ // se non � stato detto di tornare alla home
+
+      // controlla se sono avvenuti errori
+      if( ! flag_errore ){
+        strToUpper(alimento.nome);
+      }
+
+    }
+
+  }while( (flag_errore == 1) && ((*flag_home) == 0) );
+
+
+
+  //---UNITA DI MISURA---
+
+  if (!(*flag_home)) { // se non � stato detto di tornare alla home
+    // input unit� misura
+    do {
+      printf("\tunita di misura>> ");
+
+      alimento.unita = inputUnitaMisura(&flag_errore, &(*flag_home));
+
+      if(flag_errore){
+        printf("\tunit� di misura non trovata (disponibili:g,kg,ml,l,n)\n");
+      }
+
+    } while ((flag_errore == 1) && ((*flag_home) == 0));
+  }
+
+
+  //---QUANTITA'---
+
+  if (!(*flag_home)) { // se non � stato detto di tornare alla home
+    // input quantit�
+    do {
+      printf("\tquantit� >> ");
+
+      f_quantita = inputFloat(&flag_errore, &(*flag_home));
+
+
+      if( ! (*flag_home) ){ // se non � stato detto di tornare alla home
+
+                  // controlla se sono avvenuti errori
+        //NULL
+        if( ! flag_errore ){
+
+          // altri controlli cio� i vari check
+          checkQuantita(f_quantita,  &flag_errore  ); // controlla che sia > 0
+
+          if( ! flag_errore ){
+            if ((alimento.unita == PESO_KG) || (alimento.unita == PESO_L)) { // se kg/lt si convertono in g/ml
+
+              alimento.quantita = (int)(f_quantita * 1000);
+              alimento.unita = alimento.unita - 1;
+            } else {
+              //Ci troviamo nei casi in cui alimento.unita=g/ml/n_elementii
+              checkFloat( f_quantita, &flag_errore);
+
+              if( flag_errore ){
+                printf("\tERRORE! Le unit� di misura g  ml  n_elementi non possono avere numeri decimali\n");
+              }
+              else{
+                alimento.quantita = (int)f_quantita;
+              }
+
+            }
+          }
+
+        }
+
+      }
+
+    } while ((flag_errore == 1) && ((*flag_home) == 0));
+  }
+
+  return alimento;
+}
+
+
+
+
+void caricaAlimenti() {
+  int flag_home;
+  int flag_continue;
+  int flag_errore;
+  t_alimento alimento;
+
+  do {
+    flag_home = 0;
+    flag_continue = 0;
+    flag_errore = 0;
+
+    alimento = inputAlimento(&flag_home);
+
+    if (!flag_home) {
+      if (1) { // altri controlli
+        // aggiungi alimento al file
+        printf("Inserire altri alimenti? ");
+        flag_continue = inputBool(&flag_errore, &flag_home);
+
+        if (flag_errore || flag_home) {
+          flag_continue = 0;
+        }
+      }
+    }
+
+  } while ((flag_continue == 1) && (flag_home == 0));
+}
+
+void menuu() {
+  char opzioni[] = "1)...2)....";
+
+  int input;
+  int flag_continue; // sarebbe il flag_home
+  int flag_errore;
+
+  do {
+    flag_continue = 1;
+    printf("\n\n%s\n\t>> ", opzioni);
+    input = inputInt(&flag_errore,
+                     &flag_continue); // se viene inserito HOME_VAL
+                                      // flag_continue=true e flag_errore=false
+
+    if (!flag_errore && !flag_continue) { // se non sono avvenuti errori e non �
+                                          // inserito HOME_VAL
+      flag_continue = 1;
+
+      if (input == 0) {
+        flag_continue = 0;
+
+      } else if (input == 1) {
+        caricaAlimenti();
+
+      } else if (input == 2) {
+        // ....
+      } else {
+        flag_errore = 1;
+      }
+    }
+
+    if (flag_errore) {
+      puts("comando non trovato");
+    }
+
+  } while (flag_continue);
+}
+
+// --------------------------------------------------------------------------------------------
+
+void menu() {
+  // TODO fare un menu a pi� pagine
+
+  int input;
+  int flag_exit;
+  do {
+    flag_exit = 0;
+    puts("\n\n");
+    printf("1) aggiungi alimenti\n");
+    printf("2) aggiungi ricette\n");
+    printf("3) visualizza file alimenti\n");
+    printf("4) visualizza file ricette\n");
+    printf("5) visualizza ricette preparabili\n");
+    printf("6) prepara ricetta\n");
+    printf("7) modifica alimenti\n");
+    printf("8) modifica ricette\n");
+    printf("0) exit\n");
+    printf("\t>> ");
+    scanf("%d", &input);
+
+    if (input == 0) {
+      flag_exit = 1;
+    } else if (input == 1) {
+      //input_alimenti();
+    } else if (input == 2) {
+      aggiungi_ricette();
+    } else if (input == 3) {
+      print_alimenti();
+    } else if (input == 4) {
+      print_ricette();
+    } else if (input == 5) {
+
+      t_ricetta ricette_preparabili[20];
+      int n_ricette_preparabili;
+
+      ricettePreparabili(ricette_preparabili, &n_ricette_preparabili,
+                         FILENAME_RICETTE);
+      print_arr_ricette(ricette_preparabili, n_ricette_preparabili);
+
+    } else if (input == 6) {
+
+      t_alimento alimenti[2];
+      t_ricetta ricette_compatibili[20];
+      int n_ricette_compatibili;
+      /*
+      alimenti[0] = input_alimento();
+      puts("--");
+      alimenti[1] = input_alimento();
+      puts("--");*/
+
+      // inserisci i nomi degli alimenti
+      // cerca questi alimenti in frigo
+      // se presenti:
+      //   ricetteCompatibili(alimenti_trovati)
+      // altrimenti:
+      //   chiedi al negro di inserire alimenti presenti in frigo
+
+      ricetteCompatibili(alimenti, 2, ricette_compatibili,
+                         &n_ricette_compatibili, FILENAME_RICETTE);
+      print_arr_ricette(ricette_compatibili, n_ricette_compatibili);
+
+    } else if (input == 7) {
+      modifica_alimenti();
+    } else if (input == 8) {
+      modifica_ricette();
+    } else {
+      puts("\ncomando non trovato\n");
+    }
+
+  } while (flag_exit == 0);
+}
