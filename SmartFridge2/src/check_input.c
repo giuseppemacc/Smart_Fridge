@@ -35,18 +35,29 @@ void checkLenght(int *flag_errore, char *str, int L_MAX) {
 
 void inputStr(char *str,int l_max, int *flag_errore, int *flag_home) {
 
+	// la fgets ne legge -1 da quello che gli passi dentro
+	// " " = 32
+	// alla fine di ogni stringa sta 10
+	// tranne nei casi in cui vengono inseriti l_max-1 caratteri
+
   *flag_errore = 0; // false
   *flag_home = 0;   // false
+  int len;
 
+  len = strlen(str);
   strcpy(str, "");
 
   scanf("%s", str);
 
+  //fgets(str, l_max-1, stdin);
+  //fflush(stdin);
+
+  if( str[len-1]=='\n' ){
+	  str[len-1] = 0;
+  }
+
   if (strEqual(str, "-1")) {
     *flag_home = 1;
-
-  }else{
-    checkLenght( &(*flag_errore), str, l_max);
   }
 
   // fai inserire al tizio la stringa
@@ -157,29 +168,6 @@ int inputBool(int *flag_errore, int *flag_home) {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-int checkUnita(t_alimento *alimento, t_alimento *alimento_trovato) {
-  int check = 1; // 1=somma effettuata	0=somma non effettuat� perch� diverse
-                 // unit� di misura
-
-  // CASO:g+g,ml+ml,n_elementi+n_elementi;
-  if (alimento->unita == alimento_trovato->unita)
-    alimento->quantita = alimento->quantita + alimento_trovato->quantita;
-  else
-    check = 0;
-
-  return check;
-}
 
 
 

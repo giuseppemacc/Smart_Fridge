@@ -9,6 +9,27 @@
 
 
 
+void ricerca_alimentoSottstr(char *nome, t_alimento alimenti[], int* n_alimenti, FILE *file_alimenti) {
+  t_alimento alimento_corrente;
+
+  *n_alimenti = 0;
+  strToUpper(nome);
+
+  rewind(file_alimenti);
+
+  fread(&alimento_corrente, sizeof(t_alimento), 1, file_alimenti);
+
+  while (!feof(file_alimenti) ) {
+    if ( sottostrEqual(alimento_corrente.nome, nome) ) { // se hanno una sottostringa in comune
+      alimenti[ *n_alimenti ] = alimento_corrente;
+      (*n_alimenti)++;
+    }
+    fread(&alimento_corrente, sizeof(t_alimento), 1, file_alimenti);
+
+  }
+}
+
+
 int ricerca_alimento(char *nome, t_alimento *alimento, FILE *file_alimenti) {
   int flag_alimento_trovato = 0;
   t_alimento alimento_corrente;
@@ -40,6 +61,10 @@ t_alimento inputAlimento(int *flag_home) {
   flag_errore = 0;
   *flag_home = 0;
 
+  strcpy(alimento.nome, "");
+  alimento.quantita = 0;
+  alimento.unita = NONE_UNIT;
+  alimento.dispensa = 0;
 
   //---NOME---
 
@@ -197,13 +222,19 @@ void print_alimento(t_alimento alimento) {
   // se g/ml>=1000 si stampa convertito in kg/lt
   if ((alimento.unita == PESO_GR) || (alimento.unita == PESO_ML)) {
     if (alimento.quantita >= 1000) {
-      printf("  %.3f %s\n", (float)(((float)alimento.quantita) / 1000.0),
+      printf("  %.3f %s", (float)(((float)alimento.quantita) / 1000.0),
              returnUnita(alimento.unita + 1));
     } else
-      printf("  %d %s\n", alimento.quantita, returnUnita(alimento.unita));
+      printf("  %d %s", alimento.quantita, returnUnita(alimento.unita));
   } else
-    printf("  %d %s\n", alimento.quantita, returnUnita(alimento.unita));
+    printf("  %d %s", alimento.quantita, returnUnita(alimento.unita));
+
+  if(alimento.dispensa){
+	  printf("  dispensa");
+  }
+  puts("");
 }
+
 
 void print_alimenti() {
   t_alimento alimento_corrente;
@@ -281,6 +312,7 @@ void caricaAlimenti() {
   t_alimento alimento;
   t_alimento alimento_trovato;
   FILE* file_alimenti;
+
 
   do {
     flag_home = 0;

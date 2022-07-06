@@ -30,7 +30,10 @@ typedef struct {
 	categorie categoria;
 	char procedimento[200];
 	int valutazione;
-	int proposta; // V/F
+
+	int preparata; // V/F  dice se è stata preparata negli ultimi 7 giorni
+	int counter_giorni; // giorni passati dall ultima volta che è stata preparata
+
 } t_ricetta;
 
 

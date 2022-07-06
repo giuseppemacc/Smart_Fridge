@@ -3823,3 +3823,1197 @@ collect2.exe: error: ld returned 1 exit status
 Info: Internal Builder is used for build
 gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
 Info: Nothing to build for SmartFridge2
+12:46:57 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\piano_settimanale.o" "..\\src\\piano_settimanale.c" 
+..\src\piano_settimanale.c: In function 'prioritarizza_ricette':
+..\src\piano_settimanale.c:78:13: warning: unused variable 'tipo_pianosettimanale' [-Wunused-variable]
+   78 |   categorie tipo_pianosettimanale;
+      |             ^~~~~~~~~~~~~~~~~~~~~
+..\src\piano_settimanale.c:77:13: warning: unused variable 'tipo_cronologia' [-Wunused-variable]
+   77 |   categorie tipo_cronologia;
+      |             ^~~~~~~~~~~~~~~
+..\src\piano_settimanale.c:75:7: warning: unused variable 'n_pianosettimanale' [-Wunused-variable]
+   75 |   int n_pianosettimanale[7];
+      |       ^~~~~~~~~~~~~~~~~~
+..\src\piano_settimanale.c:74:7: warning: unused variable 'n_cronologia' [-Wunused-variable]
+   74 |   int n_cronologia[7];
+      |       ^~~~~~~~~~~~
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\gestione_ricette.o" "..\\src\\gestione_ricette.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\gestione_alimenti.o" "..\\src\\gestione_alimenti.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\check_input.o" "..\\src\\check_input.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\menu_utente.o" "..\\src\\menu_utente.c" 
+..\src\menu_utente.c: In function 'menu':
+..\src\menu_utente.c:116:7: warning: implicit declaration of function 'aggiungi_ricette'; did you mean 'print_ricette'? [-Wimplicit-function-declaration]
+  116 |       aggiungi_ricette();
+      |       ^~~~~~~~~~~~~~~~
+      |       print_ricette
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+c:/mingw/bin/../lib/gcc/mingw32/9.2.0/../../../../mingw32/bin/ld.exe: src\menu_utente.o: in function `menu':
+C:\Users\giuse\eclipse-workspace\SmartFridge2\Debug/../src/menu_utente.c:116: undefined reference to `aggiungi_ricette'
+collect2.exe: error: ld returned 1 exit status
+12:47:25 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\menu_utente.o" "..\\src\\menu_utente.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+12:53:36 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\gestione_ricette.o" "..\\src\\gestione_ricette.c" 
+In file included from ..\src\gestione_ricette.c:10:
+..\src\menu_utente.h:15:1: warning: data definition has no type or storage class
+   15 | printRic_Preparabili();
+      | ^~~~~~~~~~~~~~~~~~~~
+..\src\menu_utente.h:15:1: warning: type defaults to 'int' in declaration of 'printRic_Preparabili' [-Wimplicit-int]
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\menu_utente.o" "..\\src\\menu_utente.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\piano_settimanale.o" "..\\src\\piano_settimanale.c" 
+In file included from ..\src\piano_settimanale.c:7:
+..\src\menu_utente.h:15:1: warning: data definition has no type or storage class
+   15 | printRic_Preparabili();
+      | ^~~~~~~~~~~~~~~~~~~~
+..\src\menu_utente.h:15:1: warning: type defaults to 'int' in declaration of 'printRic_Preparabili' [-Wimplicit-int]
+..\src\piano_settimanale.c: In function 'prioritarizza_ricette':
+..\src\piano_settimanale.c:78:13: warning: unused variable 'tipo_pianosettimanale' [-Wunused-variable]
+   78 |   categorie tipo_pianosettimanale;
+      |             ^~~~~~~~~~~~~~~~~~~~~
+..\src\piano_settimanale.c:77:13: warning: unused variable 'tipo_cronologia' [-Wunused-variable]
+   77 |   categorie tipo_cronologia;
+      |             ^~~~~~~~~~~~~~~
+..\src\piano_settimanale.c:75:7: warning: unused variable 'n_pianosettimanale' [-Wunused-variable]
+   75 |   int n_pianosettimanale[7];
+      |       ^~~~~~~~~~~~~~~~~~
+..\src\piano_settimanale.c:74:7: warning: unused variable 'n_cronologia' [-Wunused-variable]
+   74 |   int n_cronologia[7];
+      |       ^~~~~~~~~~~~
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+In file included from ..\src\main.c:3:
+..\src\menu_utente.h:15:1: warning: data definition has no type or storage class
+   15 | printRic_Preparabili();
+      | ^~~~~~~~~~~~~~~~~~~~
+..\src\menu_utente.h:15:1: warning: type defaults to 'int' in declaration of 'printRic_Preparabili' [-Wimplicit-int]
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+12:53:51 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\piano_settimanale.o" "..\\src\\piano_settimanale.c" 
+..\src\piano_settimanale.c: In function 'prioritarizza_ricette':
+..\src\piano_settimanale.c:78:13: warning: unused variable 'tipo_pianosettimanale' [-Wunused-variable]
+   78 |   categorie tipo_pianosettimanale;
+      |             ^~~~~~~~~~~~~~~~~~~~~
+..\src\piano_settimanale.c:77:13: warning: unused variable 'tipo_cronologia' [-Wunused-variable]
+   77 |   categorie tipo_cronologia;
+      |             ^~~~~~~~~~~~~~~
+..\src\piano_settimanale.c:75:7: warning: unused variable 'n_pianosettimanale' [-Wunused-variable]
+   75 |   int n_pianosettimanale[7];
+      |       ^~~~~~~~~~~~~~~~~~
+..\src\piano_settimanale.c:74:7: warning: unused variable 'n_cronologia' [-Wunused-variable]
+   74 |   int n_cronologia[7];
+      |       ^~~~~~~~~~~~
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\gestione_ricette.o" "..\\src\\gestione_ricette.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+Info: Nothing to build for SmartFridge2
+12:56:11 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\menu_utente.o" "..\\src\\menu_utente.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+Info: Nothing to build for SmartFridge2
+17:06:21 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\menu_utente.o" "..\\src\\menu_utente.c" 
+..\src\menu_utente.c:28:1: error: two or more data types in declaration specifiers
+   28 | void printRic_Preparabili(){
+      | ^~~~
+17:06:49 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\menu_utente.o" "..\\src\\menu_utente.c" 
+..\src\menu_utente.c:28:1: error: two or more data types in declaration specifiers
+   28 | void printRic_Preparabili(){
+      | ^~~~
+17:07:00 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\menu_utente.o" "..\\src\\menu_utente.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+c:/mingw/bin/../lib/gcc/mingw32/9.2.0/../../../../mingw32/bin/ld.exe: cannot open output file SmartFridge2.exe: Permission denied
+collect2.exe: error: ld returned 1 exit status
+17:12:34 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+c:/mingw/bin/../lib/gcc/mingw32/9.2.0/../../../../mingw32/bin/ld.exe: cannot open output file SmartFridge2.exe: Permission denied
+collect2.exe: error: ld returned 1 exit status
+17:15:14 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+c:/mingw/bin/../lib/gcc/mingw32/9.2.0/../../../../mingw32/bin/ld.exe: cannot open output file SmartFridge2.exe: Permission denied
+collect2.exe: error: ld returned 1 exit status
+17:19:00 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\gestione_alimenti.o" "..\\src\\gestione_alimenti.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+c:/mingw/bin/../lib/gcc/mingw32/9.2.0/../../../../mingw32/bin/ld.exe: cannot open output file SmartFridge2.exe: Permission denied
+collect2.exe: error: ld returned 1 exit status
+17:19:29 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+17:24:02 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\gestione_alimenti.o" "..\\src\\gestione_alimenti.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+17:27:48 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\gestione_alimenti.o" "..\\src\\gestione_alimenti.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+17:28:49 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\gestione_alimenti.o" "..\\src\\gestione_alimenti.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+17:36:58 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\gestione_ricette.o" "..\\src\\gestione_ricette.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\gestione_alimenti.o" "..\\src\\gestione_alimenti.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\menu_utente.o" "..\\src\\menu_utente.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\check_input.o" "..\\src\\check_input.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+17:47:36 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+17:48:36 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+17:49:53 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+17:50:56 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+Info: Nothing to build for SmartFridge2
+Info: Nothing to build for SmartFridge2
+17:52:00 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+17:54:17 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\check_input.o" "..\\src\\check_input.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+17:54:54 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+Info: Nothing to build for SmartFridge2
+Info: Nothing to build for SmartFridge2
+17:56:33 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+17:58:04 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+18:04:07 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+18:04:42 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+18:05:03 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+18:05:34 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+18:08:07 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+..\src\main.c: In function 'main':
+..\src\main.c:38:3: warning: "/*" within comment [-Wcomment]
+   38 |   /*
+      |    
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\check_input.o" "..\\src\\check_input.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+18:14:07 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\check_input.o" "..\\src\\check_input.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+..\src\main.c: In function 'main':
+..\src\main.c:28:9: error: expected expression before ')' token
+   28 |  }while();
+      |         ^
+..\src\main.c:50:3: warning: "/*" within comment [-Wcomment]
+   50 |   /*
+      |    
+18:14:23 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+..\src\main.c: In function 'main':
+..\src\main.c:50:3: warning: "/*" within comment [-Wcomment]
+   50 |   /*
+      |    
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+18:16:59 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+..\src\main.c: In function 'main':
+..\src\main.c:49:3: warning: "/*" within comment [-Wcomment]
+   49 |   /*
+      |    
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+18:20:09 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+18:21:14 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+18:22:03 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\check_input.o" "..\\src\\check_input.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+18:23:29 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\check_input.o" "..\\src\\check_input.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+18:28:06 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\check_input.o" "..\\src\\check_input.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+18:28:21 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\check_input.o" "..\\src\\check_input.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+18:28:53 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\check_input.o" "..\\src\\check_input.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+18:33:21 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\check_input.o" "..\\src\\check_input.c" 
+..\src\check_input.c: In function 'inputStr':
+..\src\check_input.c:54:17: warning: assignment to 'char' from 'char *' makes integer from pointer without a cast [-Wint-conversion]
+   54 |    str[l_max-2] = "";
+      |                 ^
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+18:33:36 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\check_input.o" "..\\src\\check_input.c" 
+..\src\check_input.c: In function 'inputStr':
+..\src\check_input.c:54:19: error: empty character constant
+   54 |    str[l_max-2] = '';
+      |                   ^~
+18:34:02 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\check_input.o" "..\\src\\check_input.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+18:35:02 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\check_input.o" "..\\src\\check_input.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+18:35:53 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\check_input.o" "..\\src\\check_input.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+18:39:44 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\check_input.o" "..\\src\\check_input.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+c:/mingw/bin/../lib/gcc/mingw32/9.2.0/../../../../mingw32/bin/ld.exe: cannot open output file SmartFridge2.exe: Permission denied
+collect2.exe: error: ld returned 1 exit status
+18:39:57 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+18:41:12 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\check_input.o" "..\\src\\check_input.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+18:53:39 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\check_input.o" "..\\src\\check_input.c" 
+..\src\check_input.c: In function 'inputStr':
+..\src\check_input.c:46:8: warning: unused variable 'temp_str' [-Wunused-variable]
+   46 |   char temp_str[l_max];
+      |        ^~~~~~~~
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+18:56:38 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\check_input.o" "..\\src\\check_input.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+18:58:03 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\check_input.o" "..\\src\\check_input.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+19:00:43 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\check_input.o" "..\\src\\check_input.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+19:01:47 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\check_input.o" "..\\src\\check_input.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+19:07:28 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\check_input.o" "..\\src\\check_input.c" 
+..\src\check_input.c: In function 'inputStr':
+..\src\check_input.c:54:27: warning: passing argument 3 of 'fread' makes integer from pointer without a cast [-Wint-conversion]
+   54 |   fread(&c, sizeof(char), stdin);
+      |                           ^~~~~
+      |                           |
+      |                           FILE * {aka struct _iobuf *}
+In file included from ..\src\check_input.c:2:
+c:\mingw\include\stdio.h:767:64: note: expected 'size_t' {aka 'unsigned int'} but argument is of type 'FILE *' {aka 'struct _iobuf *'}
+  767 | _CRTIMP __cdecl __MINGW_NOTHROW  size_t fread (void *, size_t, size_t, FILE *);
+      |                                                                ^~~~~~
+..\src\check_input.c:54:3: error: too few arguments to function 'fread'
+   54 |   fread(&c, sizeof(char), stdin);
+      |   ^~~~~
+In file included from ..\src\check_input.c:2:
+c:\mingw\include\stdio.h:767:41: note: declared here
+  767 | _CRTIMP __cdecl __MINGW_NOTHROW  size_t fread (void *, size_t, size_t, FILE *);
+      |                                         ^~~~~
+19:07:41 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\check_input.o" "..\\src\\check_input.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+Info: Nothing to build for SmartFridge2
+Info: Nothing to build for SmartFridge2
+Info: Nothing to build for SmartFridge2
+19:16:20 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\check_input.o" "..\\src\\check_input.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+19:16:37 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\check_input.o" "..\\src\\check_input.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+19:23:29 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\check_input.o" "..\\src\\check_input.c" 
+..\src\check_input.c: In function 'inputStr':
+..\src\check_input.c:55:14: warning: passing argument 1 of 'sscanf' from incompatible pointer type [-Wincompatible-pointer-types]
+   55 |   if (sscanf(stdin, "%d", &n) == 1){
+      |              ^~~~~
+      |              |
+      |              FILE * {aka struct _iobuf *}
+In file included from ..\src\check_input.c:2:
+c:\mingw\include\stdio.h:701:49: note: expected 'const char *' but argument is of type 'FILE *' {aka 'struct _iobuf *'}
+  701 | _CRTIMP __cdecl __MINGW_NOTHROW  int    sscanf (const char *, const char *, ...);
+      |                                                 ^~~~~~~~~~~~
+..\src\check_input.c:54:8: warning: unused variable 'buf' [-Wunused-variable]
+   54 |   char buf[5]; // large enough
+      |        ^~~
+..\src\check_input.c:64:10: warning: 'len' is used uninitialized in this function [-Wuninitialized]
+   64 |   if( str[len-1]=='\n' ){
+      |          ^
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+19:24:03 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\check_input.o" "..\\src\\check_input.c" 
+..\src\check_input.c: In function 'inputStr':
+..\src\check_input.c:63:10: warning: 'len' is used uninitialized in this function [-Wuninitialized]
+   63 |   if( str[len-1]=='\n' ){
+      |          ^
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+19:26:07 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\check_input.o" "..\\src\\check_input.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+19:26:58 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\check_input.o" "..\\src\\check_input.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+19:28:15 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\check_input.o" "..\\src\\check_input.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+21:21:40 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\gestione_ricette.o" "..\\src\\gestione_ricette.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\check_input.o" "..\\src\\check_input.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\gestione_alimenti.o" "..\\src\\gestione_alimenti.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\piano_settimanale.o" "..\\src\\piano_settimanale.c" 
+..\src\piano_settimanale.c: In function 'prioritarizza_ricette':
+..\src\piano_settimanale.c:78:13: warning: unused variable 'tipo_pianosettimanale' [-Wunused-variable]
+   78 |   categorie tipo_pianosettimanale;
+      |             ^~~~~~~~~~~~~~~~~~~~~
+..\src\piano_settimanale.c:77:13: warning: unused variable 'tipo_cronologia' [-Wunused-variable]
+   77 |   categorie tipo_cronologia;
+      |             ^~~~~~~~~~~~~~~
+..\src\piano_settimanale.c:75:7: warning: unused variable 'n_pianosettimanale' [-Wunused-variable]
+   75 |   int n_pianosettimanale[7];
+      |       ^~~~~~~~~~~~~~~~~~
+..\src\piano_settimanale.c:74:7: warning: unused variable 'n_cronologia' [-Wunused-variable]
+   74 |   int n_cronologia[7];
+      |       ^~~~~~~~~~~~
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\menu_utente.o" "..\\src\\menu_utente.c" 
+..\src\menu_utente.c:23:29: error: expected declaration specifiers or '...' before '*' token
+   23 | t_alimento richiediAlimento(*flag_errore, *flag_home){
+      |                             ^
+..\src\menu_utente.c:23:43: error: expected declaration specifiers or '...' before '*' token
+   23 | t_alimento richiediAlimento(*flag_errore, *flag_home){
+      |                                           ^
+21:22:31 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+In file included from ..\src\main.c:3:
+..\src\menu_utente.h:15:29: error: expected declaration specifiers or '...' before '*' token
+   15 | t_alimento richiediAlimento(*flag_home);
+      |                             ^
+21:23:05 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\gestione_ricette.o" "..\\src\\gestione_ricette.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\menu_utente.o" "..\\src\\menu_utente.c" 
+..\src\menu_utente.c: In function 'richiediAlimento':
+..\src\menu_utente.c:29:14: warning: passing argument 1 of 'apriFile' from incompatible pointer type [-Wincompatible-pointer-types]
+   29 |  if(apriFile(file_alimenti, FILENAME_ALIMENTI, "rb+")){
+      |              ^~~~~~~~~~~~~
+      |              |
+      |              FILE * {aka struct _iobuf *}
+In file included from ..\src\menu_utente.c:10:
+..\src\utils.h:14:21: note: expected 'FILE **' {aka 'struct _iobuf **'} but argument is of type 'FILE *' {aka 'struct _iobuf *'}
+   14 | int apriFile(FILE** file, char* file_name, char* mode);
+      |              ~~~~~~~^~~~
+..\src\menu_utente.c:33:8: error: too few arguments to function 'ricerca_alimentoSottstr'
+   33 |    if( ricerca_alimentoSottstr() ){
+      |        ^~~~~~~~~~~~~~~~~~~~~~~
+In file included from ..\src\menu_utente.c:7:
+..\src\gestione_alimenti.h:14:6: note: declared here
+   14 | void ricerca_alimentoSottstr(char *nome, t_alimento alimenti[], int* n_alimenti, FILE *file_alimenti);
+      |      ^~~~~~~~~~~~~~~~~~~~~~~
+21:23:31 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\piano_settimanale.o" "..\\src\\piano_settimanale.c" 
+..\src\piano_settimanale.c: In function 'prioritarizza_ricette':
+..\src\piano_settimanale.c:78:13: warning: unused variable 'tipo_pianosettimanale' [-Wunused-variable]
+   78 |   categorie tipo_pianosettimanale;
+      |             ^~~~~~~~~~~~~~~~~~~~~
+..\src\piano_settimanale.c:77:13: warning: unused variable 'tipo_cronologia' [-Wunused-variable]
+   77 |   categorie tipo_cronologia;
+      |             ^~~~~~~~~~~~~~~
+..\src\piano_settimanale.c:75:7: warning: unused variable 'n_pianosettimanale' [-Wunused-variable]
+   75 |   int n_pianosettimanale[7];
+      |       ^~~~~~~~~~~~~~~~~~
+..\src\piano_settimanale.c:74:7: warning: unused variable 'n_cronologia' [-Wunused-variable]
+   74 |   int n_cronologia[7];
+      |       ^~~~~~~~~~~~
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\menu_utente.o" "..\\src\\menu_utente.c" 
+..\src\menu_utente.c: In function 'richiediAlimento':
+..\src\menu_utente.c:33:8: error: too few arguments to function 'ricerca_alimentoSottstr'
+   33 |    if( ricerca_alimentoSottstr() ){
+      |        ^~~~~~~~~~~~~~~~~~~~~~~
+In file included from ..\src\menu_utente.c:7:
+..\src\gestione_alimenti.h:14:6: note: declared here
+   14 | void ricerca_alimentoSottstr(char *nome, t_alimento alimenti[], int* n_alimenti, FILE *file_alimenti);
+      |      ^~~~~~~~~~~~~~~~~~~~~~~
+21:23:46 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\menu_utente.o" "..\\src\\menu_utente.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+22:07:47 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\menu_utente.o" "..\\src\\menu_utente.c" 
+..\src\menu_utente.c: In function 'richiediAlimento':
+..\src\menu_utente.c:26:13: error: array size missing in 'alimenti_trovati'
+   26 |  t_alimento alimenti_trovati[];
+      |             ^~~~~~~~~~~~~~~~
+..\src\menu_utente.c:30:6: error: 'flag_home' redeclared as different kind of symbol
+   30 |  int flag_home;
+      |      ^~~~~~~~~
+..\src\menu_utente.c:23:34: note: previous definition of 'flag_home' was here
+   23 | t_alimento richiediAlimento(int* flag_home){
+      |                             ~~~~~^~~~~~~~~
+..\src\menu_utente.c:57:11: error: invalid type argument of unary '*' (have 'int')
+   57 |      if( (*n_alimenti_trovati) > 0){
+      |           ^~~~~~~~~~~~~~~~~~~
+..\src\menu_utente.c:62:28: error: invalid type argument of unary '*' (have 'int')
+   62 |       for( int i = 0; i < (*n_alimenti_trovati); i++){
+      |                            ^~~~~~~~~~~~~~~~~~~
+..\src\menu_utente.c:76:29: error: invalid type argument of unary '*' (have 'int')
+   76 |         }else if ( input > (*n_alimenti_trovati) ){
+      |                             ^~~~~~~~~~~~~~~~~~~
+22:14:21 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\menu_utente.o" "..\\src\\menu_utente.c" 
+..\src\menu_utente.c: In function 'richiediAlimento':
+..\src\menu_utente.c:43:37: warning: passing argument 4 of 'inputStr' from incompatible pointer type [-Wincompatible-pointer-types]
+   43 |    inputStr(nome, 20, &flag_errore, &flag_home);
+      |                                     ^~~~~~~~~~
+      |                                     |
+      |                                     int **
+In file included from ..\src\menu_utente.c:11:
+..\src\check_input.h:44:59: note: expected 'int *' but argument is of type 'int **'
+   44 | void inputStr(char *str,int l_max, int *flag_errore, int *flag_home);
+      |                                                      ~~~~~^~~~~~~~~
+..\src\menu_utente.c:56:11: error: invalid type argument of unary '*' (have 'int')
+   56 |      if( (*n_alimenti_trovati) > 0){
+      |           ^~~~~~~~~~~~~~~~~~~
+..\src\menu_utente.c:61:28: error: invalid type argument of unary '*' (have 'int')
+   61 |       for( int i = 0; i < (*n_alimenti_trovati); i++){
+      |                            ^~~~~~~~~~~~~~~~~~~
+..\src\menu_utente.c:69:39: warning: passing argument 2 of 'inputInt' from incompatible pointer type [-Wincompatible-pointer-types]
+   69 |        input = inputInt(&flag_errore, &flag_home);
+      |                                       ^~~~~~~~~~
+      |                                       |
+      |                                       int **
+In file included from ..\src\menu_utente.c:11:
+..\src\check_input.h:40:37: note: expected 'int *' but argument is of type 'int **'
+   40 | int inputInt(int *flag_errore, int *flag_home);
+      |                                ~~~~~^~~~~~~~~
+..\src\menu_utente.c:75:29: error: invalid type argument of unary '*' (have 'int')
+   75 |         }else if ( input > (*n_alimenti_trovati) ){
+      |                             ^~~~~~~~~~~~~~~~~~~
+22:14:45 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\menu_utente.o" "..\\src\\menu_utente.c" 
+..\src\menu_utente.c: In function 'richiediAlimento':
+..\src\menu_utente.c:56:11: error: invalid type argument of unary '*' (have 'int')
+   56 |      if( (*n_alimenti_trovati) > 0){
+      |           ^~~~~~~~~~~~~~~~~~~
+..\src\menu_utente.c:61:28: error: invalid type argument of unary '*' (have 'int')
+   61 |       for( int i = 0; i < (*n_alimenti_trovati); i++){
+      |                            ^~~~~~~~~~~~~~~~~~~
+..\src\menu_utente.c:69:39: warning: passing argument 2 of 'inputInt' from incompatible pointer type [-Wincompatible-pointer-types]
+   69 |        input = inputInt(&flag_errore, &flag_home);
+      |                                       ^~~~~~~~~~
+      |                                       |
+      |                                       int **
+In file included from ..\src\menu_utente.c:11:
+..\src\check_input.h:40:37: note: expected 'int *' but argument is of type 'int **'
+   40 | int inputInt(int *flag_errore, int *flag_home);
+      |                                ~~~~~^~~~~~~~~
+..\src\menu_utente.c:75:29: error: invalid type argument of unary '*' (have 'int')
+   75 |         }else if ( input > (*n_alimenti_trovati) ){
+      |                             ^~~~~~~~~~~~~~~~~~~
+22:16:45 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\menu_utente.o" "..\\src\\menu_utente.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+22:23:30 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\menu_utente.o" "..\\src\\menu_utente.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+22:24:39 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\menu_utente.o" "..\\src\\menu_utente.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+22:27:30 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+..\src\main.c: In function 'main':
+..\src\main.c:24:9: error: expected expression before ')' token
+   24 |  }while();
+      |         ^
+22:27:47 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+22:31:08 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\menu_utente.o" "..\\src\\menu_utente.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+22:34:51 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\menu_utente.o" "..\\src\\menu_utente.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+22:35:11 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\menu_utente.o" "..\\src\\menu_utente.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+22:37:17 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\gestione_alimenti.o" "..\\src\\gestione_alimenti.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+22:38:05 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\gestione_alimenti.o" "..\\src\\gestione_alimenti.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+Info: Nothing to build for SmartFridge2
+Info: Nothing to build for SmartFridge2
+Info: Nothing to build for SmartFridge2
+22:41:09 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+Info: Nothing to build for SmartFridge2
+22:41:32 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+22:41:45 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+22:42:27 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+..\src\main.c: In function 'main':
+..\src\main.c:20:6: error: assignment to expression with array type
+   20 |  str = strstr("pal", "palle");
+      |      ^
+22:42:56 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+..\src\main.c: In function 'main':
+..\src\main.c:18:17: error: invalid initializer
+   18 |  char str[20] = strstr("pal", "palle");
+      |                 ^~~~~~
+22:43:28 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+..\src\main.c: In function 'main':
+..\src\main.c:20:2: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'strcpy'
+   20 |  strcpy(str,strstr("pal", "palle"));
+      |  ^~~~~~
+..\src\main.c:20:9: error: 'str' undeclared (first use in this function)
+   20 |  strcpy(str,strstr("pal", "palle"));
+      |         ^~~
+..\src\main.c:20:9: note: each undeclared identifier is reported only once for each function it appears in
+22:43:35 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+..\src\main.c: In function 'main':
+..\src\main.c:20:2: warning: null argument where non-null required (argument 2) [-Wnonnull]
+   20 |  strcpy(str,strstr("pal", "palle"));
+      |  ^~~~~~
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+22:44:01 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+..\src\main.c: In function 'main':
+..\src\main.c:20:2: warning: null argument where non-null required (argument 2) [-Wnonnull]
+   20 |  strcpy(str,strstr("pal", "palle"));
+      |  ^~~~~~
+..\src\main.c:22:6: warning: unused variable 'lol' [-Wunused-variable]
+   22 |  int lol = strEqual(str,"");
+      |      ^~~
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+22:44:21 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+..\src\main.c: In function 'main':
+..\src\main.c:22:6: warning: unused variable 'lol' [-Wunused-variable]
+   22 |  int lol = strEqual(str,"");
+      |      ^~~
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+22:44:37 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+..\src\main.c: In function 'main':
+..\src\main.c:22:6: warning: unused variable 'lol' [-Wunused-variable]
+   22 |  int lol = strEqual(str,"");
+      |      ^~~
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+22:44:47 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+..\src\main.c: In function 'main':
+..\src\main.c:22:6: warning: unused variable 'lol' [-Wunused-variable]
+   22 |  int lol = strEqual(str,"");
+      |      ^~~
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+22:45:53 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+22:46:25 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+22:48:36 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+00:28:49 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\menu_utente.o" "..\\src\\menu_utente.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\utils.o" "..\\src\\utils.c" 
+..\src\utils.c: In function 'sottostrEqual':
+..\src\utils.c:24:9: warning: 'flag_equal' is used uninitialized in this function [-Wuninitialized]
+   24 |  return flag_equal;
+      |         ^~~~~~~~~~
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\piano_settimanale.o" "..\\src\\piano_settimanale.c" 
+..\src\piano_settimanale.c: In function 'prioritarizza_ricette':
+..\src\piano_settimanale.c:78:13: warning: unused variable 'tipo_pianosettimanale' [-Wunused-variable]
+   78 |   categorie tipo_pianosettimanale;
+      |             ^~~~~~~~~~~~~~~~~~~~~
+..\src\piano_settimanale.c:77:13: warning: unused variable 'tipo_cronologia' [-Wunused-variable]
+   77 |   categorie tipo_cronologia;
+      |             ^~~~~~~~~~~~~~~
+..\src\piano_settimanale.c:75:7: warning: unused variable 'n_pianosettimanale' [-Wunused-variable]
+   75 |   int n_pianosettimanale[7];
+      |       ^~~~~~~~~~~~~~~~~~
+..\src\piano_settimanale.c:74:7: warning: unused variable 'n_cronologia' [-Wunused-variable]
+   74 |   int n_cronologia[7];
+      |       ^~~~~~~~~~~~
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\check_input.o" "..\\src\\check_input.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\gestione_ricette.o" "..\\src\\gestione_ricette.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\gestione_alimenti.o" "..\\src\\gestione_alimenti.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\types.o" "..\\src\\types.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+00:29:29 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\utils.o" "..\\src\\utils.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+00:30:24 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+..\src\main.c: In function 'main':
+..\src\main.c:19:18: warning: initializer-string for array of chars is too long
+   19 |  char str2[10] = "PallealSugo";
+      |                  ^~~~~~~~~~~~~
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\utils.o" "..\\src\\utils.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+00:30:37 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+..\src\main.c: In function 'main':
+..\src\main.c:19:18: warning: initializer-string for array of chars is too long
+   19 |  char str1[10] = "PallealSugo";
+      |                  ^~~~~~~~~~~~~
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+00:31:07 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+..\src\main.c: In function 'main':
+..\src\main.c:20:21: warning: initializer-string for array of chars is too long
+   20 |     char str2[10] = "PallealSugo";
+      |                     ^~~~~~~~~~~~~
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+00:31:18 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+00:31:26 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+00:31:33 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+00:32:02 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+00:33:00 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+00:33:07 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+00:35:15 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\utils.o" "..\\src\\utils.c" 
+..\src\utils.c: In function 'sottostrEqual':
+..\src\utils.c:21:6: warning: unused variable 'len' [-Wunused-variable]
+   21 |  int len;
+      |      ^~~
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+00:35:25 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+00:35:33 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+00:35:47 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+00:36:04 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+00:36:19 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+00:37:07 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+00:37:16 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+00:37:22 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+00:37:28 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+00:37:34 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+00:37:39 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+00:38:47 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\utils.o" "..\\src\\utils.c" 
+..\src\utils.c: In function 'sottostrEqual':
+..\src\utils.c:21:6: warning: unused variable 'len' [-Wunused-variable]
+   21 |  int len;
+      |      ^~~
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+00:39:46 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\utils.o" "..\\src\\utils.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+00:39:55 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+00:40:03 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+00:40:43 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+00:42:53 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+00:51:17 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\menu_utente.o" "..\\src\\menu_utente.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\gestione_alimenti.o" "..\\src\\gestione_alimenti.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+01:43:44 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\gestione_alimenti.o" "..\\src\\gestione_alimenti.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\piano_settimanale.o" "..\\src\\piano_settimanale.c" 
+..\src\piano_settimanale.c: In function 'prioritarizza_ricette':
+..\src\piano_settimanale.c:78:13: warning: unused variable 'tipo_pianosettimanale' [-Wunused-variable]
+   78 |   categorie tipo_pianosettimanale;
+      |             ^~~~~~~~~~~~~~~~~~~~~
+..\src\piano_settimanale.c:77:13: warning: unused variable 'tipo_cronologia' [-Wunused-variable]
+   77 |   categorie tipo_cronologia;
+      |             ^~~~~~~~~~~~~~~
+..\src\piano_settimanale.c:75:7: warning: unused variable 'n_pianosettimanale' [-Wunused-variable]
+   75 |   int n_pianosettimanale[7];
+      |       ^~~~~~~~~~~~~~~~~~
+..\src\piano_settimanale.c:74:7: warning: unused variable 'n_cronologia' [-Wunused-variable]
+   74 |   int n_cronologia[7];
+      |       ^~~~~~~~~~~~
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\check_input.o" "..\\src\\check_input.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\gestione_ricette.o" "..\\src\\gestione_ricette.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\menu_utente.o" "..\\src\\menu_utente.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+01:52:36 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\menu_utente.o" "..\\src\\menu_utente.c" 
+..\src\menu_utente.c: In function 'richiediRicetta':
+..\src\menu_utente.c:52:33: warning: passing argument 2 of 'ricerca_alimento' from incompatible pointer type [-Wincompatible-pointer-types]
+   52 |     if( !ricerca_alimento(nome, &ricetta_trovata, file_ricette) ){
+      |                                 ^~~~~~~~~~~~~~~~
+      |                                 |
+      |                                 t_ricetta * {aka struct <anonymous> *}
+In file included from ..\src\menu_utente.c:7:
+..\src\gestione_alimenti.h:18:46: note: expected 't_alimento *' {aka 'struct <anonymous> *'} but argument is of type 't_ricetta *' {aka 'struct <anonymous> *'}
+   18 | int ricerca_alimento(char* nome, t_alimento* alimento, FILE* file_alimenti);
+      |                                  ~~~~~~~~~~~~^~~~~~~~
+..\src\menu_utente.c:54:36: warning: passing argument 2 of 'ricerca_alimentoSottstr' from incompatible pointer type [-Wincompatible-pointer-types]
+   54 |      ricerca_alimentoSottstr(nome, ricette_trovate, &n_ricette_trovate, file_ricette);
+      |                                    ^~~~~~~~~~~~~~~
+      |                                    |
+      |                                    t_ricetta * {aka struct <anonymous> *}
+In file included from ..\src\menu_utente.c:7:
+..\src\gestione_alimenti.h:14:53: note: expected 't_alimento *' {aka 'struct <anonymous> *'} but argument is of type 't_ricetta *' {aka 'struct <anonymous> *'}
+   14 | void ricerca_alimentoSottstr(char *nome, t_alimento alimenti[], int* n_alimenti, FILE *file_alimenti);
+      |                                          ~~~~~~~~~~~^~~~~~~~~~
+..\src\menu_utente.c:97:9: error: incompatible types when returning type 't_ricetta' {aka 'struct <anonymous>'} but 't_alimento' {aka 'struct <anonymous>'} was expected
+   97 |  return ricetta_trovata;
+      |         ^~~~~~~~~~~~~~~
+..\src\menu_utente.c:98:1: warning: control reaches end of non-void function [-Wreturn-type]
+   98 | }
+      | ^
+01:53:55 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\menu_utente.o" "..\\src\\menu_utente.c" 
+..\src\menu_utente.c: In function 'richiediRicetta':
+..\src\menu_utente.c:52:33: warning: passing argument 2 of 'ricerca_alimento' from incompatible pointer type [-Wincompatible-pointer-types]
+   52 |     if( !ricerca_alimento(nome, &ricetta_trovata, file_ricette) ){
+      |                                 ^~~~~~~~~~~~~~~~
+      |                                 |
+      |                                 t_ricetta * {aka struct <anonymous> *}
+In file included from ..\src\menu_utente.c:7:
+..\src\gestione_alimenti.h:18:46: note: expected 't_alimento *' {aka 'struct <anonymous> *'} but argument is of type 't_ricetta *' {aka 'struct <anonymous> *'}
+   18 | int ricerca_alimento(char* nome, t_alimento* alimento, FILE* file_alimenti);
+      |                                  ~~~~~~~~~~~~^~~~~~~~
+..\src\menu_utente.c:54:36: warning: passing argument 2 of 'ricerca_alimentoSottstr' from incompatible pointer type [-Wincompatible-pointer-types]
+   54 |      ricerca_alimentoSottstr(nome, ricette_trovate, &n_ricette_trovate, file_ricette);
+      |                                    ^~~~~~~~~~~~~~~
+      |                                    |
+      |                                    t_ricetta * {aka struct <anonymous> *}
+In file included from ..\src\menu_utente.c:7:
+..\src\gestione_alimenti.h:14:53: note: expected 't_alimento *' {aka 'struct <anonymous> *'} but argument is of type 't_ricetta *' {aka 'struct <anonymous> *'}
+   14 | void ricerca_alimentoSottstr(char *nome, t_alimento alimenti[], int* n_alimenti, FILE *file_alimenti);
+      |                                          ~~~~~~~~~~~^~~~~~~~~~
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\piano_settimanale.o" "..\\src\\piano_settimanale.c" 
+..\src\piano_settimanale.c: In function 'prioritarizza_ricette':
+..\src\piano_settimanale.c:78:13: warning: unused variable 'tipo_pianosettimanale' [-Wunused-variable]
+   78 |   categorie tipo_pianosettimanale;
+      |             ^~~~~~~~~~~~~~~~~~~~~
+..\src\piano_settimanale.c:77:13: warning: unused variable 'tipo_cronologia' [-Wunused-variable]
+   77 |   categorie tipo_cronologia;
+      |             ^~~~~~~~~~~~~~~
+..\src\piano_settimanale.c:75:7: warning: unused variable 'n_pianosettimanale' [-Wunused-variable]
+   75 |   int n_pianosettimanale[7];
+      |       ^~~~~~~~~~~~~~~~~~
+..\src\piano_settimanale.c:74:7: warning: unused variable 'n_cronologia' [-Wunused-variable]
+   74 |   int n_cronologia[7];
+      |       ^~~~~~~~~~~~
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\check_input.o" "..\\src\\check_input.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\gestione_ricette.o" "..\\src\\gestione_ricette.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\gestione_alimenti.o" "..\\src\\gestione_alimenti.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+01:54:24 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\menu_utente.o" "..\\src\\menu_utente.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+01:55:30 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\menu_utente.o" "..\\src\\menu_utente.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+01:58:17 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\menu_utente.o" "..\\src\\menu_utente.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+c:/mingw/bin/../lib/gcc/mingw32/9.2.0/../../../../mingw32/bin/ld.exe: cannot open output file SmartFridge2.exe: Permission denied
+collect2.exe: error: ld returned 1 exit status
+01:58:30 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+15:10:39 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\gestione_alimenti.o" "..\\src\\gestione_alimenti.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\menu_utente.o" "..\\src\\menu_utente.c" 
+..\src\menu_utente.c: In function 'menuu':
+..\src\menu_utente.c:240:8: error: too few arguments to function 'print_ricette'
+  240 |        print_ricette();
+      |        ^~~~~~~~~~~~~
+In file included from ..\src\menu_utente.c:8:
+..\src\gestione_ricette.h:18:6: note: declared here
+   18 | void print_ricette(char* filename_ricette);
+      |      ^~~~~~~~~~~~~
+..\src\menu_utente.c: In function 'menu':
+..\src\menu_utente.c:312:7: error: too few arguments to function 'print_ricette'
+  312 |       print_ricette();
+      |       ^~~~~~~~~~~~~
+In file included from ..\src\menu_utente.c:8:
+..\src\gestione_ricette.h:18:6: note: declared here
+   18 | void print_ricette(char* filename_ricette);
+      |      ^~~~~~~~~~~~~
+15:11:56 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\gestione_ricette.o" "..\\src\\gestione_ricette.c" 
+..\src\gestione_ricette.c: In function 'modifica_ricette':
+..\src\gestione_ricette.c:373:3: error: too few arguments to function 'print_ricette'
+  373 |   print_ricette();
+      |   ^~~~~~~~~~~~~
+..\src\gestione_ricette.c:133:6: note: declared here
+  133 | void print_ricette(char* filename_ricette){
+      |      ^~~~~~~~~~~~~
+15:12:25 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\check_input.o" "..\\src\\check_input.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\gestione_ricette.o" "..\\src\\gestione_ricette.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\piano_settimanale.o" "..\\src\\piano_settimanale.c" 
+..\src\piano_settimanale.c: In function 'prioritarizza_ricette':
+..\src\piano_settimanale.c:78:13: warning: unused variable 'tipo_pianosettimanale' [-Wunused-variable]
+   78 |   categorie tipo_pianosettimanale;
+      |             ^~~~~~~~~~~~~~~~~~~~~
+..\src\piano_settimanale.c:77:13: warning: unused variable 'tipo_cronologia' [-Wunused-variable]
+   77 |   categorie tipo_cronologia;
+      |             ^~~~~~~~~~~~~~~
+..\src\piano_settimanale.c:75:7: warning: unused variable 'n_pianosettimanale' [-Wunused-variable]
+   75 |   int n_pianosettimanale[7];
+      |       ^~~~~~~~~~~~~~~~~~
+..\src\piano_settimanale.c:74:7: warning: unused variable 'n_cronologia' [-Wunused-variable]
+   74 |   int n_cronologia[7];
+      |       ^~~~~~~~~~~~
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\menu_utente.o" "..\\src\\menu_utente.c" 
+..\src\menu_utente.c: In function 'menu':
+..\src\menu_utente.c:315:7: error: too few arguments to function 'print_ricette'
+  315 |       print_ricette();
+      |       ^~~~~~~~~~~~~
+In file included from ..\src\menu_utente.c:8:
+..\src\gestione_ricette.h:18:6: note: declared here
+   18 | void print_ricette(char* filename_ricette);
+      |      ^~~~~~~~~~~~~
+15:13:03 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\menu_utente.o" "..\\src\\menu_utente.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+15:16:34 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\menu_utente.o" "..\\src\\menu_utente.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+Info: Nothing to build for SmartFridge2
+17:42:40 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\menu_utente.o" "..\\src\\menu_utente.c" 
+..\src\menu_utente.c: In function 'fattiConsigliare':
+..\src\menu_utente.c:207:21: warning: passing argument 1 of 'inputBool' makes pointer from integer without a cast [-Wint-conversion]
+  207 |   input = inputBool(flag_errore, flag_home);
+      |                     ^~~~~~~~~~~
+      |                     |
+      |                     int
+In file included from ..\src\menu_utente.c:11:
+..\src\check_input.h:42:20: note: expected 'int *' but argument is of type 'int'
+   42 | int inputBool(int *flag_errore, int *flag_home);
+      |               ~~~~~^~~~~~~~~~~
+..\src\menu_utente.c:207:34: warning: passing argument 2 of 'inputBool' makes pointer from integer without a cast [-Wint-conversion]
+  207 |   input = inputBool(flag_errore, flag_home);
+      |                                  ^~~~~~~~~
+      |                                  |
+      |                                  int
+In file included from ..\src\menu_utente.c:11:
+..\src\check_input.h:42:38: note: expected 'int *' but argument is of type 'int'
+   42 | int inputBool(int *flag_errore, int *flag_home);
+      |                                 ~~~~~^~~~~~~~~
+..\src\menu_utente.c:220:25: warning: passing argument 1 of 'inputBool' makes pointer from integer without a cast [-Wint-conversion]
+  220 |       input = inputBool(flag_errore, flag_home);
+      |                         ^~~~~~~~~~~
+      |                         |
+      |                         int
+In file included from ..\src\menu_utente.c:11:
+..\src\check_input.h:42:20: note: expected 'int *' but argument is of type 'int'
+   42 | int inputBool(int *flag_errore, int *flag_home);
+      |               ~~~~~^~~~~~~~~~~
+..\src\menu_utente.c:220:38: warning: passing argument 2 of 'inputBool' makes pointer from integer without a cast [-Wint-conversion]
+  220 |       input = inputBool(flag_errore, flag_home);
+      |                                      ^~~~~~~~~
+      |                                      |
+      |                                      int
+In file included from ..\src\menu_utente.c:11:
+..\src\check_input.h:42:38: note: expected 'int *' but argument is of type 'int'
+   42 | int inputBool(int *flag_errore, int *flag_home);
+      |                                 ~~~~~^~~~~~~~~
+..\src\menu_utente.c:237:4: warning: implicit declaration of function 'prioritarizza_ricette' [-Wimplicit-function-declaration]
+  237 |    prioritarizza_ricette(ricette_selezionate, &n_ricette_selezionate);
+      |    ^~~~~~~~~~~~~~~~~~~~~
+..\src\menu_utente.c:254:7: warning: implicit declaration of function 'preparaRicetta' [-Wimplicit-function-declaration]
+  254 |       preparaRicetta( ricette_selezionate[i]  );
+      |       ^~~~~~~~~~~~~~
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+c:/mingw/bin/../lib/gcc/mingw32/9.2.0/../../../../mingw32/bin/ld.exe: cannot open output file SmartFridge2.exe: Permission denied
+collect2.exe: error: ld returned 1 exit status
+17:43:09 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\menu_utente.o" "..\\src\\menu_utente.c" 
+..\src\menu_utente.c: In function 'fattiConsigliare':
+..\src\menu_utente.c:237:4: warning: implicit declaration of function 'prioritarizza_ricette' [-Wimplicit-function-declaration]
+  237 |    prioritarizza_ricette(ricette_selezionate, &n_ricette_selezionate);
+      |    ^~~~~~~~~~~~~~~~~~~~~
+..\src\menu_utente.c:254:7: warning: implicit declaration of function 'preparaRicetta' [-Wimplicit-function-declaration]
+  254 |       preparaRicetta( ricette_selezionate[i]  );
+      |       ^~~~~~~~~~~~~~
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+c:/mingw/bin/../lib/gcc/mingw32/9.2.0/../../../../mingw32/bin/ld.exe: cannot open output file SmartFridge2.exe: Permission denied
+collect2.exe: error: ld returned 1 exit status
+18:20:01 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\menu_utente.o" "..\\src\\menu_utente.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+c:/mingw/bin/../lib/gcc/mingw32/9.2.0/../../../../mingw32/bin/ld.exe: cannot open output file SmartFridge2.exe: Permission denied
+collect2.exe: error: ld returned 1 exit status
+18:20:08 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+18:26:18 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\menu_utente.o" "..\\src\\menu_utente.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+Info: Nothing to build for SmartFridge2
+19:12:36 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\menu_utente.o" "..\\src\\menu_utente.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+19:17:29 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\menu_utente.o" "..\\src\\menu_utente.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+19:22:55 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\gestione_ricette.o" "..\\src\\gestione_ricette.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+20:02:52 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\gestione_alimenti.o" "..\\src\\gestione_alimenti.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\gestione_ricette.o" "..\\src\\gestione_ricette.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\menu_utente.o" "..\\src\\menu_utente.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\check_input.o" "..\\src\\check_input.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\piano_settimanale.o" "..\\src\\piano_settimanale.c" 
+..\src\piano_settimanale.c: In function 'prioritarizza_ricette':
+..\src\piano_settimanale.c:78:13: warning: unused variable 'tipo_pianosettimanale' [-Wunused-variable]
+   78 |   categorie tipo_pianosettimanale;
+      |             ^~~~~~~~~~~~~~~~~~~~~
+..\src\piano_settimanale.c:77:13: warning: unused variable 'tipo_cronologia' [-Wunused-variable]
+   77 |   categorie tipo_cronologia;
+      |             ^~~~~~~~~~~~~~~
+..\src\piano_settimanale.c:75:7: warning: unused variable 'n_pianosettimanale' [-Wunused-variable]
+   75 |   int n_pianosettimanale[7];
+      |       ^~~~~~~~~~~~~~~~~~
+..\src\piano_settimanale.c:74:7: warning: unused variable 'n_cronologia' [-Wunused-variable]
+   74 |   int n_cronologia[7];
+      |       ^~~~~~~~~~~~
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+c:/mingw/bin/../lib/gcc/mingw32/9.2.0/../../../../mingw32/bin/ld.exe: cannot open output file SmartFridge2.exe: Permission denied
+collect2.exe: error: ld returned 1 exit status
+20:03:04 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+Info: Nothing to build for SmartFridge2
+20:06:55 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\menu_utente.o" "..\\src\\menu_utente.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+c:/mingw/bin/../lib/gcc/mingw32/9.2.0/../../../../mingw32/bin/ld.exe: cannot open output file SmartFridge2.exe: Permission denied
+collect2.exe: error: ld returned 1 exit status
+20:07:00 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+20:59:26 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\menu_utente.o" "..\\src\\menu_utente.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+21:02:06 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\menu_utente.o" "..\\src\\menu_utente.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+21:11:25 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\menu_utente.o" "..\\src\\menu_utente.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+21:13:53 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\menu_utente.o" "..\\src\\menu_utente.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 

@@ -9,10 +9,48 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <ctype.h>
+#include <stdlib.h>
 
 
 int main(void) {
 	setvbuf(stdout, NULL, _IONBF, 0);
+
+	menuu();
+
+//	char str1[] = "PallealSugo";
+//    char str2[] = "sos";
+//
+//    int a = sottostrEqual(str1, str2);
+//
+//
+//
+//    printf("%d\n", a);
+
+
+
+
+
+
+	//menuu();
+
+	/*
+	int flag_home=0;
+	int flag_errore=0;
+	do{
+		flag_home=0;
+		flag_errore=0;
+
+		char str[6];
+		inputStr(str, 6, &flag_errore, &flag_home);
+		printf("%s  errore:%d   home:%d  equal:%d\n", str ,flag_errore, flag_home, strEqual(str, "-1"));
+		for(int i=0; i < strlen(str); i++){
+			printf("%d\t",str[i]);
+		}
+		puts("");
+	}while(1);*/
+
+	//menuu();
 
 	//TODO: funzione che controlla l esistenza dei file e li crea altrimenti
 
@@ -21,9 +59,27 @@ int main(void) {
 	//caricaAlimenti();
 
 	//print_alimenti();
+	/*
+	do{
+		char str[6];
+		int len;
+
+		fgets(str, 5, stdin);
+		len = strlen(str);
+		printf("len: %d  %s\n", len ,str);
+
+		fflush(stdin);
 
 
-	menuu();
+		fgets(str, 5, stdin);
+		len = strlen(str);
+		printf("len: %d  %s\n", len ,str);
+		*/
+
+	//}while(1);
+
+
+	//menuu();
 
 	/*
 	int flag_home=0;

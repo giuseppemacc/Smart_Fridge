@@ -68,6 +68,16 @@ void print_piano_settimanale(){
 
 void prioritarizza_ricette( t_ricetta ricette[], int n_ricette ){
 
+
+
+
+	// ottiene la categoria dal giorno
+
+	// ordina ricette in ordine decrescente in base a ricette.counter_giorni
+
+	// ordina ricette in base alla categoria del giorno
+
+
   FILE* file_cronologia;
   FILE* file_piano_settimanale;
 

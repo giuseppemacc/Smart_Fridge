@@ -16,6 +16,23 @@ int strEqual(char *str1, char *str2) {
   return flag_equal;
 }
 
+// str1 stringa in cui cercare
+// str2 stringa da cercare
+int sottostrEqual(char * str1, char* str2){
+
+	int flag_equal;
+
+	flag_equal = 0;
+
+	char* str = strstr(str1,str2);
+
+	if( str != NULL){
+		flag_equal = 1;
+	}
+
+	return flag_equal;
+}
+
 // ritorna 1 se str1 < str2 (dal punto di vista alfabetico)
 int strMin(char *str1, char *str2) {
   int str1_len = strlen(str1);

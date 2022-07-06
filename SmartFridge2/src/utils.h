@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include "types.h"
 
-
+int sottostrEqual(char * str1, char* str2);
 
 int strEqual(char* str1, char* str2);
 

@@ -12,6 +12,27 @@
 
 
 
+void ricerca_ricettaSottstr(char *nome, t_ricetta ricette[], int* n_ricette, FILE *file_ricette) {
+  t_ricetta ricetta_corrente;
+
+  *n_ricette = 0;
+  strToUpper(nome);
+
+  rewind(file_ricette);
+
+  fread(&ricetta_corrente, sizeof(t_ricetta), 1, file_ricette);
+
+  while ( !feof(file_ricette) ) {
+    if ( sottostrEqual(ricetta_corrente.nome, nome) ) { // se hanno una sottostringa in comune
+      ricette[ *n_ricette ] = ricetta_corrente;
+      (*n_ricette)++;
+    }
+    fread(&ricetta_corrente, sizeof(t_ricetta), 1, file_ricette);
+
+  }
+}
+
+
 void ordinaFileRicette_AZ(char *file_name){
 	FILE* file;
 
@@ -109,11 +130,11 @@ void print_arr_ricette(t_ricetta ricette[], int n_ricette){
 }
 
 
-void print_ricette(){
+void print_ricette(char* filename_ricette){
 	FILE* file_ricette;
 	t_ricetta ricetta_corrente;
 
-	if( apriFile(&file_ricette, FILENAME_RICETTE, "rb+") ){
+	if( apriFile(&file_ricette, filename_ricette, "rb+") ){
 
 		rewind(file_ricette);
 		fread( &ricetta_corrente, sizeof(t_ricetta), 1, file_ricette);
@@ -129,54 +150,6 @@ void print_ricette(){
 	}
 }
 
-
-t_ricetta input_ricetta(){
-	t_ricetta ricetta;
-	int input;
-	char str[50];
-	t_alimento alimento;
-
-	ricetta.n_ingredienti = 0;
-	ricetta.valutazione = 0;
-	ricetta.proposta = 0;
-
-	  printf("Inserisci nome ricetta >> ");
-	  scanf("%s", ricetta.nome);
-      strToUpper(ricetta.nome);
-
-	  do{
-		  printf("Inserisci categoria ricetta >> ");
-		  scanf("%s", str);
-		  ricetta.categoria = getCategoria(str);
-	  }while( ricetta.categoria == NONE_CAT );
-
-
-	  printf("Inserisci procedimento ricetta >> ");
-	  scanf("%s", ricetta.procedimento);
-
-	  printf("Inserisci ingredienti >> ");
-	  do{
-		  printf("n%d:\n",ricetta.n_ingredienti+1);
-		  //alimento = inputAlimento(flag_home);
-
-		  printf("questo alimento si trova in dispensa? [0:no, 1:si] >> ");
-		  scanf("%d", &input);
-
-		  if(input == 1){
-			  alimento.dispensa = 1;
-		  }
-
-		  ricetta.ingredienti[ ricetta.n_ingredienti ] = alimento;
-		  ricetta.n_ingredienti++;
-
-		  printf("Aggiungere un altro alimento? [si:1, no:0] >> ");
-		  scanf("%d", &input);
-
-	  }while(input==1);
-
-
-	return ricetta;
-}
 
 
 t_ricetta inputRicetta(int *flag_home){
@@ -331,29 +304,6 @@ void caricaRicette(){
   } while ((flag_continue == 1) && (flag_home == 0));
 }
 
-void aggiungi_ricette(){
-	FILE* file_ricette;
-	int input;
-	t_ricetta ricetta;
-
-	if( apriFile(&file_ricette, FILENAME_RICETTE, "rb+") ){
-
-		fseek(file_ricette, 0, SEEK_END); // posiziona alla fine
-
-		do{
-			puts("Inserisci ricetta:");
-			ricetta = input_ricetta();
-			fwrite( &ricetta, sizeof(t_ricetta), 1, file_ricette);
-
-			printf("Caricare un altra ricetta? [si:1, no:0] >> ");
-			scanf("%d", &input);
-
-		}while(input == 1);
-
-	  	fclose(file_ricette);
-	}
-}
-
 
 int ricerca_ricetta(char* nome, t_ricetta* ricetta, FILE* file_ricette){
 	int flag_ricetta_trovato=0;
@@ -420,7 +370,7 @@ void modifica_ricette(){
 
 		}
 
-		print_ricette();
+		print_ricette(FILENAME_RICETTE);
 
 		printf("Modificare/Eliminare un altra ricetta? [si:1, no:0] >> ");
 		scanf("%d", &input);
@@ -437,12 +387,11 @@ void modifica_ricette(){
 
 
 // alimento1 <= alimento2 ===> 1
-int isAlimento_compatibile(t_alimento alimento1, t_alimento alimento2){
+int isAlimento_compatibile(t_alimento alimento1, t_alimento alimento2, int ignora_quantita){
 
   if( !strEqual(alimento1.nome,"") &&  !strEqual(alimento2.nome,"") ){ // se nessuno dei due � nullo
     return ( strEqual(alimento1.nome, alimento2.nome) &&
-    (alimento1.unita == alimento2.unita) &&
-    (alimento1.quantita <= alimento2.quantita) );
+    (alimento1.unita == alimento2.unita) &&  (ignora_quantita ? 1 : (alimento1.quantita <= alimento2.quantita) ) );
   }else{
     return 0;
   }
@@ -475,7 +424,7 @@ int isPreparabile(t_ricetta ricetta, char* filename_alimenti){
 
       }else if(ricerca_alimento(ricetta.ingredienti[i_alimenti_ricetta].nome, &alimento_trovato, file_alimenti)){
 
-				if(isAlimento_compatibile(ricetta.ingredienti[i_alimenti_ricetta], alimento_trovato)){
+				if(isAlimento_compatibile(ricetta.ingredienti[i_alimenti_ricetta], alimento_trovato, 0)){
 					flag_preparabile = 1;
 				}
 
@@ -493,6 +442,7 @@ int isPreparabile(t_ricetta ricetta, char* filename_alimenti){
 }
 
 
+// tutti gli alimenti di alimenti1 sono presenti in alimenti2 e sono in quantità minore
 int isContained(t_alimento alimenti1[], t_alimento alimenti2[], int n_alimenti1, int n_alimenti2){
 
 	int flag_contained;
@@ -508,7 +458,7 @@ int isContained(t_alimento alimenti1[], t_alimento alimenti2[], int n_alimenti1,
 
 		i_alimenti2=0;
 		while ( (i_alimenti2<n_alimenti2) && (flag_contained==0) ){
-			if( isAlimento_compatibile(alimenti1[i_alimenti1], alimenti2[i_alimenti2]) ){
+			if( isAlimento_compatibile(alimenti1[i_alimenti1], alimenti2[i_alimenti2], 1) ){
 				flag_contained = 1;
 			}
 			i_alimenti2++;
@@ -559,9 +509,10 @@ void ricetteCompatibili( t_alimento alimenti[], int n_alimenti, t_ricetta ricett
 		fread( &ricetta_corrente, sizeof(t_ricetta), 1, file_ricette);
 
 		while(!feof(file_ricette)){
-
+			// tutti gli alimenti[] devono essere presenti in ricetta.ingredienti[]
+			// ed in quantità maggiore
 			 if( isPreparabile(ricetta_corrente, FILENAME_ALIMENTI)
-					&& isContained(alimenti, ricetta_corrente.ingredienti, n_alimenti, ricetta_corrente.n_ingredienti)){
+					&& isContained( alimenti, ricetta_corrente.ingredienti, n_alimenti, ricetta_corrente.n_ingredienti)){
 				 ricette_compatibili[*n_ricette_compatibili] = ricetta_corrente;
 				 (*n_ricette_compatibili)++;
 			 }
@@ -574,26 +525,6 @@ void ricetteCompatibili( t_alimento alimenti[], int n_alimenti, t_ricetta ricett
 	}
 }
 
-//TODO: � lo stesso codice di print_ricette
-void print_cronologia_ricette(){
-  FILE* file_cronologia;
-  t_ricetta ricetta_corrente;
-
-  if(apriFile(&file_cronologia, FILENAME_CRONOLOGIA_RICETTE,"rb+")){
-
-    rewind(file_cronologia);
-		fread( &ricetta_corrente, sizeof(t_ricetta), 1, file_cronologia);
-
-		 while(!feof(file_cronologia)){
-			 if(strcmp(ricetta_corrente.nome,"")!=0){
-				print_ricetta(ricetta_corrente);
-			 }
-		  fread( &ricetta_corrente, sizeof(t_ricetta), 1, file_cronologia);
-		}
-
-    fclose(file_cronologia);
-  }
-}
 
 
 void printStatistica_voti(){

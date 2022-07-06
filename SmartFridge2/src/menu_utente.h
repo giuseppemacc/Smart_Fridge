@@ -12,7 +12,11 @@
 
 #include "types.h"
 
+t_ricetta richiediRicetta(int* flag_home);
 
+t_alimento richiediAlimento(int* flag_home);
+
+void printRic_Preparabili();
 
 void menuu();
 

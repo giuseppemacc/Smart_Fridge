@@ -11,6 +11,7 @@ t_alimento inputAlimento(int *flag_home);
 void caricaAlimenti();
 
 
+void ricerca_alimentoSottstr(char *nome, t_alimento alimenti[], int* n_alimenti, FILE *file_alimenti);
 
 /*RESTITUISCE: 1 = ALIMENTO TROVATO
                0 = ALIMENTO NON TROVATO */
