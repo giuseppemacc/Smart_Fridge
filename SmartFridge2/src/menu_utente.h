@@ -12,17 +12,22 @@
 
 #include "types.h"
 
+void menu_modificaAlimento();
+
+void menu_modificaRicetta();
+
+void valutaRicetta(char* nome_ricetta, int* flag_home);
+
 t_ricetta richiediRicetta(int* flag_home);
 
 t_alimento richiediAlimento(int* flag_home);
 
 void printRic_Preparabili();
 
-void menuu();
 
 void menu();
 
-
+void menuu();
 
 
 

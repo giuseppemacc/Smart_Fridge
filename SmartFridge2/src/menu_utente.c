@@ -15,20 +15,105 @@
 // ?TODO: dichiarare un nuovo tipo bool come enum {false, true}  (false=0,
 // true=1)
 
-//#ifndef HOME_VALUE
-#define HOME_VALUE -1
-//#endif
 
 
+
+
+
+
+
+void valutaRicetta(char* nome_ricetta, int* flag_home){
+	int valutazione;
+	int flag_errore;
+	FILE* file_ricette;
+	t_ricetta ricetta_trovata; // che saraà uguale a ricetta
+
+
+	do{
+		printf("inserisci una valutazione da 1 a 5 per [%s] >> ", nome_ricetta);
+		valutazione = inputInt(&flag_errore, &(*flag_home));
+
+		if(!(*flag_home) && !(flag_errore)){
+			flag_errore = !((valutazione>=1) && (valutazione<=5));
+		}
+
+	}while(flag_errore && (*flag_home==0));
+
+	if(!(*flag_home)){
+
+		if(apriFile(&file_ricette, FILENAME_RICETTE, "rb+")){
+
+			if( ricerca_ricetta(nome_ricetta, &ricetta_trovata, file_ricette) ){
+
+				ricetta_trovata.valutazione = valutazione;
+
+				fwrite(&ricetta_trovata, sizeof(t_ricetta), 1, file_ricette);
+
+			}
+
+			fclose(file_ricette);
+			puts("file chiuso ao");
+
+		}
+	}
+}
 
 
 
 
 void preparaRicetta(t_ricetta ricetta){
+	FILE* file_pianosettimanale;
+	FILE* file_alimenti;
+	FILE* file_ricette;
+	FILE* file_cronologiaricette;
+
+	giorni giorno;
+	t_alimento alimento;
+	t_ricetta ricetta_corrente;
+
+	//aggiungi la ricetta alla cronologia
 
 	// file giorni ++
+	if (apriFile(&file_pianosettimanale, FILENAME_PIANO_SETTIMANALE, "rb+")){
+
+		fread( &giorno, sizeof(giorni), 1, file_pianosettimanale);
+		fseek(file_pianosettimanale, -sizeof(giorni), SEEK_CUR); // sposta di uno indietro
+
+		if(giorno == DOM){
+			giorno = LUN;
+		}else{
+			giorno++;
+		}
+
+		fwrite(&giorno, sizeof(giorni), 1, file_pianosettimanale);
+
+		fclose(file_pianosettimanale);
+	}
+
 
 	// deve scalare la quantità dal frigo
+	if (apriFile(&file_alimenti, FILENAME_ALIMENTI, "rb+")){
+
+		for(int i=0; i<ricetta.n_ingredienti; i++){
+
+			if( ricetta.ingredienti[i].dispensa == 0 ){ // se l alimento non è da dispensa
+				if( ricerca_alimento(ricetta.ingredienti[i].nome, &alimento, file_alimenti  ) ){
+					alimento.quantita -= ricetta.ingredienti[i].quantita;
+
+					if(alimento.quantita<=0){
+						strcpy(alimento.nome,""); // se la quantita==0 elimina l'alimento dal frigo
+					}
+
+					fwrite(&alimento, sizeof(t_alimento), 1, file_alimenti);
+				}else{
+					printf("GRAAAAAAAANDE BUUUUUG\n");
+				}
+			}
+
+		}
+
+		fclose(file_alimenti);
+	}
 
 
 	// counter_giorni = 0
@@ -40,7 +125,57 @@ void preparaRicetta(t_ricetta ricetta){
 	//  if (prepara==true) AND (counter_giorni > 7):
 	//		preparata = false
 
+	if( apriFile( &file_ricette, FILENAME_RICETTE, "rb+") ){
 
+		t_ricetta ric_corrente;
+		int i=0;
+
+		rewind(file_ricette);
+		fread(&ric_corrente, sizeof(t_ricetta), 1, file_ricette);
+
+		while( !(feof(file_ricette)) ){
+
+
+			ric_corrente.counter_giorni += 1;
+			//print_ricetta(ric_corrente);
+			fseek(file_ricette, -sizeof(t_ricetta), SEEK_CUR);
+			fwrite(&ric_corrente, sizeof(t_ricetta), 1, file_ricette);
+			i++;
+
+
+
+			fseek(file_ricette, i*sizeof(t_ricetta), SEEK_SET);
+			fread(&ric_corrente, sizeof(t_ricetta), 1, file_ricette);
+		}
+
+
+		if(ricerca_ricetta(ricetta.nome, &ricetta_corrente, file_ricette)){
+
+			ricetta_corrente.counter_giorni = 0;
+			ricetta_corrente.preparata = 1;
+			fwrite(&ricetta_corrente, sizeof(t_ricetta), 1, file_ricette);
+
+		}else{
+			printf("ANCORA PIU GRAAAAAAAANDE BUUUUUG\n");
+		}
+
+
+		fclose(file_ricette);
+	}
+
+
+
+
+
+	// aggiugni ricetta alla cronologia ricette
+	if( apriFile(&file_cronologiaricette, FILENAME_CRONOLOGIA_RICETTE, "rb+")){
+		fseek( file_cronologiaricette, 0, SEEK_END ); // posiziona alla fine
+
+		fwrite(&ricetta, sizeof(t_ricetta), 1, file_cronologiaricette);
+
+		fclose(file_cronologiaricette);
+
+	}
 
 }
 
@@ -150,6 +285,7 @@ t_alimento richiediAlimento(int* flag_home){
 		}while(flag_errore && ((*flag_home)==0));
 
 
+
 		if(!(*flag_home)){
 
 			if(apriFile(&file_alimenti, FILENAME_ALIMENTI, "rb+")){
@@ -204,6 +340,42 @@ t_alimento richiediAlimento(int* flag_home){
 
 
 
+void menu_modificaAlimento(){
+	int flag_home;
+	t_alimento alimento;
+	t_alimento alimento_modificato;
+
+	alimento = richiediAlimento(&flag_home);
+
+	if(!flag_home){
+
+		alimento_modificato = modificaAlimento(alimento, &flag_home);
+
+		if(!flag_home){
+			sovrascrivi_alimento(alimento.nome, alimento_modificato);
+		}
+	}
+}
+
+
+void menu_modificaRicetta(){
+	int flag_home;
+	t_ricetta ricetta;
+	t_ricetta ricetta_modificata;
+
+	ricetta = richiediRicetta(&flag_home);
+
+	if(!flag_home){
+
+		ricetta_modificata = modificaRicetta(ricetta, &flag_home);
+
+		if(!flag_home){
+			sovrascrivi_ricetta(ricetta.nome, ricetta_modificata);
+		}
+	}
+}
+
+
 void printRic_Preparabili(){
 	t_ricetta ricette_preparabili[50]; // deve essere il numero di ricette presenti
 	int n_ricette_preparabili;
@@ -221,6 +393,7 @@ void printRic_Preparabili(){
 void fattiConsigliare(){
 	int input;
 	int input_ins_al;
+	int input_valutazione;
 	int flag_errore;
 	int flag_home;
 	int flag_continue;
@@ -267,7 +440,7 @@ void fattiConsigliare(){
 
 			if(!flag_home){
 
-				//prioritarizza_ricette(ricette_selezionate, &n_ricette_selezionate);
+				prioritarizza_ricette(ricette_selezionate, n_ricette_selezionate);
 
 				if( n_ricette_selezionate > 0){ // se sono state trovate ricette possibili
 
@@ -289,6 +462,19 @@ void fattiConsigliare(){
 								puts("ricetta preparata\n\n");
 								flag_continue = 0;
 								preparaRicetta( ricette_selezionate[i]  );
+								do{
+									printf("vuoi aggiungere una valutazione per la ricetta? ");
+									input_valutazione = inputBool(&flag_errore, &flag_home);
+								}while(flag_errore && (flag_home==0));
+
+								if(!flag_home){
+
+									if(input_valutazione){
+										valutaRicetta(ricette_selezionate[i].nome, &flag_home);
+									}
+
+								}
+
 							}else{
 								if(i == (n_ricette_selezionate-1)){
 									printf("non sono presenti altre ricette preparabili\n");
@@ -323,178 +509,230 @@ void fattiConsigliare(){
 			}
 		}while( flag_continue && (flag_home==0) );
 
-
 	}
-
 }
 
 
-
-
-
-
-
-void menuu() {
-  char opzioni[] = "1) visualizza alimenti\n"
-		           "2) carica alimenti\n"
-		           "3) visualizza ricette\n"
-		           "4) carica ricette\n"
-		  	  	   "5) resetta file alimenti\n"
-		  	  	   "6) resetta file ricette\n"
-		  	  	   "7) visualizza ricette preparabili\n"
-		  	  	   "8) ricerca alimento\n"
-		  	  	   "9) ricerca ricetta\n"
-		  	  	   "10) visualizza cronologia pasti\n"
-		  	  	   "11) visualizza statistica valutazioni ricette\n"
-		  	  	   "12) fatti consigliare\n"
-		  	  	   "0) uscire\n";
-
-  int input;
-  int flag_continue; // sarebbe il flag_home
-  int flag_errore;
-
-  do {
-    flag_continue = 1;
-    flag_errore = 0;
-    printf("\n\n%s\n\t>> ", opzioni);
-    input = inputInt(&flag_errore, &flag_continue); // se viene inserito HOME_VAL
-                                      // flag_continue=true e flag_errore=false
-
-    if (!flag_errore && !flag_continue) { // se non sono avvenuti errori e non �
-                                          // inserito HOME_VAL
-      flag_continue = 1;
-
-      if (input == 0) {
-    	 puts("exit ... ");
-        flag_continue = 0;
-
-      } else if (input == 1) {
-    	print_alimenti();
-
-      } else if (input == 2) {
-    	  caricaAlimenti();
-
-      } else if (input == 3) {
-    	  print_ricette(FILENAME_RICETTE);
-
-      }else if (input == 4) {
-    	  caricaRicette();
-
-      }else if (input == 5) {
-    	  clearFile(FILENAME_ALIMENTI);
-
-      }else if (input == 6) {
-    	  clearFile(FILENAME_RICETTE);
-
-      }else if (input == 7) {
-    	  printRic_Preparabili();
-
-      }else if (input == 8) {
-    	  t_alimento alimento = richiediAlimento(&flag_continue);
-
-    	  if(!flag_continue){
-    		  print_alimento(alimento);
-    		  flag_continue = 1;
-    	  }
-      }else if (input == 9) {
-    	  t_ricetta ricetta = richiediRicetta(&flag_continue);
-
-		  if(!flag_continue){
-			  print_ricetta(ricetta);
-			  flag_continue = 1;
-		  }
-
-      }else if (input == 10) {
-    	  print_ricette(FILENAME_CRONOLOGIA_RICETTE);
-
-      }else if (input == 11) {
-    	  printStatistica_voti();
-
-      }else if (input == 12) {
-    	  fattiConsigliare();
-
-      }else {
-        flag_errore = 1;
-      }
-    }
-
-    if (flag_errore) {
-    	flag_continue = 1;
-      puts("comando non trovato");
-    }
-
-  } while (flag_continue);
-}
 
 // --------------------------------------------------------------------------------------------
 
-void menu() {
-  // TODO fare un menu a pi� pagine
 
-  int input;
-  int flag_exit;
-  do {
-    flag_exit = 0;
-    puts("\n\n");
-    printf("1) aggiungi alimenti\n");
-    printf("2) aggiungi ricette\n");
-    printf("3) visualizza file alimenti\n");
-    printf("4) visualizza file ricette\n");
-    printf("5) visualizza ricette preparabili\n");
-    printf("6) prepara ricetta\n");
-    printf("7) modifica alimenti\n");
-    printf("8) modifica ricette\n");
-    printf("0) exit\n");
-    printf("\t>> ");
-    scanf("%d", &input);
 
-    if (input == 0) {
-      flag_exit = 1;
-    } else if (input == 1) {
-      //input_alimenti();
-    } else if (input == 2) {
-    } else if (input == 3) {
-      print_alimenti();
-    } else if (input == 4) {
-      //print_ricette();
-    } else if (input == 5) {
+void menu_cercaAlimento(){
+	int flag_home;
+	t_alimento alimento = richiediAlimento(&flag_home);
 
-      t_ricetta ricette_preparabili[20];
-      int n_ricette_preparabili;
-
-      ricettePreparabili(ricette_preparabili, &n_ricette_preparabili,
-                         FILENAME_RICETTE);
-      print_arr_ricette(ricette_preparabili, n_ricette_preparabili);
-
-    } else if (input == 6) {
-
-      t_alimento alimenti[2];
-      t_ricetta ricette_compatibili[20];
-      int n_ricette_compatibili;
-      /*
-      alimenti[0] = input_alimento();
-      puts("--");
-      alimenti[1] = input_alimento();
-      puts("--");*/
-
-      // inserisci i nomi degli alimenti
-      // cerca questi alimenti in frigo
-      // se presenti:
-      //   ricetteCompatibili(alimenti_trovati)
-      // altrimenti:
-      //   chiedi al negro di inserire alimenti presenti in frigo
-
-      ricetteCompatibili(alimenti, 2, ricette_compatibili,
-                         &n_ricette_compatibili, FILENAME_RICETTE);
-      print_arr_ricette(ricette_compatibili, n_ricette_compatibili);
-
-    } else if (input == 7) {
-      modifica_alimenti();
-    } else if (input == 8) {
-      modifica_ricette();
-    } else {
-      puts("\ncomando non trovato\n");
-    }
-
-  } while (flag_exit == 0);
+	  if(!flag_home){
+		  print_alimento(alimento);
+	  }
 }
+
+void menu_cercaRicetta(){
+	int flag_home;
+	t_ricetta ricetta = richiediRicetta(&flag_home);
+
+	  if(!flag_home){
+		  print_ricetta(ricetta);
+	  }
+}
+
+
+void menu_valutaRicetta(){
+
+	int flag_home;
+
+	t_ricetta ricetta_da_valutare = richiediRicetta(&flag_home);
+
+	  if(!flag_home){
+		  valutaRicetta(ricetta_da_valutare.nome, &flag_home);
+	  }
+}
+
+
+void menu_preparaRicetta(){
+	int flag_home;
+
+	t_ricetta ricetta_da_preparare = richiediRicetta(&flag_home);
+
+	if(!flag_home ){
+
+		if(isPreparabile(ricetta_da_preparare, FILENAME_ALIMENTI)){
+			preparaRicetta(ricetta_da_preparare);
+			puts("ricetta preparata!");
+		}else{
+			puts("ingredienti non sufficienti per preparare la ricetta selezionata");
+		}
+
+	}
+}
+
+
+
+void menuu(){
+
+
+	char opzioni_menu[][300] = {
+			"[1] visualizza gli alimenti del frigo\n[2] aggiungi alimenti in frigo\n[3] cerca alimento nel frigo\n[4] modifica/rimuovi alimento dal frigo\n---------------- FRIGO (1/4) --------\n",
+			"[1] visualizza ricettario\n[2] aggiungi ricetta al ricettario\n[3] cerca ricetta nel ricettario\n[4] modifica/rimuovi ricetta dal ricettario\n[5] valuta una ricetta\n[6] visualizza statistica valutazione ricette\n---------------- RICETTARIO (2/4) --------\n",
+			"[1] visualizza ricette preparabili\n[2] prepara ricetta\n[3] fatti consigliare cosa prepare!\n---------------- PREPARA RICETTE (3/4) --------\n",
+			"[1] visualizza il tuo piano settimanale\n[2] personalizza piano settimanale\n[3] visualizza cronologia pasti\n---------------- PIANO SETTIMANALE (4/4) --------\n"
+	};
+
+
+	int menu_selezionato = 0;
+	int flag_continue = 1;
+	int flag_errore;
+	int flag_home;
+
+	char input[20];
+
+
+	do{
+		printf("\n\n------------- OGGI E' %s ------------\n", returnGiorno( get_giorno_attuale()));
+		printf("%s", opzioni_menu[menu_selezionato]);
+		printf("[help] per visualizzare comandi aggiuntivi\n");
+		printf("\n\t\t\tV\n");
+		printf("\t\t\t");
+
+		inputStr(input, 20, &flag_errore, &flag_home);
+
+		if(!flag_errore && !flag_home){
+
+			if( strEqual(input, "help") ){
+
+				printf("[exit] per terminare il programma\n");
+				printf("[home] per tornare al menu da qualsiasi punto del programma\n");
+				printf("[<] per spostarsi di una pagina a sinistra nel menu\n");
+				printf("[>] per spostarsi di una pagina a destra nel menu\n");
+
+			}else if( strEqual(input, "exit") ){
+
+				printf("exit ...");
+				flag_continue = 0;
+
+			}else if( strEqual(input, ">") ){
+
+				if(menu_selezionato < 3 ){
+					menu_selezionato++;
+				}
+
+			}else if( strEqual(input, "<") ){
+
+				if(menu_selezionato > 0 ){
+					menu_selezionato--;
+				}
+
+			}else{
+
+				if( menu_selezionato == 0 ){ // menu frigo
+
+					if(strEqual(input, "1")){
+
+						print_alimenti(FILENAME_ALIMENTI);
+
+					}else if(strEqual(input, "2")){
+
+						caricaAlimenti();
+
+					}else if(strEqual(input, "3")){
+
+						menu_cercaAlimento();
+
+					}else if(strEqual(input, "4")){
+
+						menu_modificaAlimento();
+
+					}
+
+				}else if( menu_selezionato == 1 ){ // menu ricette
+
+					if(strEqual(input, "1")){
+
+						print_ricette(FILENAME_RICETTE);
+
+					}else if(strEqual(input, "2")){
+
+						caricaRicette();
+
+					}else if(strEqual(input, "3")){
+
+						menu_cercaRicetta();
+
+					}else if(strEqual(input, "4")){
+
+						menu_modificaRicetta();
+
+					}else if(strEqual(input, "5")){
+
+						menu_valutaRicetta();
+
+					}else if(strEqual(input, "6")){
+
+						printStatistica_voti();
+
+					}
+
+
+				}else if( menu_selezionato == 2 ){ // menu prepara ricette
+
+					if(strEqual(input, "1")){
+
+						printRic_Preparabili();
+
+					}else if(strEqual(input, "2")){
+
+						menu_preparaRicetta();
+
+					}else if(strEqual(input, "3")){
+
+						fattiConsigliare();
+
+					}
+
+
+				}else if( menu_selezionato == 3 ){ // menu piano settimanale
+
+					if(strEqual(input, "1")){
+
+						print_piano_settimanale();
+
+					}else if(strEqual(input, "2")){
+
+						modificaPiano_settimanale();
+
+					}else if(strEqual(input, "3")){
+
+						print_ricette(FILENAME_CRONOLOGIA_RICETTE);
+
+					}
+				}
+			}
+		}
+
+	}while(flag_continue || flag_errore || flag_home);
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

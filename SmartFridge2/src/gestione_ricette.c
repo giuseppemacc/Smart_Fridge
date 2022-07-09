@@ -107,16 +107,20 @@ void ordinaFileRicette_AZ(char *file_name){
 
 
 void print_ricetta(t_ricetta ricetta){
-  puts("====================");
-  printf("\tnome: %s\n", ricetta.nome);
-  printf("\tcategoria: %d\n", ricetta.categoria);//TODO: far visualizzare la categoria come stringa
-  printf("\tprocedimento: %s\n", ricetta.procedimento);
 
+  puts("--------------------------------------------------");
+  printf("Ricetta: [%s]\n", ricetta.nome);
+  printf("\tcategoria: %s\n", returnCategoria(ricetta.categoria) );//TODO: far visualizzare la categoria come stringa
+  printf("\tprocedimento: \"%s\"\n", ricetta.procedimento);
+  printf("\tpreparata negli ultimi 7 giorni: %d\n", ricetta.preparata);
+  printf("\tpreparata %d giorni fa\n", ricetta.counter_giorni);
+  printf("\tvalutazione: %d \n", ricetta.valutazione);
+  printf("\tingredienti:\n");
   for(int i=0; i<ricetta.n_ingredienti; i++){
-	  printf("\tingrediente %d\n",i+1);
+	  printf("\t");
 	  print_alimento(ricetta.ingredienti[i]);
   }
-  puts("====================");
+  puts("--------------------------------------------------");
 }
 
 
@@ -133,6 +137,8 @@ void print_arr_ricette(t_ricetta ricette[], int n_ricette){
 void print_ricette(char* filename_ricette){
 	FILE* file_ricette;
 	t_ricetta ricetta_corrente;
+
+	ordinaFileRicette_AZ(filename_ricette);
 
 	if( apriFile(&file_ricette, filename_ricette, "rb+") ){
 
@@ -167,26 +173,13 @@ t_ricetta inputRicetta(int *flag_home){
   	ricetta.n_ingredienti = 0;
   	ricetta.categoria = NONE_CAT;
 	ricetta.valutazione = 0;
-	ricetta.proposta = 0;
+	ricetta.preparata = 0;
+	ricetta.counter_giorni = 8;
 
 
   //---NOME---
 
-  do{
-	printf("\tnome >> ");
-	inputStr(ricetta.nome, 50, &flag_errore, &(*flag_home) );
-
-
-	if( ! (*flag_home) ){ // se non � stato detto di tornare alla home
-
-	  // controlla se sono avvenuti errori
-	  if( ! flag_errore ){
-		strToUpper(ricetta.nome);
-	  }
-
-	}
-
-  }while( (flag_errore == 1) && ((*flag_home) == 0) );
+  inputRicetta_nome(&ricetta, &(*flag_home));
 
 
 
@@ -194,26 +187,13 @@ t_ricetta inputRicetta(int *flag_home){
 
   if (!(*flag_home)) { // se non � stato detto di tornare alla home
 	// input unit� misura
-	do {
-	  printf("\tcategoria ricetta>> ");
-
-	  ricetta.categoria = inputCategoria(&flag_errore, &(*flag_home));
-
-	  if(flag_errore){
-		printf("\tcategorria non trovata (disponibili:CARNE,PESCE,VERDURA,PASTA)\n");
-	  }
-
-	} while ((flag_errore == 1) && ((*flag_home) == 0));
+	inputRicetta_categoria(&ricetta, &(*flag_home));
   }
 
 
   // ---- PROCEDIMENTO -----
   if(!(*flag_home)){
-	  do{
-	  	printf("\tprocedimento >> ");
-	  	inputStr(ricetta.procedimento, 200, &flag_errore, &(*flag_home) );
-
-	  }while( (flag_errore == 1) && ((*flag_home) == 0) );
+	  inputRicetta_procedimento(&ricetta, &(*flag_home));
   }
 
 
@@ -326,62 +306,259 @@ int ricerca_ricetta(char* nome, t_ricetta* ricetta, FILE* file_ricette){
 	return flag_ricetta_trovato;
 }
 
-void modifica_ricette(){
-	int input;
-	char str[50];
-	t_ricetta ricetta;
-	FILE* file_ricette; //ricettario
 
+
+
+
+
+void inputRicetta_procedimento(t_ricetta* ricetta, int* flag_home){
+	int flag_errore;
 	do{
+		printf("\tprocedimento >> ");
+		inputStr(ricetta->procedimento, 200, &flag_errore, &(*flag_home) );
 
-		printf("Inserisci il nome della ricetta da modificare/rimuovere >> ");
-		scanf("%s", str);
-
-		if( apriFile(&file_ricette, FILENAME_RICETTE, "rb+") ){
-
-			if( ricerca_ricetta(str, &ricetta, file_ricette) ){
-
-				print_ricetta(ricetta);
-				puts("[1] elimina ricetta");
-				puts("[2] modifica ricetta");
-				scanf("%d",&input);
-
-
-				// elimina alimento
-				if(input == 1){
-					strcpy(ricetta.nome,"");
-				}
-
-				// modifica alimento
-				if(input == 2){
-					//TODO: chiedere qui all utente cosa e di quanto modificare
-					strcpy(ricetta.procedimento,"");
-					ricetta.categoria = PASTA;
-					printf("%s\n",ricetta.procedimento);
-				}
-
-				fwrite( &ricetta, sizeof(t_ricetta), 1, file_ricette);
-
-			}else{
-				puts("ricetta non trovato");
-			}
-
-			fclose(file_ricette);
-
-		}
-
-		print_ricette(FILENAME_RICETTE);
-
-		printf("Modificare/Eliminare un altra ricetta? [si:1, no:0] >> ");
-		scanf("%d", &input);
-
-	}while(input==1);
+	  }while( (flag_errore == 1) && ((*flag_home) == 0) );
 }
 
 
 
-//TODO: fare il cristo di dio che considera la dispensa
+void inputRicetta_categoria(t_ricetta* ricetta, int* flag_home){
+	// input categoria
+	int flag_errore;
+	do {
+	  printf("\tcategoria ricetta>> ");
 
+	  ricetta->categoria = inputCategoria(&flag_errore, &(*flag_home));
+
+	  if(flag_errore){
+		printf("\tcategorria non trovata (disponibili:CARNE,PESCE,VERDURE,PASTA)\n");
+	  }
+
+	} while ((flag_errore == 1) && ((*flag_home) == 0));
+
+}
+
+
+
+void inputRicetta_nome(t_ricetta* ricetta, int* flag_home){
+
+	int flag_errore;
+
+	  do{
+		printf("\tnome >> ");
+		inputStr(ricetta->nome, 50, &flag_errore, &(*flag_home) );
+
+
+		if( ! (*flag_home) ){ // se non � stato detto di tornare alla home
+
+		  // controlla se sono avvenuti errori
+		  if( ! flag_errore ){
+			strToUpper(ricetta->nome);
+		  }
+
+		}
+
+	  }while( (flag_errore == 1) && ((*flag_home) == 0) );
+}
+
+
+
+
+
+t_ricetta modificaRicetta(t_ricetta ricetta, int* flag_home){
+
+	int flag_errore;
+	int input;
+	FILE* file_ricette;
+	t_ricetta ricetta_trovata;
+	t_ricetta ricetta_modificata = ricetta;
+	int flag_continua_modifiche;
+
+	do{
+		printf("1) elimina ricetta\n2) modifica ricetta\n >> ");
+		input = inputInt(&flag_errore, &(*flag_home));
+
+		if(!flag_errore && !(*flag_home)){
+			if(!(input==1 || input==2 )){
+				flag_errore=1;
+			}
+		}
+
+	}while(flag_errore && (*flag_home==0));
+
+	if(!(*flag_home)){
+
+		if(input == 1){
+			strcpy(ricetta_modificata.nome,"");
+
+		}else if(input == 2){
+
+			do{
+				printf("\nQuale campo vuoi modificare?\n");
+				puts("\t[1] nome" );
+				puts("\t[2] categoria");
+				puts("\t[3] ingredienti");
+				puts("\t[4] procedimento");
+				puts("\t >> ");
+
+				input = inputInt(&flag_errore, &(*flag_home));
+
+				if(!flag_errore && !(*flag_home)){
+					if(!( (input>=1) && (input<=4) )){
+						flag_errore=1;
+					}
+				}
+			}while(flag_errore && (*flag_home==0));
+
+
+			if(!(*flag_home)){
+
+				if (input == 1 ){
+
+					do{
+						inputRicetta_nome(&ricetta_modificata, &(*flag_home) );
+
+						if(!(*flag_home)){
+
+							if(apriFile(&file_ricette, FILENAME_RICETTE, "rb+")){
+								if( ricerca_ricetta(ricetta_modificata.nome, &ricetta_trovata, file_ricette)){ // se esiste già un alimento con il nuovo nome
+									printf("impossibile modificare il nome, esiste già una ricetta con lo stesso nome\n");
+
+									flag_errore = 1;
+
+								}else{
+									flag_errore = 0;
+								}
+
+								fclose(file_ricette);
+							}
+						}
+
+					}while(flag_errore && !(*flag_home));
+
+				}else if (input == 2){
+
+					inputRicetta_categoria(&ricetta_modificata, &(*flag_home));
+
+				}else if (input == 3){
+
+					do{
+						flag_continua_modifiche = 1; // fa continuare le modifiche finchè non viene detto di uscire
+
+
+						do{
+							printf("1) modifica/rimuovi ingredienti\n2) aggiungi ingredienti\n3) salva modifiche ed esci\n >>");
+							input = inputInt(&flag_errore, &(*flag_home));
+
+							if(!flag_errore && !(*flag_home)){
+								if(!( (input==1) || (input==2) || (input==3) )){
+									flag_errore=1;
+								}
+							}
+						}while(flag_errore && (*flag_home==0));
+
+
+						if(!(*flag_home)){
+
+							if(input == 1){
+
+								puts("Ingredienti Ricetta");
+
+								for(int i=0; i < ricetta_modificata.n_ingredienti; i++){
+									  printf("\t%d)",i+1);
+									  print_alimento(ricetta_modificata.ingredienti[i]);
+								}
+
+								do{
+									printf("quale ingrediente vuoi modificare/rimuovere ? ");
+									input = inputInt( &flag_errore, &(*flag_home) );
+
+									if(!( (input >= 1) && (input <= ricetta_modificata.n_ingredienti) )){
+										flag_errore=1;
+									}
+
+								}while(flag_errore && (!*(flag_home)) );
+
+								if(!(*flag_home)){
+
+									ricetta_modificata.ingredienti[input-1] = modificaAlimento(ricetta_modificata.ingredienti[input-1], &(*flag_home));
+
+									if(!(*flag_home)){
+										if(strEqual(ricetta_modificata.ingredienti[input-1].nome,"")){// se vuol far rimuovere un ingrediente
+
+											if(ricetta_modificata.n_ingredienti >= 2){// ci deve essere sempre almeno un ingrediente
+												// scambia l'ingrediente rimosso con quello in ultima posizione
+												t_alimento ingrediente_rimosso = ricetta_modificata.ingredienti[input-1];
+												t_alimento ingrediente_ultimapos = ricetta_modificata.ingredienti[ricetta_modificata.n_ingredienti-1];
+
+												ricetta_modificata.ingredienti[input-1] = ingrediente_ultimapos;
+												ricetta_modificata.ingredienti[ricetta_modificata.n_ingredienti-1] = ingrediente_rimosso;
+
+												// decrementa n_ingredienti
+												ricetta_modificata.n_ingredienti--;
+											}else{
+												puts("impossibile rimuovere l'ingrediente! la ricetta deve avere almeno un ingrediente!");
+												flag_errore = 1;
+											}
+										}
+									}
+								}
+
+							}else if(input == 2){
+
+								ricetta_modificata.n_ingredienti++;
+								// vai ad aggiungere un ingrediente in ultima posizione
+								ricetta_modificata.ingredienti[ricetta_modificata.n_ingredienti-1] = inputAlimento(&(*flag_home));
+
+							}else if(input == 3){
+								flag_continua_modifiche = 0;
+							}
+
+						}
+
+
+					}while(!(*flag_home) && (flag_continua_modifiche) );
+
+
+				}else if (input == 4){
+
+					inputRicetta_procedimento(&ricetta_modificata, &(*flag_home) );
+				}
+			}
+		}
+	}
+
+
+	return ricetta_modificata;
+}
+
+
+// sostituisce nel file_ricette ricetta con ricetta_modificata
+void sovrascrivi_ricetta(char* nome_ricetta, t_ricetta ricetta_modificata){
+
+	FILE* file_ricette;
+	t_ricetta ricetta_trovata;
+
+	if(apriFile(&file_ricette, FILENAME_RICETTE, "rb+")){
+
+		if( ricerca_ricetta(nome_ricetta, &ricetta_trovata, file_ricette) ){ // posiziona il puntatore sull alimento da moficare
+
+			fwrite(&ricetta_modificata, sizeof(t_ricetta), 1, file_ricette);
+
+			if( strEqual(ricetta_modificata.nome, "")){
+				printf("ricetta eliminata!\n");
+			}else{
+				printf("ricetta modificata!\n");
+			}
+
+		}else{
+			printf("impossibile modificare/eliminare, ricetta non esistente!\n");
+		}
+
+		fclose(file_ricette);
+	}
+
+}
 
 
 
@@ -485,11 +662,12 @@ void ricettePreparabili( t_ricetta ricette_preparabili[], int* n_ricette_prepara
 
 		while(!feof(file_ricette)){
 
-			 if( isPreparabile(ricetta_corrente, FILENAME_ALIMENTI)  ){
-				 ricette_preparabili[*n_ricette_preparabili] = ricetta_corrente;
-				 (*n_ricette_preparabili)++;
-			 }
-
+			if(  ! strEqual(ricetta_corrente.nome, "") ){
+				if( isPreparabile(ricetta_corrente, FILENAME_ALIMENTI)  ){
+					 ricette_preparabili[*n_ricette_preparabili] = ricetta_corrente;
+					 (*n_ricette_preparabili)++;
+				 }
+			}
 
 		  fread( &ricetta_corrente, sizeof(t_ricetta), 1, file_ricette);
 		}
@@ -530,7 +708,7 @@ void ricetteCompatibili( t_alimento alimenti[], int n_alimenti, t_ricetta ricett
 void printStatistica_voti(){
   FILE* file_ricette;
 	t_ricetta ricetta_corrente;
-  int n_valutazioni[6]; // 0=non valutata,    [1-5]=valutazione
+  int n_valutazioni[6] = {0,0,0,0,0,0}; // 0=non valutata,    [1-5]=valutazione
 
 
   if( apriFile(&file_ricette, FILENAME_RICETTE, "rb+") ){
@@ -562,28 +740,3 @@ void printStatistica_voti(){
 }
 
 
-void valuta_ricette(){
-  FILE* file_ricette;
-  t_ricetta ricetta_trovata;
-  char str[20];
-  int input;
-  if( apriFile(&file_ricette, FILENAME_RICETTE, "rb+") ){
-
-    do{
-      printf("Inserisci nome ricetta da valutare >> ");
-      scanf("%s", str);
-
-      if(  ricerca_ricetta(str, &ricetta_trovata, file_ricette) ){
-        printf("Inserisci valutazione >> ");
-        scanf("%d", &ricetta_trovata.valutazione );
-
-        fwrite(&ricetta_trovata, sizeof(t_ricetta), 1, file_ricette);
-      }
-      printf("valutare un altra ricetta? [1:si, 0:no] >> ");
-      scanf("%d", &input);
-    }while(input == 1);
-
-    fclose(file_ricette);
-  }
-
-}

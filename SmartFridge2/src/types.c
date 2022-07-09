@@ -5,6 +5,39 @@
 #include <stdlib.h>
 #include <string.h>
 
+
+
+char *returnGiorno(int giorno) {
+  char *s = (char *)calloc(15,sizeof(char)); // alloca dinamicamente la memoria per contenere 10 caratteri
+
+  if (giorno == NONE){
+	  strcpy(s, "NULL");
+
+  }else if (giorno == LUN){
+      strcpy(s, "LUNEDI'   ");
+
+  }else if (giorno == MAR){
+    strcpy(s, "MARTEDI'  ");
+
+  }else if (giorno ==  MER){
+	  strcpy(s, "MERCOLEDI'");
+
+  }else if (giorno == GIO){
+		strcpy(s, "GIOVEDI'  ");
+
+  }else if ( giorno == VEN){
+	  strcpy(s,"VENERDI'  ");
+
+  }else if( giorno == SAB){
+	  strcpy(s,"SABATO    ");
+
+  }else if( giorno == DOM){
+	  strcpy(s,"DOMENICA  ");
+  }
+
+  return s;
+}
+
 // RESTITUISCE L'UNITA' DI MISURA(stringa) CORRISPONDENTE ALL'UNITA' DI MISURA
 // PASSATA
 char *returnUnita(unita_misura unita) {

@@ -25,7 +25,6 @@
 
 void checkQuantita( float quantita, int* flag_errore);
 
-void checkLenght(int* flag_errore, char *str, int L_MAX);
 
 void checkFloat(float quantita_float, int* flag_errore);
 

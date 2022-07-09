@@ -3,16 +3,26 @@
 
 #include "types.h"
 
+giorni input_giorno(int* flag_home);
+
+void modificaPiano_settimanale();
+
+categorie return_categoria_giorno_attuale();
+
 void default_piano_settimanale();
 
-// fa modificare all utente il file del piano settimanale
-void modifica_piano_settimanale();
 
 
 void print_piano_settimanale();
 
 
-void prioritarizza_ricette();
+void prioritarizza_ricette( t_ricetta ricette[], int n_ricette );
 
+
+void shift_arrRicette_4cat(t_ricetta ricette[], int n_ricette, categorie cat);
+
+void ordina_arrRicette_4giorni(t_ricetta ricette[], int n_ricette);
+
+giorni get_giorno_attuale();
 
 #endif /* PIANO_SETTIMANALE_H_ */

@@ -1,7 +1,9 @@
 #ifndef TYPES_H_
 #define TYPES_H_
 
-
+typedef enum{
+	NONE, LUN, MAR, MER, GIO, VEN, SAB, DOM
+} giorni;
 
 typedef enum{
 	NONE_CAT, CARNE, PESCE, VERDURA, PASTA
@@ -45,5 +47,7 @@ char *returnUnita(unita_misura unita);
 categorie getCategoria(char* str);
 char *returnCategoria(categorie categoria);
 
+
+char *returnGiorno(int giorno);
 
 #endif /* TYPES_H_ */

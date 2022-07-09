@@ -6,8 +6,13 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="FILE"/>
+		<item key="selection" value="void sovrascrivi_ricetta(char* nome_ricetta, t_ricetta ricetta_modificata)"/>
 		<list key="findhistory">
+			<item value="void sovrascrivi_ricetta(char* nome_ricetta, t_ricetta ricetta_modificata)"/>
+			<item value="valuta_ricette"/>
+			<item value="print_alimenti"/>
+			<item value="checkLenght"/>
+			<item value="print_ricette"/>
 			<item value="puts(&quot;stocazzo&quot;);"/>
 			<item value="file"/>
 			<item value="ricetta"/>

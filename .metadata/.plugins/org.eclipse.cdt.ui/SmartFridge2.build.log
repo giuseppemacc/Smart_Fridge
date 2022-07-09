@@ -1,7 +1,10 @@
-21:13:53 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+15:47:41 **** Incremental Build of configuration Debug for project SmartFridge2 ****
 Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\gestione_alimenti.o" "..\\src\\gestione_alimenti.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\check_input.o" "..\\src\\check_input.c" 
 gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\menu_utente.o" "..\\src\\menu_utente.c" 
 gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
 
-21:13:53 Build Finished. 0 errors, 0 warnings. (took 588ms)
+15:47:43 Build Finished. 0 errors, 0 warnings. (took 1s.731ms)
 

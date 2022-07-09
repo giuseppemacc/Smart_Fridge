@@ -4,6 +4,17 @@
 #include "types.h"
 #include <stdio.h>
 
+void sovrascrivi_ricetta(char* nome_ricetta, t_ricetta ricetta_modificata);
+
+
+void inputRicetta_procedimento(t_ricetta* ricetta, int* flag_home);
+
+void inputRicetta_categoria(t_ricetta* ricetta, int* flag_home);
+
+void inputRicetta_nome(t_ricetta* ricetta, int* flag_home);
+
+
+t_ricetta modificaRicetta(t_ricetta ricetta, int* flag_home);
 
 void preparaRicetta(t_ricetta ricetta);
 
@@ -40,7 +51,5 @@ void ricetteCompatibili( t_alimento alimenti[], int n_alimenti, t_ricetta ricett
 
 
 void printStatistica_voti();
-
-void valuta_ricette();
 
 #endif /* GESTIONE_RICETTE_H_ */

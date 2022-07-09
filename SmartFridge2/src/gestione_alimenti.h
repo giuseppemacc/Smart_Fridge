@@ -6,7 +6,18 @@
 #include "types.h"
 
 
+t_alimento modificaAlimento(t_alimento alimento, int* flag_home);
+
+void sovrascrivi_alimento(char* nome_alimento, t_alimento alimento_modificato);
+
+void inputAlimento_unita(t_alimento* alimento, int* flag_home);
+
+void inputAlimento_quantita(t_alimento* alimento, int* flag_home);
+
+void inputAlimento_nome(t_alimento* alimento, int* flag_home);
+
 t_alimento inputAlimento(int *flag_home);
+
 
 void caricaAlimenti();
 
@@ -27,12 +38,8 @@ int ricerca_alimento(char* nome, t_alimento* alimento, FILE* file_alimenti);
 void ordinaFileAlimenti_AZ(char *file_name);
 
 
-//MODIFICA ALIMENTI
-void modifica_alimenti();
-
-
 //STAMPA ALIMENTI
-void print_alimenti();
+void print_alimenti(char* filename_alimenti);
 
 
 //STAMPA ALIMENTO
