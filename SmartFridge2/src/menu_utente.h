@@ -1,25 +1,37 @@
+/*
+ * menu_utente.h:
+	menu_printRic_Preparabili
+	menu_modificaRicetta
+	menu_modificaAlimento
+	menu_cercaAlimento
+	menu_cercaRicetta
+	menu_valutaRicetta
+	menu_preparaRicetta
+
+	menuu
+ */
+
 
 #ifndef MENU_UTENTE_H_
 #define MENU_UTENTE_H_
 
 
 
-#include "types.h"
 
 void menu_modificaAlimento();
 
 void menu_modificaRicetta();
 
-void valutaRicetta(char* nome_ricetta, int* flag_home);
+void menu_cercaAlimento();
 
-t_ricetta richiediRicetta(int* flag_home);
+void menu_cercaRicetta();
 
-t_alimento richiediAlimento(int* flag_home);
+void menu_printRic_Preparabili();
 
-void printRic_Preparabili();
+void menu_valutaRicetta();
 
+void menu_preparaRicetta();
 
-void menu();
 
 void menuu();
 

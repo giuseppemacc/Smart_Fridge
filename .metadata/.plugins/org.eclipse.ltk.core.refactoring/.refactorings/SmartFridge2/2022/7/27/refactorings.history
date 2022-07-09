@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Rename resource &apos;SmartFridge2/src/check_input.c&apos; to &apos;inputs.c&apos;" description="Rename resource &apos;check_input.c&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/check_input.c" name="inputs.c" stamp="1657403629959" updateReferences="true"/>&#x0A;<refactoring comment="Rename resource &apos;SmartFridge2/src/check_input.h&apos; to &apos;inputs.h&apos;" description="Rename resource &apos;check_input.h&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/check_input.h" name="inputs.h" stamp="1657403688758" updateReferences="true"/>
+</session>

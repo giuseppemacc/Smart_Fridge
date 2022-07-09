@@ -1,0 +1,46 @@
+/*
+piano_settimanale.h:
+
+	default_piano_settimanale
+	print_piano_settimanale
+	modificaPiano_settimanale
+
+	get_giorno_attuale
+	return_categoria_giorno_attuale
+
+*/
+
+
+
+
+#ifndef PIANO_SETTIMANALE_H_
+#define PIANO_SETTIMANALE_H_
+
+#include "types.h"
+
+
+
+
+void default_piano_settimanale();
+
+void print_piano_settimanale();
+
+void modificaPiano_settimanale();
+
+
+
+
+t_giorno get_giorno_attuale();
+
+t_categoria return_categoria_giorno_attuale();
+
+
+//void ordina_arrRicette_4giorni(t_ricetta ricette[], int n_ricette);
+
+//void shift_arrRicette_4cat(t_ricetta ricette[], int n_ricette, t_categoria cat);
+
+//void prioritarizza_ricette( t_ricetta ricette[], int n_ricette );
+
+//t_giorno input_giorno(int* flag_home);
+
+#endif /* PIANO_SETTIMANALE_H_ */

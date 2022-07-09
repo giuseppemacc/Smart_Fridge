@@ -21,6 +21,11 @@
 		<item key="caseSensitive" value="false"/>
 		<item key="searchFlags" value="227191"/>
 		<list key="previousPatterns">
+			<item value="print_arr_ricette"/>
+			<item value="inputAlimento"/>
+			<item value="verdure"/>
+			<item value="VERDURA"/>
+			<item value="VERDURE"/>
 			<item value="voidsovrascrivi_ricettachar*nome_ricettat_ricettaricetta_modificata"/>
 			<item value="print_alimenti"/>
 		</list>

@@ -7,7 +7,7 @@
 
 
 
-char *returnGiorno(int giorno) {
+char *returnGiorno(t_giorno giorno) {
   char *s = (char *)calloc(15,sizeof(char)); // alloca dinamicamente la memoria per contenere 10 caratteri
 
   if (giorno == NONE){
@@ -40,13 +40,13 @@ char *returnGiorno(int giorno) {
 
 // RESTITUISCE L'UNITA' DI MISURA(stringa) CORRISPONDENTE ALL'UNITA' DI MISURA
 // PASSATA
-char *returnUnita(unita_misura unita) {
+char *returnUnita(t_unita_misura unita) {
   char *s = (char *)calloc(
       10,
       sizeof(
           char)); // alloca dinamicamente la memoria per contenere 10 caratteri
 
-  // assegna a s l'unità di misura corrispondente
+  // assegna a s l'unitï¿½ di misura corrispondente
   if (unita == N_UNIT)
     strcpy(s, "");
   else {
@@ -71,10 +71,10 @@ char *returnUnita(unita_misura unita) {
   return s;
 }
 
-// RESTITUISCE L'UNITA' DI MISURA(unita_misura) CORRISPONDENTE ALLA STRINGA
+// RESTITUISCE L'UNITA' DI MISURA(t_unita_misura) CORRISPONDENTE ALLA STRINGA
 // PASSATA
-unita_misura getUnita(char *str) {
-  unita_misura unita;
+t_unita_misura getUnita(char *str) {
+  t_unita_misura unita;
 
   if (strEqual(str, "G")) {
     unita = PESO_GR;
@@ -94,8 +94,8 @@ unita_misura getUnita(char *str) {
 
 
 //da una stringa resitituisce l'enum corrispondente
-categorie getCategoria(char* str){
-	categorie cat;
+t_categoria getCategoria(char* str){
+	t_categoria cat;
 	strToUpper(str);
 
 	if( strEqual(str,"CARNE") ){
@@ -114,7 +114,7 @@ categorie getCategoria(char* str){
 }
 
 
-char *returnCategoria(categorie categoria) {
+char *returnCategoria(t_categoria categoria) {
   char *s = (char *)calloc(10,sizeof(char)); // alloca dinamicamente la memoria per contenere 10 caratteri
   //NONE_CAT, CARNE, PESCE, VERDURA, PASTA
 
@@ -140,4 +140,52 @@ char *returnCategoria(categorie categoria) {
   }
 
   return s;
+}
+
+
+
+void print_ricetta(t_ricetta ricetta){
+
+  puts("--------------------------------------------------");
+  printf("Ricetta: [%s]\n", ricetta.nome);
+  printf("\tcategoria: %s\n", returnCategoria(ricetta.categoria) );
+  printf("\tprocedimento: \"%s\"\n", ricetta.procedimento);
+  printf("\tpreparata %d giorni fa\n", ricetta.counter_giorni);
+
+
+  if(ricetta.valutazione > 0){
+	  printf("\tvalutazione: ");
+	  for(int i=0; i<ricetta.valutazione; i++){
+		  printf("{X} ");
+		}
+		puts("");
+  }else{
+	  puts("\tnon valutata");
+  }
+
+  printf("\tingredienti:\n");
+
+  for(int i=0; i<ricetta.n_ingredienti; i++){
+	  printf("\t");
+	  print_alimento(ricetta.ingredienti[i]);
+  }
+  puts("--------------------------------------------------");
+}
+
+void print_alimento(t_alimento alimento) {
+  printf("\t%s:", alimento.nome);
+  // se g/ml>=1000 si stampa convertito in kg/lt
+  if ((alimento.unita == PESO_GR) || (alimento.unita == PESO_ML)) {
+    if (alimento.quantita >= 1000) {
+      printf("  %.3f %s", (float)(((float)alimento.quantita) / 1000.0),
+             returnUnita(alimento.unita + 1));
+    } else
+      printf("  %d %s", alimento.quantita, returnUnita(alimento.unita));
+  } else
+    printf("  %d %s", alimento.quantita, returnUnita(alimento.unita));
+
+  if(alimento.dispensa){
+	  printf("  (dispensa)");
+  }
+  puts("");
 }

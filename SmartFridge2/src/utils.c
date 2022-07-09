@@ -109,3 +109,74 @@ void strToUpper(char *str) {
   }
 }
 
+
+
+
+/*RESTITUISCE:  1 = quantita < 0
+                0 = quantita > 0*/
+void isPositive(float quantita,int* flag_errore){
+  *flag_errore = 0;
+
+  if (quantita <= 0){
+    *flag_errore = 1;
+    printf("ERRORE! La quantit� deve essere positiva\n");
+  }
+}
+
+
+// ritorna 1 se è float
+void checkFloat(float quantita_float, int *flag_errore) {
+  int quantita_int;
+  *flag_errore = 0;
+
+
+  quantita_int = (int)quantita_float; // viene fatto il cast(int), quindi se
+                                      // quantita_float=2.30, quantita_int=2
+
+  if (quantita_float > quantita_int) {
+    *flag_errore = 1;
+  }
+}
+
+
+/*RESTITUISCE 1 = la stringa passata non � composta da soli numeri
+              0 = la stringa passata � composta da soli numeri */
+void isNum(char *str, int *flag_errore) {
+  // L = { 2., .2, asd, .asd, asd., as.d, .2.2 }
+
+  // non ci devono essere lettere
+  // ci deve essere solo un punto
+
+  // 22.2 .22 222. 2.33
+  // il punto non pu� essere n� all inizio n� alla fine
+  //
+  *flag_errore = 0;
+  int i = 0;
+  int dot_counter = 0;
+
+  int len = strlen(str);
+
+  // dal [48,57]
+
+  if (str[0] == '.' || str[strlen(str) - 1] == '.') {
+    *flag_errore = 1;
+    printf("\tERRORE! Il punto (.) non pu� stare ne all'inizio ne alla fine\n");
+  } else {
+    while ((i < len) && (*flag_errore == 0)) {
+      if ((((str[i] >= '0') && (str[i] <= '9')) || str[i] == '.' ||str[0] == '-') && dot_counter <= 1) {
+
+        if (str[i] == '.') {
+          dot_counter++;
+          if (dot_counter > 1) {
+            *flag_errore = 1;
+            printf("\tERRORE !Non puoi inserire più di un punto (.)\n");
+          }
+        }
+      } else {
+        *flag_errore = 1;
+        printf("\tERRORE! non puoi inserire caratteri non numerici\n");
+      }
+      i++;
+    }
+  }
+}

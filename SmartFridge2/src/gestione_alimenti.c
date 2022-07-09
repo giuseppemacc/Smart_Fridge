@@ -1,12 +1,11 @@
 #include "file_names.h"
 #include "types.h"
-#include "check_input.h"
 #include "utils.h"
 #include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
+#include "inputs.h"
 
 
 void ricerca_alimentoSottstr(char *nome, t_alimento alimenti[], int* n_alimenti, FILE *file_alimenti) {
@@ -28,7 +27,6 @@ void ricerca_alimentoSottstr(char *nome, t_alimento alimenti[], int* n_alimenti,
 
   }
 }
-
 
 int ricerca_alimento(char *nome, t_alimento *alimento, FILE *file_alimenti) {
   int flag_alimento_trovato = 0;
@@ -54,44 +52,86 @@ int ricerca_alimento(char *nome, t_alimento *alimento, FILE *file_alimenti) {
   return flag_alimento_trovato;
 }
 
-t_alimento inputAlimento(int input_dispensa, int *flag_home) {
-  t_alimento alimento;
+t_alimento richiediAlimento(int* flag_home){
 
-  *flag_home = 0;
+	t_alimento alimento_trovato;
+	t_alimento alimenti_trovati[50];
+	int n_alimenti_trovati;
 
-  strcpy(alimento.nome, "");
-  alimento.quantita = 0;
-  alimento.unita = NONE_UNIT;
-  alimento.dispensa = 0;
+	int flag_continue;
+	int flag_errore;
 
-  //---NOME---
+	char nome[20];
+	int input;
 
-  inputAlimento_nome(&alimento, &(*flag_home));
+	FILE* file_alimenti;
+
+	*flag_home = 0;
+	do{
+		flag_continue = 0;
+
+		do{
+			printf("Inserisci il nome dell'alimento >> ");
+			inputStr(nome, 20, &flag_errore, &(*flag_home));
+
+		}while(flag_errore && ((*flag_home)==0));
 
 
-  //---UNITA DI MISURA---
 
-  if (!(*flag_home)) { // se non � stato detto di tornare alla home
-    // input unit� misura
-    inputAlimento_unita(&alimento, &(*flag_home));
-  }
+		if(!(*flag_home)){
+
+			if(apriFile(&file_alimenti, FILENAME_ALIMENTI, "rb+")){
+
+				if( !ricerca_alimento(nome, &alimento_trovato, file_alimenti) ){
+
+					ricerca_alimentoSottstr(nome, alimenti_trovati, &n_alimenti_trovati, file_alimenti);
+
+					if( n_alimenti_trovati > 0){
+						// printa gli alimenti
+
+						puts("forse cercavi ...");
+
+						for( int i = 0; i < n_alimenti_trovati; i++){
+							printf("%d) %s\n", i+1, alimenti_trovati[i].nome );
+						}
+						printf("0) cerca un altro alimento\n");
+
+						do{
+							printf("seleziona opzione >> ");
+							input = inputInt(&flag_errore, &(*flag_home));
+
+							if(!(*flag_home) && !flag_errore){
+
+								if( input == 0 ){
+									flag_continue = 1;
+								}else if ( input > n_alimenti_trovati ){
+									flag_errore = 1;
+								}else{
+									alimento_trovato = alimenti_trovati[input-1];
+								}
+							}
+
+						}while(flag_errore && ((*flag_home)==0));
 
 
-  //---QUANTITA'---
+					}else{
+						printf("alimento non trovato\n");
+						flag_continue = 1;
+					}
 
-  if (!(*flag_home)) { // se non � stato detto di tornare alla home
-    // input quantit�
-    inputAlimento_quantita(&alimento, &(*flag_home));
-  }
+				}
 
-  if(!(*flag_home)){
-	  if(input_dispensa){
-		  inputAlimento_dispensa(&alimento, &(*flag_home));
-	  }
-  }
+				fclose(file_alimenti);
+			}
+		}
 
-  return alimento;
+	}while(flag_continue && ((*flag_home)==0) );
+
+	return alimento_trovato;
 }
+
+
+
 
 void ordinaFileAlimenti_AZ(char *file_name) {
 
@@ -156,25 +196,6 @@ void ordinaFileAlimenti_AZ(char *file_name) {
   }
 }
 
-void print_alimento(t_alimento alimento) {
-  printf("\t%s:", alimento.nome);
-  // se g/ml>=1000 si stampa convertito in kg/lt
-  if ((alimento.unita == PESO_GR) || (alimento.unita == PESO_ML)) {
-    if (alimento.quantita >= 1000) {
-      printf("  %.3f %s", (float)(((float)alimento.quantita) / 1000.0),
-             returnUnita(alimento.unita + 1));
-    } else
-      printf("  %d %s", alimento.quantita, returnUnita(alimento.unita));
-  } else
-    printf("  %d %s", alimento.quantita, returnUnita(alimento.unita));
-
-  if(alimento.dispensa){
-	  printf("  (dispensa)");
-  }
-  puts("");
-}
-
-
 void print_alimenti(char* filename_alimenti) {
   t_alimento alimento_corrente;
   FILE *file_alimenti;
@@ -197,102 +218,58 @@ void print_alimenti(char* filename_alimenti) {
   }
 }
 
-
-void inputAlimento_unita(t_alimento* alimento, int* flag_home){
-	int flag_errore;
-
-	do {
-	  printf("\tunita di misura>> ");
-
-	  alimento->unita = inputUnitaMisura(&flag_errore, &(*flag_home));
-
-	  if(flag_errore){
-		printf("\tunit� di misura non trovata (disponibili:g,kg,ml,l,n)\n");
-	  }
-
-	} while ((flag_errore == 1) && ((*flag_home) == 0));
-}
+void caricaAlimenti() {
+  int flag_home;
+  int flag_continue;
+  int flag_errore;
+  t_alimento alimento;
+  t_alimento alimento_trovato;
+  FILE* file_alimenti;
 
 
+  do {
+    flag_home = 0;
+    flag_continue = 0;
+    flag_errore = 0;
 
-void inputAlimento_quantita(t_alimento* alimento, int* flag_home){
-	float f_quantita;
-	int flag_errore;
+    printf("inserisci alimento:\n");
+    alimento = inputAlimento(0, &flag_home);
 
-	do {
-	  printf("\tquantità>> ");
+    if (!flag_home) {
+    	if( apriFile(&file_alimenti, FILENAME_ALIMENTI, "rb+") ){
 
-	  f_quantita = inputFloat(&flag_errore, &(*flag_home));
+    		if( ricerca_alimento(alimento.nome, &alimento_trovato, file_alimenti) ){
+				if( alimento.unita == alimento_trovato.unita ){
+					alimento.quantita += alimento_trovato.quantita;
+				}else{
+					flag_errore = 1;
+					flag_continue = 1; // cioè che glielo fa rinserire
+					 printf("ERRORE! %s gia'  esistente espresso in unita'  di misura differente\n",alimento.nome);
+				}
+			}else{
+				fseek(file_alimenti, 0, SEEK_END); // posiziona alla fine
+			}
 
+		   if (!flag_errore ) {
 
-	  if( ! (*flag_home) ){ // se non � stato detto di tornare alla home
+				fwrite(&alimento, sizeof(t_alimento), 1, file_alimenti);
 
-				  // controlla se sono avvenuti errori
-		//NULL
-		if( ! flag_errore ){
+				do{
+				  printf("  inserire altri alimenti? >> ");
+				  flag_continue = inputBool(&flag_errore, &flag_home);
 
-		  // altri controlli cio� i vari check
-		  checkQuantita(f_quantita,  &flag_errore  ); // controlla che sia > 0
-
-		  if( ! flag_errore ){
-			if ((alimento->unita == PESO_KG) || (alimento->unita == PESO_L)) { // se kg/lt si convertono in g/ml
-
-			  alimento->quantita = (int)(f_quantita * 1000);
-			  alimento->unita = alimento->unita - 1;
-			} else {
-			  //Ci troviamo nei casi in cui alimento.unita=g/ml/n_elementii
-			  checkFloat( f_quantita, &flag_errore);
-
-			  if( flag_errore ){
-				printf("\tERRORE! Le unit� di misura g  ml  n_elementi non possono avere numeri decimali\n");
-			  }
-			  else{
-				alimento->quantita = (int)f_quantita;
-			  }
+			  }while( (flag_errore == 1) && (flag_home == 0) );
 
 			}
-		  }
 
-		}
+    		fclose(file_alimenti);
+    	}
 
-	  }
+    }
 
-	} while ((flag_errore == 1) && ((*flag_home) == 0));
+  } while ((flag_continue == 1) && (flag_home == 0));
 }
 
-
-
-void inputAlimento_nome(t_alimento* alimento, int* flag_home){
-
-	int flag_errore;
-
-	  do{
-		printf("\tnome >> ");
-		inputStr(alimento->nome, 50, &flag_errore, &(*flag_home) );
-
-
-		if( ! (*flag_home) ){ // se non � stato detto di tornare alla home
-
-		  // controlla se sono avvenuti errori
-		  if( ! flag_errore ){
-			strToUpper(alimento->nome);
-		  }
-
-		}
-
-	  }while( (flag_errore == 1) && ((*flag_home) == 0) );
-}
-
-
-void inputAlimento_dispensa(t_alimento* alimento, int* flag_home){
-	int flag_errore;
-	do{
-		printf("\tquest'alimento si trova in dispensa? >> ");
-
-		alimento->dispensa = inputBool(&flag_errore, &(*flag_home));
-
-	  }while( (flag_errore == 1) && ((*flag_home) == 0) );
-}
 
 
 // chiede all utente di modificare l alimento
@@ -388,11 +365,6 @@ t_alimento modificaAlimento(t_alimento alimento, int modifica_dispensa, int* fla
 }
 
 
-
-
-
-
-
 void sovrascrivi_alimento(char* nome_alimento, t_alimento alimento_modificato){
 
 	FILE* file_alimenti;
@@ -417,61 +389,6 @@ void sovrascrivi_alimento(char* nome_alimento, t_alimento alimento_modificato){
 		fclose(file_alimenti);
 	}
 
-}
-
-
-
-
-void caricaAlimenti() {
-  int flag_home;
-  int flag_continue;
-  int flag_errore;
-  t_alimento alimento;
-  t_alimento alimento_trovato;
-  FILE* file_alimenti;
-
-
-  do {
-    flag_home = 0;
-    flag_continue = 0;
-    flag_errore = 0;
-
-    printf("inserisci alimento:\n");
-    alimento = inputAlimento(0, &flag_home);
-
-    if (!flag_home) {
-    	if( apriFile(&file_alimenti, FILENAME_ALIMENTI, "rb+") ){
-
-    		if( ricerca_alimento(alimento.nome, &alimento_trovato, file_alimenti) ){
-				if( alimento.unita == alimento_trovato.unita ){
-					alimento.quantita += alimento_trovato.quantita;
-				}else{
-					flag_errore = 1;
-					flag_continue = 1; // cioè che glielo fa rinserire
-					 printf("ERRORE! %s gia'  esistente espresso in unita'  di misura differente\n",alimento.nome);
-				}
-			}else{
-				fseek(file_alimenti, 0, SEEK_END); // posiziona alla fine
-			}
-
-		   if (!flag_errore ) {
-
-				fwrite(&alimento, sizeof(t_alimento), 1, file_alimenti);
-
-				do{
-				  printf("  inserire altri alimenti? >> ");
-				  flag_continue = inputBool(&flag_errore, &flag_home);
-
-			  }while( (flag_errore == 1) && (flag_home == 0) );
-
-			}
-
-    		fclose(file_alimenti);
-    	}
-
-    }
-
-  } while ((flag_continue == 1) && (flag_home == 0));
 }
 
 
