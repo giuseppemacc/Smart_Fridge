@@ -94,7 +94,6 @@ unita_misura getUnita(char *str) {
 
 
 //da una stringa resitituisce l'enum corrispondente
-//TODO: "carne","pesce" ecc.. come costanti dichiarate da qualche parte
 categorie getCategoria(char* str){
 	categorie cat;
 	strToUpper(str);
@@ -103,7 +102,7 @@ categorie getCategoria(char* str){
 		cat = CARNE;
 	}else if( strEqual(str,"PESCE") ){
 		cat = PESCE;
-	}else if( strEqual(str,"VERDURE") ){
+	}else if( strEqual(str,"VERDURA") ){
 		cat = VERDURA;
 	}else if( strEqual(str,"PASTA") ){
 		cat = PASTA;

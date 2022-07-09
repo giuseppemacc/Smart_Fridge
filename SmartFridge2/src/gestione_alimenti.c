@@ -54,7 +54,7 @@ int ricerca_alimento(char *nome, t_alimento *alimento, FILE *file_alimenti) {
   return flag_alimento_trovato;
 }
 
-t_alimento inputAlimento(int *flag_home) {
+t_alimento inputAlimento(int input_dispensa, int *flag_home) {
   t_alimento alimento;
 
   *flag_home = 0;
@@ -84,6 +84,12 @@ t_alimento inputAlimento(int *flag_home) {
     inputAlimento_quantita(&alimento, &(*flag_home));
   }
 
+  if(!(*flag_home)){
+	  if(input_dispensa){
+		  inputAlimento_dispensa(&alimento, &(*flag_home));
+	  }
+  }
+
   return alimento;
 }
 
@@ -109,7 +115,6 @@ void ordinaFileAlimenti_AZ(char *file_name) {
     //-----
 
     while (!feof(file)) {
-      // TODO: levare//printf("->%s  i:%d\n", i_alimento.nome, i);
 
       fread(&j_alimento, sizeof(t_alimento), 1, file);
       j = i + 1;
@@ -118,7 +123,7 @@ void ordinaFileAlimenti_AZ(char *file_name) {
 
       while (!feof(file)) {
 
-        // TODO: levare//printf("\t%s  j:%d\n", j_alimento.nome, j);
+
 
         if (strMin(j_alimento.nome, min_alimento.nome)) {
           min_alimento = j_alimento;
@@ -129,8 +134,6 @@ void ordinaFileAlimenti_AZ(char *file_name) {
         j++;
       }
 
-      // TODO: levare//printf("\tmin_al:%s  i_min:%d\n", min_alimento.nome,
-      // i_min);
 
       // file[i_min] = i_alimento
       fseek(file, i_min * sizeof(t_alimento), SEEK_SET);
@@ -166,7 +169,7 @@ void print_alimento(t_alimento alimento) {
     printf("  %d %s", alimento.quantita, returnUnita(alimento.unita));
 
   if(alimento.dispensa){
-	  printf("  dispensa");
+	  printf("  (dispensa)");
   }
   puts("");
 }
@@ -281,9 +284,19 @@ void inputAlimento_nome(t_alimento* alimento, int* flag_home){
 }
 
 
+void inputAlimento_dispensa(t_alimento* alimento, int* flag_home){
+	int flag_errore;
+	do{
+		printf("\tquest'alimento si trova in dispensa? >> ");
+
+		alimento->dispensa = inputBool(&flag_errore, &(*flag_home));
+
+	  }while( (flag_errore == 1) && ((*flag_home) == 0) );
+}
+
 
 // chiede all utente di modificare l alimento
-t_alimento modificaAlimento(t_alimento alimento, int* flag_home){
+t_alimento modificaAlimento(t_alimento alimento, int modifica_dispensa, int* flag_home){
 	int flag_errore;
 	int input;
 	FILE* file_alimenti;
@@ -313,13 +326,19 @@ t_alimento modificaAlimento(t_alimento alimento, int* flag_home){
 				printf("\nQuale campo vuoi modificare?\n");
 				puts("\t[1] nome" );
 				puts("\t[2] unita' di misura e quantita");
-				//todo: aggiungere il campo dispensa
+				if(modifica_dispensa){
+					puts("\t[3] dispensa");
+				}
+
 				printf("\t >> ");
 
 				input = inputInt(&flag_errore, &(*flag_home));
 
 				if(!flag_errore && !(*flag_home)){
-					if(!(input==1 || input==2 )){
+					if(!(input==1 || input==2 || input==3)){
+						flag_errore=1;
+					}
+					if((input==3) && (modifica_dispensa==0)){
 						flag_errore=1;
 					}
 				}
@@ -357,6 +376,9 @@ t_alimento modificaAlimento(t_alimento alimento, int* flag_home){
 					if (!(*flag_home)){
 						inputAlimento_quantita(&alimento_modificato, &(*flag_home)  );
 					}
+				}else if(input == 3){
+
+					inputAlimento_dispensa(&alimento_modificato, &(*flag_home));
 				}
 			}
 		}
@@ -415,7 +437,7 @@ void caricaAlimenti() {
     flag_errore = 0;
 
     printf("inserisci alimento:\n");
-    alimento = inputAlimento(&flag_home);
+    alimento = inputAlimento(0, &flag_home);
 
     if (!flag_home) {
     	if( apriFile(&file_alimenti, FILENAME_ALIMENTI, "rb+") ){
@@ -452,10 +474,5 @@ void caricaAlimenti() {
   } while ((flag_continue == 1) && (flag_home == 0));
 }
 
-
-// TODO: aggiungere ricerca su sottostringa (?? e forse cercavi ... ??)
-/*dato che dobbiamo visualizzare gli alimenti in ordine alfabetico possiamo
- * pensare di ordinare direttamente il file_alimenti e usare qui la ricerca
- * binaria*/
 
 

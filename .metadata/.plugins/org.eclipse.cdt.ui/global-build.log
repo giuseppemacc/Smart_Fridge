@@ -7042,3 +7042,305 @@ gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\gestione_alimenti.o" "..\\src\\
 gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\check_input.o" "..\\src\\check_input.c" 
 gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\menu_utente.o" "..\\src\\menu_utente.c" 
 gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+16:18:20 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\check_input.o" "..\\src\\check_input.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\piano_settimanale.o" "..\\src\\piano_settimanale.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+16:19:01 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\piano_settimanale.o" "..\\src\\piano_settimanale.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+16:20:24 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\piano_settimanale.o" "..\\src\\piano_settimanale.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+16:21:19 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\piano_settimanale.o" "..\\src\\piano_settimanale.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+Info: Nothing to build for SmartFridge2
+Info: Nothing to build for SmartFridge2
+16:44:57 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+c:/mingw/bin/../lib/gcc/mingw32/9.2.0/../../../../mingw32/bin/ld.exe: cannot open output file SmartFridge2.exe: Permission denied
+collect2.exe: error: ld returned 1 exit status
+16:45:33 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+c:/mingw/bin/../lib/gcc/mingw32/9.2.0/../../../../mingw32/bin/ld.exe: cannot open output file SmartFridge2.exe: Permission denied
+collect2.exe: error: ld returned 1 exit status
+16:45:37 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+c:/mingw/bin/../lib/gcc/mingw32/9.2.0/../../../../mingw32/bin/ld.exe: cannot open output file SmartFridge2.exe: Permission denied
+collect2.exe: error: ld returned 1 exit status
+16:45:38 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+c:/mingw/bin/../lib/gcc/mingw32/9.2.0/../../../../mingw32/bin/ld.exe: cannot open output file SmartFridge2.exe: Permission denied
+collect2.exe: error: ld returned 1 exit status
+16:45:38 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+c:/mingw/bin/../lib/gcc/mingw32/9.2.0/../../../../mingw32/bin/ld.exe: cannot open output file SmartFridge2.exe: Permission denied
+collect2.exe: error: ld returned 1 exit status
+16:45:39 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+c:/mingw/bin/../lib/gcc/mingw32/9.2.0/../../../../mingw32/bin/ld.exe: cannot open output file SmartFridge2.exe: Permission denied
+collect2.exe: error: ld returned 1 exit status
+16:45:55 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+Info: Nothing to build for SmartFridge2
+Info: Nothing to build for SmartFridge2
+17:02:52 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\gestione_ricette.o" "..\\src\\gestione_ricette.c" 
+..\src\gestione_ricette.c: In function 'modificaRicetta':
+..\src\gestione_ricette.c:486:31: error: invalid initializer
+  486 |          char temp_nome[50] = ricetta_modificata.ingredienti[input-1].nome;
+      |                               ^~~~~~~~~~~~~~~~~~
+17:03:52 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\gestione_ricette.o" "..\\src\\gestione_ricette.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+Info: Nothing to build for SmartFridge2
+18:33:14 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\gestione_ricette.o" "..\\src\\gestione_ricette.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+18:37:48 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\menu_utente.o" "..\\src\\menu_utente.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+18:39:01 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\menu_utente.o" "..\\src\\menu_utente.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\gestione_ricette.o" "..\\src\\gestione_ricette.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+18:39:23 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\gestione_ricette.o" "..\\src\\gestione_ricette.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+18:42:25 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\gestione_ricette.o" "..\\src\\gestione_ricette.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+19:02:04 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\menu_utente.o" "..\\src\\menu_utente.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\check_input.o" "..\\src\\check_input.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\gestione_ricette.o" "..\\src\\gestione_ricette.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\piano_settimanale.o" "..\\src\\piano_settimanale.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\utils.o" "..\\src\\utils.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\types.o" "..\\src\\types.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\gestione_alimenti.o" "..\\src\\gestione_alimenti.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+19:16:22 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\menu_utente.o" "..\\src\\menu_utente.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\piano_settimanale.o" "..\\src\\piano_settimanale.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\gestione_alimenti.o" "..\\src\\gestione_alimenti.c" 
+..\src\gestione_alimenti.c: In function 'inputAlimento':
+..\src\gestione_alimenti.c:89:5: warning: implicit declaration of function 'inputAlimento_dispensa'; did you mean 'inputAlimento_nome'? [-Wimplicit-function-declaration]
+   89 |     inputAlimento_dispensa(&alimento, &(*flag_home));
+      |     ^~~~~~~~~~~~~~~~~~~~~~
+      |     inputAlimento_nome
+..\src\gestione_alimenti.c: At top level:
+..\src\gestione_alimenti.c:287:6: warning: conflicting types for 'inputAlimento_dispensa'
+  287 | void inputAlimento_dispensa(t_alimento* alimento, int* flag_home){
+      |      ^~~~~~~~~~~~~~~~~~~~~~
+..\src\gestione_alimenti.c:89:5: note: previous implicit declaration of 'inputAlimento_dispensa' was here
+   89 |     inputAlimento_dispensa(&alimento, &(*flag_home));
+      |     ^~~~~~~~~~~~~~~~~~~~~~
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\check_input.o" "..\\src\\check_input.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\gestione_ricette.o" "..\\src\\gestione_ricette.c" 
+..\src\gestione_ricette.c: In function 'inputRicetta':
+..\src\gestione_ricette.c:219:34: warning: passing argument 1 of 'inputAlimento' makes integer from pointer without a cast [-Wint-conversion]
+  219 |    ingrediente = inputAlimento(  &(*flag_home));
+      |                                  ^~~~~~~~~~~~~
+      |                                  |
+      |                                  int *
+In file included from ..\src\gestione_ricette.c:9:
+..\src\gestione_alimenti.h:19:30: note: expected 'int' but argument is of type 'int *'
+   19 | t_alimento inputAlimento(int input_dispensa, int *flag_home);
+      |                          ~~~~^~~~~~~~~~~~~~
+..\src\gestione_ricette.c:219:18: error: too few arguments to function 'inputAlimento'
+  219 |    ingrediente = inputAlimento(  &(*flag_home));
+      |                  ^~~~~~~~~~~~~
+In file included from ..\src\gestione_ricette.c:9:
+..\src\gestione_alimenti.h:19:12: note: declared here
+   19 | t_alimento inputAlimento(int input_dispensa, int *flag_home);
+      |            ^~~~~~~~~~~~~
+..\src\gestione_ricette.c: In function 'modificaRicetta':
+..\src\gestione_ricette.c:501:110: warning: passing argument 2 of 'modificaAlimento' makes integer from pointer without a cast [-Wint-conversion]
+  501 |          ricetta_modificata.ingredienti[input-1] = modificaAlimento(ricetta_modificata.ingredienti[input-1], &(*flag_home));
+      |                                                                                                              ^~~~~~~~~~~~~
+      |                                                                                                              |
+      |                                                                                                              int *
+In file included from ..\src\gestione_ricette.c:9:
+..\src\gestione_alimenti.h:9:54: note: expected 'int' but argument is of type 'int *'
+    9 | t_alimento modificaAlimento(t_alimento alimento, int modifica_dispensa, int* flag_home);
+      |                                                  ~~~~^~~~~~~~~~~~~~~~~
+..\src\gestione_ricette.c:501:52: error: too few arguments to function 'modificaAlimento'
+  501 |          ricetta_modificata.ingredienti[input-1] = modificaAlimento(ricetta_modificata.ingredienti[input-1], &(*flag_home));
+      |                                                    ^~~~~~~~~~~~~~~~
+In file included from ..\src\gestione_ricette.c:9:
+..\src\gestione_alimenti.h:9:12: note: declared here
+    9 | t_alimento modificaAlimento(t_alimento alimento, int modifica_dispensa, int* flag_home);
+      |            ^~~~~~~~~~~~~~~~
+..\src\gestione_ricette.c:532:92: warning: passing argument 1 of 'inputAlimento' makes integer from pointer without a cast [-Wint-conversion]
+  532 |         ricetta_modificata.ingredienti[ricetta_modificata.n_ingredienti-1] = inputAlimento(&(*flag_home));
+      |                                                                                            ^~~~~~~~~~~~~
+      |                                                                                            |
+      |                                                                                            int *
+In file included from ..\src\gestione_ricette.c:9:
+..\src\gestione_alimenti.h:19:30: note: expected 'int' but argument is of type 'int *'
+   19 | t_alimento inputAlimento(int input_dispensa, int *flag_home);
+      |                          ~~~~^~~~~~~~~~~~~~
+..\src\gestione_ricette.c:532:78: error: too few arguments to function 'inputAlimento'
+  532 |         ricetta_modificata.ingredienti[ricetta_modificata.n_ingredienti-1] = inputAlimento(&(*flag_home));
+      |                                                                              ^~~~~~~~~~~~~
+In file included from ..\src\gestione_ricette.c:9:
+..\src\gestione_alimenti.h:19:12: note: declared here
+   19 | t_alimento inputAlimento(int input_dispensa, int *flag_home);
+      |            ^~~~~~~~~~~~~
+19:17:22 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\gestione_ricette.o" "..\\src\\gestione_ricette.c" 
+..\src\gestione_ricette.c: In function 'inputRicetta':
+..\src\gestione_ricette.c:219:34: warning: passing argument 1 of 'inputAlimento' makes integer from pointer without a cast [-Wint-conversion]
+  219 |    ingrediente = inputAlimento(  &(*flag_home));
+      |                                  ^~~~~~~~~~~~~
+      |                                  |
+      |                                  int *
+In file included from ..\src\gestione_ricette.c:9:
+..\src\gestione_alimenti.h:21:30: note: expected 'int' but argument is of type 'int *'
+   21 | t_alimento inputAlimento(int input_dispensa, int *flag_home);
+      |                          ~~~~^~~~~~~~~~~~~~
+..\src\gestione_ricette.c:219:18: error: too few arguments to function 'inputAlimento'
+  219 |    ingrediente = inputAlimento(  &(*flag_home));
+      |                  ^~~~~~~~~~~~~
+In file included from ..\src\gestione_ricette.c:9:
+..\src\gestione_alimenti.h:21:12: note: declared here
+   21 | t_alimento inputAlimento(int input_dispensa, int *flag_home);
+      |            ^~~~~~~~~~~~~
+..\src\gestione_ricette.c: In function 'modificaRicetta':
+..\src\gestione_ricette.c:501:110: warning: passing argument 2 of 'modificaAlimento' makes integer from pointer without a cast [-Wint-conversion]
+  501 |          ricetta_modificata.ingredienti[input-1] = modificaAlimento(ricetta_modificata.ingredienti[input-1], &(*flag_home));
+      |                                                                                                              ^~~~~~~~~~~~~
+      |                                                                                                              |
+      |                                                                                                              int *
+In file included from ..\src\gestione_ricette.c:9:
+..\src\gestione_alimenti.h:9:54: note: expected 'int' but argument is of type 'int *'
+    9 | t_alimento modificaAlimento(t_alimento alimento, int modifica_dispensa, int* flag_home);
+      |                                                  ~~~~^~~~~~~~~~~~~~~~~
+..\src\gestione_ricette.c:501:52: error: too few arguments to function 'modificaAlimento'
+  501 |          ricetta_modificata.ingredienti[input-1] = modificaAlimento(ricetta_modificata.ingredienti[input-1], &(*flag_home));
+      |                                                    ^~~~~~~~~~~~~~~~
+In file included from ..\src\gestione_ricette.c:9:
+..\src\gestione_alimenti.h:9:12: note: declared here
+    9 | t_alimento modificaAlimento(t_alimento alimento, int modifica_dispensa, int* flag_home);
+      |            ^~~~~~~~~~~~~~~~
+..\src\gestione_ricette.c:532:92: warning: passing argument 1 of 'inputAlimento' makes integer from pointer without a cast [-Wint-conversion]
+  532 |         ricetta_modificata.ingredienti[ricetta_modificata.n_ingredienti-1] = inputAlimento(&(*flag_home));
+      |                                                                                            ^~~~~~~~~~~~~
+      |                                                                                            |
+      |                                                                                            int *
+In file included from ..\src\gestione_ricette.c:9:
+..\src\gestione_alimenti.h:21:30: note: expected 'int' but argument is of type 'int *'
+   21 | t_alimento inputAlimento(int input_dispensa, int *flag_home);
+      |                          ~~~~^~~~~~~~~~~~~~
+..\src\gestione_ricette.c:532:78: error: too few arguments to function 'inputAlimento'
+  532 |         ricetta_modificata.ingredienti[ricetta_modificata.n_ingredienti-1] = inputAlimento(&(*flag_home));
+      |                                                                              ^~~~~~~~~~~~~
+In file included from ..\src\gestione_ricette.c:9:
+..\src\gestione_alimenti.h:21:12: note: declared here
+   21 | t_alimento inputAlimento(int input_dispensa, int *flag_home);
+      |            ^~~~~~~~~~~~~
+19:19:18 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\gestione_alimenti.o" "..\\src\\gestione_alimenti.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\piano_settimanale.o" "..\\src\\piano_settimanale.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\check_input.o" "..\\src\\check_input.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\menu_utente.o" "..\\src\\menu_utente.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\gestione_ricette.o" "..\\src\\gestione_ricette.c" 
+..\src\gestione_ricette.c: In function 'inputRicetta':
+..\src\gestione_ricette.c:219:34: warning: passing argument 1 of 'inputAlimento' makes integer from pointer without a cast [-Wint-conversion]
+  219 |    ingrediente = inputAlimento(  &(*flag_home));
+      |                                  ^~~~~~~~~~~~~
+      |                                  |
+      |                                  int *
+In file included from ..\src\gestione_ricette.c:9:
+..\src\gestione_alimenti.h:21:30: note: expected 'int' but argument is of type 'int *'
+   21 | t_alimento inputAlimento(int input_dispensa, int *flag_home);
+      |                          ~~~~^~~~~~~~~~~~~~
+..\src\gestione_ricette.c:219:18: error: too few arguments to function 'inputAlimento'
+  219 |    ingrediente = inputAlimento(  &(*flag_home));
+      |                  ^~~~~~~~~~~~~
+In file included from ..\src\gestione_ricette.c:9:
+..\src\gestione_alimenti.h:21:12: note: declared here
+   21 | t_alimento inputAlimento(int input_dispensa, int *flag_home);
+      |            ^~~~~~~~~~~~~
+..\src\gestione_ricette.c: In function 'modificaRicetta':
+..\src\gestione_ricette.c:501:110: warning: passing argument 2 of 'modificaAlimento' makes integer from pointer without a cast [-Wint-conversion]
+  501 |          ricetta_modificata.ingredienti[input-1] = modificaAlimento(ricetta_modificata.ingredienti[input-1], &(*flag_home));
+      |                                                                                                              ^~~~~~~~~~~~~
+      |                                                                                                              |
+      |                                                                                                              int *
+In file included from ..\src\gestione_ricette.c:9:
+..\src\gestione_alimenti.h:9:54: note: expected 'int' but argument is of type 'int *'
+    9 | t_alimento modificaAlimento(t_alimento alimento, int modifica_dispensa, int* flag_home);
+      |                                                  ~~~~^~~~~~~~~~~~~~~~~
+..\src\gestione_ricette.c:501:52: error: too few arguments to function 'modificaAlimento'
+  501 |          ricetta_modificata.ingredienti[input-1] = modificaAlimento(ricetta_modificata.ingredienti[input-1], &(*flag_home));
+      |                                                    ^~~~~~~~~~~~~~~~
+In file included from ..\src\gestione_ricette.c:9:
+..\src\gestione_alimenti.h:9:12: note: declared here
+    9 | t_alimento modificaAlimento(t_alimento alimento, int modifica_dispensa, int* flag_home);
+      |            ^~~~~~~~~~~~~~~~
+19:19:55 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\gestione_ricette.o" "..\\src\\gestione_ricette.c" 
+..\src\gestione_ricette.c: In function 'inputRicetta':
+..\src\gestione_ricette.c:219:34: warning: passing argument 1 of 'inputAlimento' makes integer from pointer without a cast [-Wint-conversion]
+  219 |    ingrediente = inputAlimento(  &(*flag_home));
+      |                                  ^~~~~~~~~~~~~
+      |                                  |
+      |                                  int *
+In file included from ..\src\gestione_ricette.c:9:
+..\src\gestione_alimenti.h:21:30: note: expected 'int' but argument is of type 'int *'
+   21 | t_alimento inputAlimento(int input_dispensa, int *flag_home);
+      |                          ~~~~^~~~~~~~~~~~~~
+..\src\gestione_ricette.c:219:18: error: too few arguments to function 'inputAlimento'
+  219 |    ingrediente = inputAlimento(  &(*flag_home));
+      |                  ^~~~~~~~~~~~~
+In file included from ..\src\gestione_ricette.c:9:
+..\src\gestione_alimenti.h:21:12: note: declared here
+   21 | t_alimento inputAlimento(int input_dispensa, int *flag_home);
+      |            ^~~~~~~~~~~~~
+19:22:21 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\gestione_ricette.o" "..\\src\\gestione_ricette.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+c:/mingw/bin/../lib/gcc/mingw32/9.2.0/../../../../mingw32/bin/ld.exe: cannot open output file SmartFridge2.exe: Permission denied
+collect2.exe: error: ld returned 1 exit status
+19:22:25 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+Info: Nothing to build for SmartFridge2
+19:33:03 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+gcc -o SmartFridge2.exe "src\\check_input.o" "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+Info: Nothing to build for SmartFridge2
+Info: Nothing to build for SmartFridge2

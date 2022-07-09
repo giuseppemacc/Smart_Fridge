@@ -6,7 +6,7 @@
 #include "types.h"
 
 
-t_alimento modificaAlimento(t_alimento alimento, int* flag_home);
+t_alimento modificaAlimento(t_alimento alimento, int modifica_dispensa, int* flag_home);
 
 void sovrascrivi_alimento(char* nome_alimento, t_alimento alimento_modificato);
 
@@ -16,7 +16,9 @@ void inputAlimento_quantita(t_alimento* alimento, int* flag_home);
 
 void inputAlimento_nome(t_alimento* alimento, int* flag_home);
 
-t_alimento inputAlimento(int *flag_home);
+void inputAlimento_dispensa(t_alimento* alimento, int* flag_home);
+
+t_alimento inputAlimento(int input_dispensa, int *flag_home);
 
 
 void caricaAlimenti();

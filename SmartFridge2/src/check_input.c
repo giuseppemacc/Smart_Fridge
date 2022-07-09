@@ -9,19 +9,6 @@
 #include "types.h"
 #include "utils.h"
 
-// ------ INPUT qualcosa ----------
-// tipo inputTipo(int *flag_errore, int *flag_home)
-
-// fai inserire al tizio la stringa
-
-// se quello che viene inseriro � == HOME_VALUE :
-//    flag_home = true
-//
-// altrimenti se quello che viene inserito non va bene:
-//    flag_errore = true
-//
-// altrimenti se va tutto bene:
-//    flag = quello che ha inserito
 
 #ifndef HOME_VALUE
 	#define BACK_HOME "home" // BACK_HOME

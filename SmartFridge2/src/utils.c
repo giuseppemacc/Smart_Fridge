@@ -72,7 +72,6 @@ int strMin(char *str1, char *str2) {
 }
 
 
-// ??TODO?? apri il file se non � gi� aperto
 int apriFile(FILE **file, char *file_name, char *mode) {
   int flag_open = 0;
 
@@ -81,8 +80,7 @@ int apriFile(FILE **file, char *file_name, char *mode) {
   if ((*file) == NULL) {
     puts("file non trovato");
   } else {
-    //puts("."); // TODO: da togliere poi serve solo per capire che e andato tutto
-               // bene
+
     flag_open = 1;
   }
   return flag_open;
@@ -98,7 +96,7 @@ void clearFile(char *file_name) {
 }
 
 
-// TODO: capire come funziona perche ho copiato e incollato
+
 void strToUpper(char *str) {
   char *name;
   name = strtok(str, ":");

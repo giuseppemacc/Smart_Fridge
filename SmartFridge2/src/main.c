@@ -14,31 +14,28 @@
 
 
 
-//todo: ordinare prima di printare ricette e alimenti CHECK
-
-//todo: menu figo CHECK
-
-//todo: preparaRicetta CHECK
-
-// todo: prioritarizza CHECK
-
-//todo: valuta ricetta CHECK
-
-//todo: modifica alimenti CHECK
-//todo: modifica ricette CHECK
-//todo: modifica piano settimanale CHECK
-
-//todo: inputStr CHECK
 //todo: isNotNum
 
 //todo: ricerca binaria per i file
-//todo: aggiungere campo dispensa in modifica alimento
-//todo: aggiungere flag_dispensa in inputAlimento
-//todo: sistemare VERDURA / VERDURE
+//todo: rimuovere preparata ultimi 7 giorni
+
+//todo: capire come funziona strUpper perche ho copiato e incollato
+//todo: capire le ifdef
+
+
+//todo: tipo t_bool, t_unita ...
+//todo: commenti
+//todo: doxygen
+//todo: messaggi all utente
+//todo: riempire i file
+
 
 
 int main(void) {
 	setvbuf(stdout, NULL, _IONBF, 0);
+
+
+	//clearFile(FILENAME_CRONOLOGIA_RICETTE);
 
 	menuu();
 

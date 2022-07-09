@@ -213,7 +213,7 @@ giorni input_giorno(int* flag_home){
 		do{
 			printf("giorno >> ");
 			inputStr(str, 20, &flag_errore, &(*flag_home));
-		}while(flag_errore && (!*(flag_home)));
+		}while(flag_errore && (!*flag_home));
 
 
 		if(!(*flag_home)){
@@ -295,8 +295,6 @@ void modificaPiano_settimanale(){
 				}while(flag_errore && !(flag_home));
 			}
 		}
-
-
 
 	}while((input==1) && !flag_home);
 

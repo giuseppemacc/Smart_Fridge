@@ -103,19 +103,30 @@ void ordinaFileRicette_AZ(char *file_name){
   }
 }
 
-//TODO: funzione che da categoria ritorna la stringa
+
 
 
 void print_ricetta(t_ricetta ricetta){
 
   puts("--------------------------------------------------");
   printf("Ricetta: [%s]\n", ricetta.nome);
-  printf("\tcategoria: %s\n", returnCategoria(ricetta.categoria) );//TODO: far visualizzare la categoria come stringa
+  printf("\tcategoria: %s\n", returnCategoria(ricetta.categoria) );
   printf("\tprocedimento: \"%s\"\n", ricetta.procedimento);
-  printf("\tpreparata negli ultimi 7 giorni: %d\n", ricetta.preparata);
   printf("\tpreparata %d giorni fa\n", ricetta.counter_giorni);
-  printf("\tvalutazione: %d \n", ricetta.valutazione);
+
+
+  if(ricetta.valutazione > 0){
+	  printf("\tvalutazione: ");
+	  for(int i=0; i<ricetta.valutazione; i++){
+		  printf("{X} ");
+		}
+		puts("");
+  }else{
+	  puts("\tnon valutata");
+  }
+
   printf("\tingredienti:\n");
+
   for(int i=0; i<ricetta.n_ingredienti; i++){
 	  printf("\t");
 	  print_alimento(ricetta.ingredienti[i]);
@@ -205,28 +216,22 @@ t_ricetta inputRicetta(int *flag_home){
 	t_alimento ingrediente;
 	do {
 	  printf("  Inserisci ingredienti : \n");
-	  ingrediente = inputAlimento(  &(*flag_home));
+	  ingrediente = inputAlimento( 1, &(*flag_home));
 
-	  if (!(*flag_home)){
+
+	  if( !(*flag_home) ){
+
+		  ricetta.ingredienti[ ricetta.n_ingredienti ] = ingrediente;
+		  ricetta.n_ingredienti++;
+
 		  do{
-			  printf("  Questo ingrediente si trova in dispensa? >> ");
-			  ingrediente.dispensa = inputBool(&flag_errore, &(*flag_home));
+			  printf("  inserire altri ingredienti? >> ");
+			  flag_continue = inputBool(&flag_errore, &(*flag_home));
 
 		  }while( (flag_errore == 1) && (*flag_home == 0) );
 
-		  if( !(*flag_home) ){
-
-			  ricetta.ingredienti[ ricetta.n_ingredienti ] = ingrediente;
-			  ricetta.n_ingredienti++;
-
-			  do{
-				  printf("  inserire altri ingredienti? >> ");
-				  flag_continue = inputBool(&flag_errore, &(*flag_home));
-
-			  }while( (flag_errore == 1) && (*flag_home == 0) );
-
-		  }
 	  }
+
 
 	} while ( (flag_continue==1) && ((*flag_home) == 0));
   }
@@ -331,7 +336,7 @@ void inputRicetta_categoria(t_ricetta* ricetta, int* flag_home){
 	  ricetta->categoria = inputCategoria(&flag_errore, &(*flag_home));
 
 	  if(flag_errore){
-		printf("\tcategorria non trovata (disponibili:CARNE,PESCE,VERDURE,PASTA)\n");
+		printf("\tcategorria non trovata (disponibili:CARNE,PESCE,VERDURA,PASTA)\n");
 	  }
 
 	} while ((flag_errore == 1) && ((*flag_home) == 0));
@@ -373,6 +378,10 @@ t_ricetta modificaRicetta(t_ricetta ricetta, int* flag_home){
 	t_ricetta ricetta_trovata;
 	t_ricetta ricetta_modificata = ricetta;
 	int flag_continua_modifiche;
+
+	// memorizza il nome prima di far avvenire la modifica così in caso di scelta di eliminazione
+	// se non è possibile far avvenire l'eliminazione si reimposta il nome orginale
+	char temp_nome[50];
 
 	do{
 		printf("1) elimina ricetta\n2) modifica ricetta\n >> ");
@@ -481,7 +490,9 @@ t_ricetta modificaRicetta(t_ricetta ricetta, int* flag_home){
 
 								if(!(*flag_home)){
 
-									ricetta_modificata.ingredienti[input-1] = modificaAlimento(ricetta_modificata.ingredienti[input-1], &(*flag_home));
+									strcpy(temp_nome, ricetta_modificata.ingredienti[input-1].nome);
+
+									ricetta_modificata.ingredienti[input-1] = modificaAlimento(ricetta_modificata.ingredienti[input-1], 1, &(*flag_home));
 
 									if(!(*flag_home)){
 										if(strEqual(ricetta_modificata.ingredienti[input-1].nome,"")){// se vuol far rimuovere un ingrediente
@@ -498,6 +509,10 @@ t_ricetta modificaRicetta(t_ricetta ricetta, int* flag_home){
 												ricetta_modificata.n_ingredienti--;
 											}else{
 												puts("impossibile rimuovere l'ingrediente! la ricetta deve avere almeno un ingrediente!");
+
+												// rimposta il nome come era prima
+												strcpy(ricetta_modificata.ingredienti[input-1].nome, temp_nome);
+
 												flag_errore = 1;
 											}
 										}
@@ -508,7 +523,7 @@ t_ricetta modificaRicetta(t_ricetta ricetta, int* flag_home){
 
 								ricetta_modificata.n_ingredienti++;
 								// vai ad aggiungere un ingrediente in ultima posizione
-								ricetta_modificata.ingredienti[ricetta_modificata.n_ingredienti-1] = inputAlimento(&(*flag_home));
+								ricetta_modificata.ingredienti[ricetta_modificata.n_ingredienti-1] = inputAlimento(1, &(*flag_home));
 
 							}else if(input == 3){
 								flag_continua_modifiche = 0;

@@ -12,8 +12,6 @@
 #include "check_input.h"
 
 
-// ?TODO: dichiarare un nuovo tipo bool come enum {false, true}  (false=0,
-// true=1)
 
 
 
@@ -349,7 +347,7 @@ void menu_modificaAlimento(){
 
 	if(!flag_home){
 
-		alimento_modificato = modificaAlimento(alimento, &flag_home);
+		alimento_modificato = modificaAlimento(alimento, 0, &flag_home);
 
 		if(!flag_home){
 			sovrascrivi_alimento(alimento.nome, alimento_modificato);
@@ -702,6 +700,7 @@ void menuu(){
 
 					}else if(strEqual(input, "3")){
 
+						puts("Cronologia pasti, dalla meno recente alla più recente");
 						print_ricette(FILENAME_CRONOLOGIA_RICETTE);
 
 					}

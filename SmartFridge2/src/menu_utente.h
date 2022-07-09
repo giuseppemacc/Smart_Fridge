@@ -1,9 +1,3 @@
-/*
- * menu_utente.h
- *
- *  Created on: 4 lug 2022
- *      Author: giuse
- */
 
 #ifndef MENU_UTENTE_H_
 #define MENU_UTENTE_H_
