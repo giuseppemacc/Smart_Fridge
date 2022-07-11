@@ -1,16 +1,17 @@
 #include "types.h"
 #include <stdio.h>
-#include "gestione_ricette.h"
-#include "gestione_alimenti.h"
+#include "piano_settimanale.h"
 #include "utils.h"
 #include "file_names.h"
 #include "inputs.h"
-#include "menu_utente.h"
 
 
-
-
-
+/**
+ * @fn void default_piano_settimanale()
+ * @brief resetta e imposta il file piano settimanale con dei valori di default
+ * @post file piano settimanale reimpostato con 8 elementi di cui il primo indica il giorno corrente
+ *       e gli altri 7 le categoria associate ai giorni della settiamna
+ */
 void default_piano_settimanale(){
   FILE* file_pianosettimanale;
   t_categoria cat;
@@ -49,6 +50,12 @@ void default_piano_settimanale(){
 
 }
 
+
+/**
+ * @fn void print_piano_settimanale()
+ * @brief visualizza a schermo gli elementi corrispondeti alle categorie dei 7 giorni della settimana presenti in piano setttimanale
+ * @post piano settimanale stampato a schermo
+ */
 void print_piano_settimanale(){
 
   FILE* file_pianosettimanale;
@@ -57,7 +64,7 @@ void print_piano_settimanale(){
 
   if(apriFile(&file_pianosettimanale, FILENAME_PIANO_SETTIMANALE, "rb+")){
 
-    fseek(file_pianosettimanale,sizeof(t_giorno), SEEK_SET);	//posizioniamo il puntatore dopo il giorno
+    fseek(file_pianosettimanale,sizeof(t_giorno), SEEK_SET); //posiziona il puntatore dopo il giorno attuale
 
     fread(&categoria_corrente, sizeof(t_categoria), 1, file_pianosettimanale);
     while (!feof(file_pianosettimanale)) {
@@ -72,6 +79,12 @@ void print_piano_settimanale(){
   }
 }
 
+/**
+ * @fn void modificaPiano_settimanale()
+ * @brief permette all'utente di modificare le 7 categorie associate ai 7 giorni della settimana contenute nel file piano settimanel
+ * 	      - non permette di aggiungere o rimuovere elementi ma solo di modifcarli!
+ * @post file piano settimanale con le categorie modificate dall'utente
+ */
 void modificaPiano_settimanale(){
 
 	FILE* file_pianosettimanale;
@@ -105,6 +118,7 @@ void modificaPiano_settimanale(){
 
 				if(apriFile(&file_pianosettimanale, FILENAME_PIANO_SETTIMANALE, "rb+")){
 
+					// posiziona il puntatore sulla cateogira associata al giorno inserito
 					fseek(file_pianosettimanale, (giorno) * sizeof(t_categoria), SEEK_SET);
 					fwrite(&categoria, sizeof(t_categoria), 1, file_pianosettimanale);
 
@@ -127,7 +141,12 @@ void modificaPiano_settimanale(){
 
 
 
-
+/**
+ * @fn t_giorno get_giorno_attuale()
+ * @brief ritorna il giorno corrente
+ * 		  - legge dal file piano settimanale il primo alimento (che corrisponde al giorno attuale) e lo restituisce
+ * @return giorno corrente
+ */
 t_giorno get_giorno_attuale(){
 	FILE* file_pianosettimanale;
 	t_giorno giorno;
@@ -135,6 +154,7 @@ t_giorno get_giorno_attuale(){
 	if(apriFile(&file_pianosettimanale, FILENAME_PIANO_SETTIMANALE, "rb+")){
 
 		rewind(file_pianosettimanale);
+		// legge il primo elemento che corrisponde al giorno attuale
 		fread(&giorno, sizeof(t_giorno), 1, file_pianosettimanale);
 
 		fclose(file_pianosettimanale);
@@ -143,6 +163,12 @@ t_giorno get_giorno_attuale(){
 	return giorno;
 }
 
+
+/**
+ * @fn t_categoria return_categoria_giorno_attuale()
+ * @brief restituisce la categoria associata al giorno della settimana attuale corrispondente nel piano settiamanale
+ * @return categoria
+ */
 t_categoria return_categoria_giorno_attuale(){
 	FILE* file_pianosettimanale;
 	t_categoria cat;
@@ -153,7 +179,8 @@ t_categoria return_categoria_giorno_attuale(){
 		rewind(file_pianosettimanale);
 		fread(&giorno, sizeof(t_giorno), 1, file_pianosettimanale);
 
-		fseek(file_pianosettimanale, giorno*sizeof(t_categoria), SEEK_SET);	//posizioniamo il puntatore dopo il giorno
+		// posiziona il puntatore sulla categoria associata al giorno attuale
+		fseek(file_pianosettimanale, giorno*sizeof(t_categoria), SEEK_SET);
 		fread(&cat, sizeof(t_categoria), 1, file_pianosettimanale);
 
 

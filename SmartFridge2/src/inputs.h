@@ -1,28 +1,10 @@
-/*
-inputs.h:
+/**
+ * @def INPUTS_H_
+ * @brief contiene i sottoprogrammi che gestiscono l'inserimento dall'utente dei tipi di dato utilizzato nel programma (tipi standard e non)
+ * 		  con i relativi controlli e gestione di errori.
+ *        In tutti i sottoprogrammi l'inserimento della costante BACK_HOME porta alla terminazione del sottoprogramma e la modifica di flag_home = 1
+ */
 
-	inputAlimento
-	inputAlimento_unita
-	inputAlimento_quantita
-	inputAlimento_nome
-	inputAlimento_dispensa
-
-	inputRicetta
-	inputRicetta_procedimento
-	inputRicetta_categoria
-	inputRicetta_nome
-
-	inputStr
-	inputInt
-	inputBool
-	inputFloat
-
-	input_giorno
-	inputUnitaMisura
-	inputCategoria
-
-
-*/
 #ifndef INPUTS_H_
 #define INPUTS_H_
 
@@ -31,45 +13,148 @@ inputs.h:
 #include "types.h"
 
 
-
+/**
+ * @fn void inputAlimento_unita(t_alimento*, int*)
+ * @brief permette all'utente di inserire alimento.unita
+ * @param alimento
+ * @param flag_home
+ */
 void inputAlimento_unita(t_alimento* alimento, int* flag_home);
 
+/**
+ * @fn void inputAlimento_quantita(t_alimento*, int*)
+ * @brief permette all'utente di inserire alimento.quantita
+ * @param alimento
+ * @param flag_home
+ */
 void inputAlimento_quantita(t_alimento* alimento, int* flag_home);
 
+/**
+ * @fn void inputAlimento_nome(t_alimento*, int*)
+ * @brief permette all'utente di inserire alimento.nome
+ * @param alimento
+ * @param flag_home
+ */
 void inputAlimento_nome(t_alimento* alimento, int* flag_home);
 
+/**
+ * @fn void inputAlimento_dispensa(t_alimento*, int*)
+ * @brief permette all'utente di inserire alimento.dispensa
+ * @param alimento
+ * @param flag_home
+ */
 void inputAlimento_dispensa(t_alimento* alimento, int* flag_home);
 
+/**
+ * @fn t_alimento inputAlimento(int, int*)
+ * @brief permette all'utente di inserire i vari campi dell'alimento
+ * @param input_dispensa se 1 verrà chiesto all'utente di inserire anche il campo dispensa
+ * @param flag_home
+ * @return alimento con i campi inseriti dall'utente
+ */
 t_alimento inputAlimento(int input_dispensa, int *flag_home);
 
 
 
-
+/**
+ * @fn void inputRicetta_procedimento(t_ricetta*, int*)
+ * @brief permette all'utente di inserire ricetta.procedimento
+ * @param ricetta
+ * @param flag_home
+ */
 void inputRicetta_procedimento(t_ricetta* ricetta, int* flag_home);
 
+/**
+ * @fn void inputRicetta_categoria(t_ricetta*, int*)
+ * @brief permette all'utente di inserire ricetta.categoria
+ * @param ricetta
+ * @param flag_home
+ */
 void inputRicetta_categoria(t_ricetta* ricetta, int* flag_home);
 
+/**
+ * @fn void inputRicetta_nome(t_ricetta*, int*)
+ * @brief permette all'utente di inserire ricetta.nome
+ * @param ricetta
+ * @param flag_home
+ */
 void inputRicetta_nome(t_ricetta* ricetta, int* flag_home);
 
+/**
+ * @fn t_ricetta inputRicetta(int*)
+ * @brief permette all'utente di inserire i vari campi della ricetta
+ * @param flag_home
+ * @return ricetta con i campi inseriti dall'utente
+ */
 t_ricetta inputRicetta(int *flag_home);
 
 
 
+/**
+ * @fn float inputFloat(int*, int*)
+ * @brief permette all'utente di inserire un numero float
+ * @param flag_errore
+ * @param flag_home
+ * @return un numero float, in caso di flag_errore/flag_home ritorna 0.0
+ */
 float inputFloat(int *flag_errore, int *flag_home);
 
+/**
+ * @fn int inputInt(int*, int*)
+ * @brief permette all'utente di inserire un numero int
+ * @param flag_errore
+ * @param flag_home
+ * @return un numero int, in caso di flag_errore/flag_home ritorna 0
+ */
 int inputInt(int *flag_errore, int *flag_home);
 
+/**
+ * @fn int inputBool(int*, int*)
+ * @brief permette all'utente di inserire una conferma
+ * @param flag_errore
+ * @param flag_home
+ * @return 1 in caso di conferma, 0 in casa di non conferma
+ */
 int inputBool(int *flag_errore, int *flag_home);
 
+/**
+ * @fn void inputStr(char*, int, int*, int*)
+ * @brief permette all'utente di inserire una stringa che se ritenuta valida viene impostata in *str
+ * 		    - la stringa vuota "" non è ritenuta valida
+ * @param str
+ * @param l_max indica la lunghezza massima della stringa accettata in input
+ * @warning  viene considerata valida una stringa inserita di lunghezza l_max-2
+ * @param flag_errore
+ * @param flag_home
+ */
 void inputStr(char *str,int l_max, int *flag_errore, int *flag_home);
 
 
 
-
+/**
+ * @fn t_unita_misura inputUnitaMisura(int*, int*)
+ * @brief permette all'utente di inserire un unità di misura
+ * @param flag_errore
+ * @param flag_home
+ * @return unità di misura
+ */
 t_unita_misura inputUnitaMisura(int *flag_errore, int *flag_home);
 
+/**
+ * @fn t_categoria inputCategoria(int*, int*)
+ * @brief permette all'utente di inserire una categoria
+ * @param flag_errore
+ * @param flag_home
+ * @return categoria
+ */
 t_categoria inputCategoria(int *flag_errore, int *flag_home);
 
+/**
+ * @fn t_giorno input_giorno(int*)
+ * @brief permette all'utente di inserire un giorno
+ * @param flag_home
+ * @return giorno
+ */
 t_giorno input_giorno(int* flag_home);
 
 

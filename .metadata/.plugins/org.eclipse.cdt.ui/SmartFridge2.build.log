@@ -1,1 +1,13 @@
-Info: Nothing to build for SmartFridge2
+22:48:47 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\types.o" "..\\src\\types.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\gestione_alimenti.o" "..\\src\\gestione_alimenti.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\menu_utente.o" "..\\src\\menu_utente.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\utils.o" "..\\src\\utils.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\piano_settimanale.o" "..\\src\\piano_settimanale.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\gestione_ricette.o" "..\\src\\gestione_ricette.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\inputs.o" "..\\src\\inputs.c" 
+gcc -o SmartFridge2.exe "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\inputs.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+
+22:48:50 Build Finished. 0 errors, 0 warnings. (took 2s.294ms)
+

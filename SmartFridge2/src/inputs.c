@@ -1,63 +1,67 @@
-#include "inputs.h"
-
-#include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-#include "file_names.h"
-#include "gestione_alimenti.h"
-#include "gestione_ricette.h"
+#include "inputs.h"
 #include "types.h"
 #include "utils.h"
-#include "piano_settimanale.h"
-#include "menu_utente.h"
 
 
+
+/**
+ * @def BACK_HOME
+ * @brief costante che quando viene inserita dall'utente lo porta al menu principale
+ */
 #ifndef HOME_VALUE
-	#define BACK_HOME "home" // BACK_HOME
+	#define BACK_HOME "home"
 #endif
 
 
-
-
-
-
+/**
+ * @fn void inputAlimento_unita(t_alimento*, int*)
+ * @brief permette all'utente di inserire alimento.unita
+ * @param alimento
+ * @param flag_home
+ */
 void inputAlimento_unita(t_alimento* alimento, int* flag_home){
 	int flag_errore;
 
 	do {
-	  printf("\tunita di misura>> ");
+	  printf("\tunita' di misura>> ");
 
 	  alimento->unita = inputUnitaMisura(&flag_errore, &(*flag_home));
 
 	  if(flag_errore){
-		printf("\tunit� di misura non trovata (disponibili:g,kg,ml,l,n)\n");
+		printf("\tunita' di misura non trovata (disponibili:g,kg,ml,l,n)\n");
 	  }
 
 	} while ((flag_errore == 1) && ((*flag_home) == 0));
 }
 
+
+/**
+ * @fn void inputAlimento_quantita(t_alimento*, int*)
+ * @brief permette all'utente di inserire alimento.quantita
+ * @param alimento
+ * @param flag_home
+ */
 void inputAlimento_quantita(t_alimento* alimento, int* flag_home){
 	float f_quantita;
 	int flag_errore;
 
 	do {
-	  printf("\tquantità>> ");
+	  printf("\tquantita'>> ");
 
 	  f_quantita = inputFloat(&flag_errore, &(*flag_home));
 
 
-	  if( ! (*flag_home) ){ // se non � stato detto di tornare alla home
+	  if( ! (*flag_home) ){ // se non e' stato detto di tornare alla home
 
-				  // controlla se sono avvenuti errori
-		//NULL
-		if( ! flag_errore ){
+		if( ! flag_errore ){ // se non sono avvenuti errori
 
-		  // altri controlli cio� i vari check
-		  isPositive(f_quantita,  &flag_errore  ); // controlla che sia > 0
+		  isPositive(f_quantita,  &flag_errore  ); // controlla che f_quantita sia > 0
 
-		  if( ! flag_errore ){
+		  if( ! flag_errore ){ // se non sono avvenuti errori
 			if ((alimento->unita == PESO_KG) || (alimento->unita == PESO_L)) { // se kg/lt si convertono in g/ml
 
 			  alimento->quantita = (int)(f_quantita * 1000);
@@ -83,6 +87,13 @@ void inputAlimento_quantita(t_alimento* alimento, int* flag_home){
 	} while ((flag_errore == 1) && ((*flag_home) == 0));
 }
 
+
+/**
+ * @fn void inputAlimento_nome(t_alimento*, int*)
+ * @brief permette all'utente di inserire alimento.nome
+ * @param alimento
+ * @param flag_home
+ */
 void inputAlimento_nome(t_alimento* alimento, int* flag_home){
 
 	int flag_errore;
@@ -92,11 +103,10 @@ void inputAlimento_nome(t_alimento* alimento, int* flag_home){
 		inputStr(alimento->nome, 50, &flag_errore, &(*flag_home) );
 
 
-		if( ! (*flag_home) ){ // se non � stato detto di tornare alla home
+		if( ! (*flag_home) ){ // se non e stato detto di tornare alla home
 
-		  // controlla se sono avvenuti errori
-		  if( ! flag_errore ){
-			strToUpper(alimento->nome);
+		  if( ! flag_errore ){ // se non sono avvenuti errori
+			strToUpper(alimento->nome); // converti in maiuscolo il nome
 		  }
 
 		}
@@ -104,6 +114,13 @@ void inputAlimento_nome(t_alimento* alimento, int* flag_home){
 	  }while( (flag_errore == 1) && ((*flag_home) == 0) );
 }
 
+
+/**
+ * @fn void inputAlimento_dispensa(t_alimento*, int*)
+ * @brief permette all'utente di inserire alimento.dispensa
+ * @param alimento
+ * @param flag_home
+ */
 void inputAlimento_dispensa(t_alimento* alimento, int* flag_home){
 	int flag_errore;
 	do{
@@ -114,6 +131,16 @@ void inputAlimento_dispensa(t_alimento* alimento, int* flag_home){
 	  }while( (flag_errore == 1) && ((*flag_home) == 0) );
 }
 
+
+/**
+ * @fn t_alimento inputAlimento(int, int*)
+ * @brief permette all'utente di inserire i vari campi dell'alimento
+ * 		  - se input_dispensa = 1 verrà chiesto all'utente di inserire anche il campo dispensa
+ * 		    altrimenti non verrà chiesto di inserire il campo dispensa
+ * @param input_dispensa
+ * @param flag_home
+ * @return alimento con i campi inseriti dall'utente
+ */
 t_alimento inputAlimento(int input_dispensa, int *flag_home) {
   t_alimento alimento;
 
@@ -131,21 +158,22 @@ t_alimento inputAlimento(int input_dispensa, int *flag_home) {
 
   //---UNITA DI MISURA---
 
-  if (!(*flag_home)) { // se non � stato detto di tornare alla home
-    // input unit� misura
+  if (!(*flag_home)) {
+    // input unita misura
     inputAlimento_unita(&alimento, &(*flag_home));
   }
 
 
   //---QUANTITA'---
 
-  if (!(*flag_home)) { // se non � stato detto di tornare alla home
+  if (!(*flag_home)) {
     // input quantit�
     inputAlimento_quantita(&alimento, &(*flag_home));
   }
 
   if(!(*flag_home)){
 	  if(input_dispensa){
+		  // input dispensa
 		  inputAlimento_dispensa(&alimento, &(*flag_home));
 	  }
   }
@@ -159,7 +187,12 @@ t_alimento inputAlimento(int input_dispensa, int *flag_home) {
 
 
 
-
+/**
+ * @fn void inputRicetta_procedimento(t_ricetta*, int*)
+ * @brief permette all'utente di inserire ricetta.procedimento
+ * @param ricetta
+ * @param flag_home
+ */
 void inputRicetta_procedimento(t_ricetta* ricetta, int* flag_home){
 	int flag_errore;
 	do{
@@ -169,6 +202,12 @@ void inputRicetta_procedimento(t_ricetta* ricetta, int* flag_home){
 	  }while( (flag_errore == 1) && ((*flag_home) == 0) );
 }
 
+/**
+ * @fn void inputRicetta_categoria(t_ricetta*, int*)
+ * @brief permette all'utente di inserire ricetta.categoria
+ * @param ricetta
+ * @param flag_home
+ */
 void inputRicetta_categoria(t_ricetta* ricetta, int* flag_home){
 	// input categoria
 	int flag_errore;
@@ -185,6 +224,13 @@ void inputRicetta_categoria(t_ricetta* ricetta, int* flag_home){
 
 }
 
+
+/**
+ * @fn void inputRicetta_nome(t_ricetta*, int*)
+ * @brief permette all'utente di inserire ricetta.nome
+ * @param ricetta
+ * @param flag_home
+ */
 void inputRicetta_nome(t_ricetta* ricetta, int* flag_home){
 
 	int flag_errore;
@@ -194,10 +240,10 @@ void inputRicetta_nome(t_ricetta* ricetta, int* flag_home){
 		inputStr(ricetta->nome, 50, &flag_errore, &(*flag_home) );
 
 
-		if( ! (*flag_home) ){ // se non � stato detto di tornare alla home
+		if( ! (*flag_home) ){ // se non e' stato detto di tornare alla home
 
-		  // controlla se sono avvenuti errori
-		  if( ! flag_errore ){
+
+		  if( ! flag_errore ){ // se non sono avvenuti errori
 			strToUpper(ricetta->nome);
 		  }
 
@@ -206,6 +252,13 @@ void inputRicetta_nome(t_ricetta* ricetta, int* flag_home){
 	  }while( (flag_errore == 1) && ((*flag_home) == 0) );
 }
 
+
+/**
+ * @fn t_ricetta inputRicetta(int*)
+ * @brief permette all'utente di inserire i vari campi della ricetta
+ * @param flag_home
+ * @return ricetta con i campi inseriti dall'utente
+ */
 t_ricetta inputRicetta(int *flag_home){
 
 	int flag_errore;
@@ -221,7 +274,6 @@ t_ricetta inputRicetta(int *flag_home){
   	ricetta.n_ingredienti = 0;
   	ricetta.categoria = NONE_CAT;
 	ricetta.valutazione = 0;
-	ricetta.preparata = 0;
 	ricetta.counter_giorni = 8;
 
 
@@ -233,8 +285,8 @@ t_ricetta inputRicetta(int *flag_home){
 
   //--- CATEGORIA ---
 
-  if (!(*flag_home)) { // se non � stato detto di tornare alla home
-	// input unit� misura
+  if (!(*flag_home)) {
+	// input categoria
 	inputRicetta_categoria(&ricetta, &(*flag_home));
   }
 
@@ -247,13 +299,12 @@ t_ricetta inputRicetta(int *flag_home){
 
   //--- INGREDIENTI ---
 
-  if (!(*flag_home)) { // se non � stato detto di tornare alla home
-	// input quantit�
+  if (!(*flag_home)) { // se non e' stato detto di tornare alla home
 	int flag_continue;
 	t_alimento ingrediente;
 	do {
 	  printf("  Inserisci ingredienti : \n");
-	  ingrediente = inputAlimento( 1, &(*flag_home));
+	  ingrediente = inputAlimento( 1, &(*flag_home)); // 1 indica che viene fatta inserire anche la dispensa
 
 
 	  if( !(*flag_home) ){
@@ -282,22 +333,24 @@ t_ricetta inputRicetta(int *flag_home){
 
 
 
-
+/**
+ * @fn void inputStr(char*, int, int*, int*)
+ * @brief permette all'utente di inserire una stringa che se ritenuta valida viene impostata in *str
+ * 		    - la stringa vuota "" non è ritenuta valida
+ * @param str
+ * @param l_max indica la lunghezza massima della stringa accettata in input
+ * @warning  viene considerata valida una stringa inserita di lunghezza l_max-2
+ * @param flag_errore
+ * @param flag_home
+ */
 void inputStr(char *str,int l_max, int *flag_errore, int *flag_home) {
 
-	// la fgets ne legge -1 da quello che gli passi dentro
-	// " " = 32
-	// alla fine di ogni stringa sta 10
-	// tranne nei casi in cui vengono inseriti l_max-1 caratteri
-
-  *flag_errore = 0; // false
-  *flag_home = 0;   // false
+  *flag_errore = 0;
+  *flag_home = 0;
   int len;
 
 
   strcpy(str, "");
-
-  //scanf("%s", str);
 
   fgets(str, l_max-1, stdin);
   fflush(stdin);
@@ -309,32 +362,26 @@ void inputStr(char *str,int l_max, int *flag_errore, int *flag_home) {
 	  printf("la stringa inserita e' troppo grande\n");
   }else{
 
+	  // rimuove se presente il carattere '\n' dalla stringa
 	 if( str[len-1]=='\n' ){
 		 str[len-1] = 0;
 	 }
 
 	if (strEqual(str, BACK_HOME)) {
 	  *flag_home = 1;
-	}else if( strEqual(str, "") ){
+	}else if( strEqual(str, "") ){ // "" non è considerata valida
 		 *flag_errore = 1;
 	 }
   }
-
-
-
-  // fai inserire al tizio la stringa
-
-  // se quello che viene inseriro � == HOME_VALUE :
-  //    flag_home = true
-  //
-  // altrimenti se quello che viene inserito non va bene:
-  //    flag_errore = true
-  //
-  // altrimenti se va tutto bene:
-  //    str = quello che ha inserito
 }
 
-
+/**
+ * @fn int inputInt(int*, int*)
+ * @brief permette all'utente di inserire un numero int
+ * @param flag_errore
+ * @param flag_home
+ * @return un numero int, in caso di flag_errore/flag_home ritorna 0
+ */
 int inputInt(int *flag_errore, int *flag_home) {
   int num;
   char str[20];
@@ -345,10 +392,10 @@ int inputInt(int *flag_errore, int *flag_home) {
 
 
   if(!(*flag_errore) &&  !(*flag_home)){
-	  isNum(str, flag_errore); // isNum
+	  isNum(str, flag_errore);
 
-	  if( !(*flag_errore) ){
-		  num = (int)atoi(str);
+	  if( !(*flag_errore) ){ // se str è un numero
+		  num = (int)atoi(str); // converti in int
 	  }
 
   }
@@ -357,6 +404,15 @@ int inputInt(int *flag_errore, int *flag_home) {
 }
 
 
+/**
+ * @fn int inputBool(int*, int*)
+ * @brief permette all'utente di inserire una conferma
+ * 		  valori accettati per conferma: "si", "1", "y", "yes", "ok"
+ * 		  valori accettati per non conferma: "no", "0", "n"
+ * @param flag_errore
+ * @param flag_home
+ * @return 1 in caso di conferma, 0 in casa di non conferma
+ */
 int inputBool(int *flag_errore, int *flag_home) {
   int flag;
   char str[20];
@@ -383,7 +439,13 @@ int inputBool(int *flag_errore, int *flag_home) {
   return flag;
 }
 
-
+/**
+ * @fn float inputFloat(int*, int*)
+ * @brief permette all'utente di inserire un numero float
+ * @param flag_errore
+ * @param flag_home
+ * @return un numero float, in caso di flag_errore/flag_home ritorna 0.0
+ */
 float inputFloat(int *flag_errore, int *flag_home) {
   *flag_home=0;
   *flag_errore=0;
@@ -398,8 +460,8 @@ float inputFloat(int *flag_errore, int *flag_home) {
 
     isNum(str, &(*flag_errore));
 
-    if(! (*flag_errore)){
-     num = (float)atof(str);
+    if(! (*flag_errore)){ // se è un numero
+     num = (float)atof(str); // converti in float
     }
 
   }
@@ -409,7 +471,12 @@ float inputFloat(int *flag_errore, int *flag_home) {
 
 
 
-
+/**
+ * @fn t_giorno input_giorno(int*)
+ * @brief permette all'utente di inserire un giorno
+ * @param flag_home
+ * @return giorno
+ */
 t_giorno input_giorno(int* flag_home){
 	char str[20];
 	t_giorno giorno;
@@ -443,16 +510,21 @@ t_giorno input_giorno(int* flag_home){
 				giorno = DOM;
 			else{
 				flag_errore=1;
-				printf("ERRORE: inserire un giorno corretto\n");
+				printf("ERRORE: giorno non valido\n");
 			}
 		}
-
 	}while(flag_errore && !(*flag_home));
 
 	return giorno;
 }
 
-
+/**
+ * @fn t_unita_misura inputUnitaMisura(int*, int*)
+ * @brief permette all'utente di inserire un unità di misura
+ * @param flag_errore
+ * @param flag_home
+ * @return unità di misura
+ */
 t_unita_misura inputUnitaMisura(int *flag_errore, int *flag_home) {
   char str[20];
   t_unita_misura unita;
@@ -468,7 +540,7 @@ t_unita_misura inputUnitaMisura(int *flag_errore, int *flag_home) {
   if ( !(*flag_home)  && !(*flag_errore) ){
 
     strToUpper(str);
-    unita = getUnita(str);
+    unita = getUnita(str); // converte da string ad t_unita_misura
 
     if (unita == NONE_UNIT){
       *flag_errore = 1;
@@ -478,7 +550,13 @@ t_unita_misura inputUnitaMisura(int *flag_errore, int *flag_home) {
   return unita;
 }
 
-
+/**
+ * @fn t_categoria inputCategoria(int*, int*)
+ * @brief permette all'utente di inserire una categoria
+ * @param flag_errore
+ * @param flag_home
+ * @return categoria
+ */
 t_categoria inputCategoria(int *flag_errore, int *flag_home) {
 	char str[20];
   t_categoria cat;
@@ -494,7 +572,7 @@ t_categoria inputCategoria(int *flag_errore, int *flag_home) {
   if ( !(*flag_home)  && !(*flag_errore) ){
 
 	strToUpper(str);
-	cat = getCategoria(str);
+	cat = getCategoria(str); // converte da stringa a t_categoria
 
 	if (cat == NONE_CAT){
 	  *flag_errore = 1;

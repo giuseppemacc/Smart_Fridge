@@ -1,0 +1,221 @@
+#include "types.h"
+#include "utils.h"
+#include <ctype.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+
+/**
+ * @fn char returnGiorno*(t_giorno)
+ * @brief converte da t_giorno a stringa
+ * @param giorno
+ * @return ritorna la stringa corrispondente al giorno inserito come argomento
+ */
+char *returnGiorno(t_giorno giorno) {
+  char *s = (char *)calloc(15,sizeof(char)); // alloca la memoria per contenere 15 caratteri
+
+  if (giorno == NONE){
+	  strcpy(s, "NULL");
+
+  }else if (giorno == LUN){
+      strcpy(s, "LUNEDI'   ");
+
+  }else if (giorno == MAR){
+    strcpy(s, "MARTEDI'  ");
+
+  }else if (giorno ==  MER){
+	  strcpy(s, "MERCOLEDI'");
+
+  }else if (giorno == GIO){
+		strcpy(s, "GIOVEDI'  ");
+
+  }else if ( giorno == VEN){
+	  strcpy(s,"VENERDI'  ");
+
+  }else if( giorno == SAB){
+	  strcpy(s,"SABATO    ");
+
+  }else if( giorno == DOM){
+	  strcpy(s,"DOMENICA  ");
+  }
+
+  return s;
+}
+
+/**
+ * @fn char returnUnita*(t_unita_misura)
+ * @brief converte da t_unita a stringa
+ * @param unita
+ * @return ritorna la stringa corrispondente all'unita di misura passata come argomento
+ */
+char *returnUnita(t_unita_misura unita) {
+  char *s = (char *)calloc(10,sizeof(char)); // alloca la memoria per contenere 10 caratteri
+
+  // assegna a s l'unitï¿½ di misura corrispondente
+  if (unita == N_UNIT)
+    strcpy(s, "");
+  else {
+    if (unita == PESO_GR)
+      strcpy(s, "g");
+    else {
+      if (unita == PESO_KG)
+        strcpy(s, "kg");
+      else {
+        if (unita == PESO_ML)
+          strcpy(s, "ml");
+        else {
+          if (unita == PESO_L)
+            strcpy(s, "lt");
+          else
+            strcpy(s, "ERROR");
+        }
+      }
+    }
+  }
+
+  return s;
+}
+
+/**
+ * @fn t_unita_misura getUnita(char*)
+ * @brief converte da stringa a t_giorno
+ * @param str
+ * @return ritorna l'unità di misura corrispondente alla stringa passata come argomento
+ */
+t_unita_misura getUnita(char *str) {
+  t_unita_misura unita;
+
+  if (strEqual(str, "G")) {
+    unita = PESO_GR;
+  } else if (strEqual(str, "KG")) {
+    unita = PESO_KG;
+  } else if (strEqual(str, "ML")) {
+    unita = PESO_ML;
+  } else if (strEqual(str, "L")) {
+    unita = PESO_L;
+  } else if (strEqual(str, "N")) {
+    unita = N_UNIT;
+  } else {
+    unita = NONE_UNIT;
+  }
+  return unita;
+}
+
+
+/**
+ * @fn t_categoria getCategoria(char*)
+ * @brief converte da stringa a t_categoria
+ * @param str
+ * @return ritorna la categoria corrispondente alla stringa passata come argomento
+ */
+t_categoria getCategoria(char* str){
+	t_categoria cat;
+	strToUpper(str);
+
+	if( strEqual(str,"CARNE") ){
+		cat = CARNE;
+	}else if( strEqual(str,"PESCE") ){
+		cat = PESCE;
+	}else if( strEqual(str,"VERDURA") ){
+		cat = VERDURA;
+	}else if( strEqual(str,"PASTA") ){
+		cat = PASTA;
+	}else{
+		cat = NONE_CAT;
+	}
+
+	return cat;
+}
+
+/**
+ * @fn char returnCategoria*(t_categoria)
+ * @brief converte da t_categoria a stringa
+ * @param categoria
+ * @return ritorna la stringa corrispondente alla categoria passata come argomento
+ */
+char *returnCategoria(t_categoria categoria) {
+  char *s = (char *)calloc(10,sizeof(char)); // alloca dinamicamente la memoria per contenere 10 caratteri
+  //NONE_CAT, CARNE, PESCE, VERDURA, PASTA
+
+  if (categoria == NONE_CAT)
+    strcpy(s, "NULL");
+  else {
+    if (categoria == CARNE)
+      strcpy(s, "CARNE");
+    else {
+      if (categoria == PESCE)
+        strcpy(s, "PESCE");
+      else {
+        if (categoria == VERDURA)
+          strcpy(s, "VERDURA");
+        else {
+          if (categoria == PASTA)
+            strcpy(s, "PASTA");
+          else
+            strcpy(s, "ERROR");
+        }
+      }
+    }
+  }
+
+  return s;
+}
+
+
+/**
+ * @fn void print_ricetta(t_ricetta)
+ * @brief stampa a schermo i campi della ricetta passata come parametro
+ * @param ricetta
+ */
+void print_ricetta(t_ricetta ricetta){
+
+  puts("--------------------------------------------------");
+  printf("Ricetta: [%s]\n", ricetta.nome);
+  printf("\tcategoria: %s\n", returnCategoria(ricetta.categoria) );
+  printf("\tprocedimento: \"%s\"\n", ricetta.procedimento);
+  printf("\tpreparata %d giorni fa\n", ricetta.counter_giorni);
+
+
+  if(ricetta.valutazione > 0){
+	  printf("\tvalutazione: ");
+	  for(int i=0; i<ricetta.valutazione; i++){
+		  printf("{X} ");
+		}
+		puts("");
+  }else{
+	  puts("\tnon valutata");
+  }
+
+  printf("\tingredienti:\n");
+
+  for(int i=0; i<ricetta.n_ingredienti; i++){
+	  printf("\t");
+	  print_alimento(ricetta.ingredienti[i]);
+  }
+  puts("--------------------------------------------------");
+}
+
+
+/**
+ * @fn void print_alimento(t_alimento)
+ * @brief stampa a schermo i campi dell'alimento passato come parametro
+ * @param alimento
+ */
+void print_alimento(t_alimento alimento) {
+  printf("\t%s:", alimento.nome);
+  // se g/ml>=1000 si stampa convertito in kg/lt
+  if ((alimento.unita == PESO_GR) || (alimento.unita == PESO_ML)) {
+    if (alimento.quantita >= 1000) {
+      printf("  %.3f %s", (float)(((float)alimento.quantita) / 1000.0),
+             returnUnita(alimento.unita + 1));
+    } else
+      printf("  %d %s", alimento.quantita, returnUnita(alimento.unita));
+  } else
+    printf("  %d %s", alimento.quantita, returnUnita(alimento.unita));
+
+  if(alimento.dispensa){
+	  printf("  (dispensa)");
+  }
+  puts("");
+}

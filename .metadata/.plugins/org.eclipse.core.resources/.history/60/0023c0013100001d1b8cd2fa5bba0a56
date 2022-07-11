@@ -1,0 +1,83 @@
+#include "menu_utente.h"
+#include <string.h>
+#include <stdio.h>
+#include "types.h"
+int ricerca_alimento_binaria (char *nome, t_alimento *alimento, FILE *file_alimenti){
+	int flag_alimento_trovato = 0;
+	int inf, sup, med;
+	inf = 0;
+
+	t_alimento alimento_corrente;
+
+	strToUpper(nome);
+
+	fseek(file_alimenti, 0, SEEK_END);	//posiziona il puntatore in ultima posizione
+
+	sup = ftell(file_alimenti)/sizeof(t_alimento);	//numero di elementi nel file
+
+
+	do{
+		med = ( inf + sup) / 2;
+
+		fseek(file_alimenti, (med - 1) *sizeof(t_alimento), SEEK_SET);
+
+		fread(&alimento_corrente, sizeof(t_alimento), 1, file_alimenti);
+
+		printf("nome alimento letto %s", alimento_corrente.nome);
+
+		if (strcmp(alimento_corrente.nome, nome) == 0){
+			flag_alimento_trovato = 1;
+			*alimento = alimento_corrente;
+			 fseek(file_alimenti, -1 * sizeof(t_alimento), SEEK_CUR); // sposta di uno indietro
+
+			 printf("alimento trovato in %d posizione", med);
+
+		}else{
+			if (strcmp(alimento_corrente.nome, nome) < 0){
+				inf = med + 1;
+			}else{
+				sup = med - 1;
+
+			}
+		}
+
+	}while (inf <= sup && !flag_alimento_trovato);
+
+
+	return flag_alimento_trovato;
+}
+
+int main(void) {
+	setvbuf(stdout, NULL, _IONBF, 0);
+
+	char str1[50] = "asgarra";
+	char str2[50] = "zetar";
+
+	printf("->%d\n", strcmp(str2,str1));
+
+
+	//menuu();
+
+	return 0;
+}
+
+
+//todo: ricerca binaria per i file
+//todo: rimuovere preparata ultimi 7 giorni
+
+//todo: capire come funziona strUpper perche ho copiato e incollato
+//todo: capire le ifdef
+
+
+//todo: tipo t_bool
+//todo: commenti
+//todo: doxygen
+//todo: messaggi all utente
+//todo: riempire i file
+
+
+
+//todo: isNum, isPositive, isFloat tutte in utils
+
+
+

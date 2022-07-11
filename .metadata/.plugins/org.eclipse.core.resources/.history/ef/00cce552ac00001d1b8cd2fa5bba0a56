@@ -1,0 +1,50 @@
+/**
+ * @def PIANO_SETTIMANALE_H_
+ * @brief contiene i sottoprogrammi che operano sul file piano settimanale e la relativa interazione con l'utente
+ */
+
+#ifndef PIANO_SETTIMANALE_H_
+#define PIANO_SETTIMANALE_H_
+
+#include "types.h"
+
+
+
+/**
+ * @fn void default_piano_settimanale()
+ * @brief resetta e imposta il file piano settimanale con dei valori di default
+ * @post file piano settimanale reimpostato con 8 elementi di cui il primo indica il giorno corrente
+ *       e gli altri 7 le categoria associate ai giorni della settiamna
+ */
+void default_piano_settimanale();
+
+/**
+ * @fn void print_piano_settimanale()
+ * @brief visualizza a schermo gli elementi corrispondeti alle categorie dei 7 giorni della settimana presenti in piano setttimanale
+ * @post piano settimanale stampato a schermo
+ */
+void print_piano_settimanale();
+
+/**
+ * @fn void modificaPiano_settimanale()
+ * @brief permette all'utente di modificare le 7 categorie associate ai 7 giorni della settimana contenute nel file piano settimanel
+ * 	      - non permette di aggiungere o rimuovere elementi ma solo di modifcarli!
+ * @post file piano settimanale con le categorie modificate dall'utente
+ */
+void modificaPiano_settimanale();
+
+
+
+/**
+ * @fn t_giorno get_giorno_attuale()
+ * @brief ritorna il giorno corrente
+ * 		  - legge dal file piano settimanale il primo alimento (che corrisponde al giorno attuale) e lo restituisce
+ * @return giorno corrente
+ */
+t_giorno get_giorno_attuale();
+
+t_categoria return_categoria_giorno_attuale();
+
+
+
+#endif /* PIANO_SETTIMANALE_H_ */

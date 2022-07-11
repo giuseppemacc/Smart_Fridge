@@ -1,41 +1,82 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <ctype.h>
-
-#include "file_names.h"
-#include "gestione_alimenti.h"
 #include "gestione_ricette.h"
-
-#include "inputs.h"
+#include "file_names.h"
+#include "piano_settimanale.h"
+#include "gestione_alimenti.h"
 #include "types.h"
 #include "utils.h"
-#include "piano_settimanale.h"
-#include "menu_utente.h"
+#include "inputs.h"
+
+#include <string.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 
 
-int ricerca_ricetta(char* nome, t_ricetta* ricetta, FILE* file_ricette){
-	int flag_ricetta_trovato=0;
+
+/**
+ * @fn int ricerca_ricetta_binaria(char*, t_ricetta*, FILE*)
+ * @brief ricerca una ricetta tramite il nome in file_ricette
+ * @warning  usa la ricerca binaria quindi necessita che file_ricette sia ordinato!
+ * @pre   file_ricette aperto, file_ricette ordinato
+ * @post  puntatore del file posizionato per leggere/modificare la ricetta trovata
+ * 		  se la ricetta non viene trovata il puntatore è posizionato alla fine del file
+ * @param nome
+ * @param ricetta con valore della ricetta se trovata
+ * @param file_ricette
+ * @return 0 se non è stata trovata la ricetta
+ *         1 se è stata trovata e viene memorizzata in *ricetta
+ */
+int ricerca_ricetta_binaria (char *nome, t_ricetta *ricetta, FILE *file_ricette){
+	int flag_ricetta_trovata = 0;
+	int inf, sup, med;
+	inf = 0;
+
 	t_ricetta ricetta_corrente;
 
-  strToUpper(nome);
+	strToUpper(nome);
 
-	rewind(file_ricette);
-	fread( &ricetta_corrente, sizeof(t_ricetta), 1, file_ricette);
+	fseek(file_ricette, 0, SEEK_END);	//posiziona il puntatore in ultima posizione
 
-	 while(!feof(file_ricette) && (flag_ricetta_trovato==0)){
-	  if( strcmp(ricetta_corrente.nome, nome)==0 ){
-		  flag_ricetta_trovato=1;
-		  *ricetta = ricetta_corrente;
-		  fseek(file_ricette, -1*sizeof(t_ricetta), SEEK_CUR);//sposta di uno indietro
-	  }else{
-		  fread( &ricetta_corrente, sizeof(t_ricetta), 1, file_ricette);
-	  }
-	}
-	return flag_ricetta_trovato;
+	sup = ftell(file_ricette)/sizeof(t_ricetta);	//numero di elementi nel file
+
+
+	do{
+		med = ( inf + sup) / 2;
+
+		fseek(file_ricette, (med - 1) *sizeof(t_ricetta), SEEK_SET);
+
+		fread(&ricetta_corrente, sizeof(t_ricetta), 1, file_ricette);
+
+
+		if (strcmp(ricetta_corrente.nome, nome) == 0){
+			flag_ricetta_trovata = 1;
+			*ricetta = ricetta_corrente;
+			 fseek(file_ricette, -1 * sizeof(t_ricetta), SEEK_CUR); // sposta di uno indietro
+
+		}else{
+			if (strcmp(ricetta_corrente.nome, nome) < 0){
+				inf = med + 1;
+			}else{
+				sup = med - 1;
+			}
+		}
+	}while (inf <= sup && !flag_ricetta_trovata);
+
+	return flag_ricetta_trovata;
 }
 
+/**
+ * @fn void ricerca_ricettaSottstr(char*, t_ricetta[], int*, FILE*)
+ * @brief cerca e restituisce tutte le ricette che contengono *nome per sottostringa nel loro nome
+ *		  - scorre tutto il file dall'inizio e memorizza in ricette[] tutte le ricette trovate nel file che contengono *nome come sottistringa nel loro corrispondente campo nome
+ *		    e memorizza il numero di ricette trovate in *n_ricette
+ * @pre  file_ricette aperto
+ * @post puntatore del file posizionato alla fine
+ * @param nome : sottostringa da cercare
+ * @param ricette : array di ricette trovate
+ * @param n_ricette
+ * @param file_ricette
+ */
 void ricerca_ricettaSottstr(char *nome, t_ricetta ricette[], int* n_ricette, FILE *file_ricette) {
   t_ricetta ricetta_corrente;
 
@@ -56,6 +97,18 @@ void ricerca_ricettaSottstr(char *nome, t_ricetta ricette[], int* n_ricette, FIL
   }
 }
 
+
+/**
+ * @fn t_ricetta richiediRicetta(int*)
+ * @brief chiede all'utente di inserire un nome di ricetta e resituisce la ricetta voluta trovata nel file ricette
+ * 		  - chiede di inserire un nome di ricetta
+ * 		  - se è stata trovata una ricetta nel file ricette con lo stesso nome allora la resituisce
+ * 		  - altrimenti esegue la ricerca su sottostringa e mostra all'utente l' elenco di ricette trovate
+ * 		    e chiede di selezionare quella voluta e la resituisce
+ * 		  - se non viene trovata nessuna ricetta neanche tramite la ricerca per sottostringa allora chiede all'utente di inserire un altro nome
+ * @param flag_home viene impostato ad 1 se l'utente inserisci la costante BACK_HOME altrimenti 0
+ * @return ricetta desiderata
+ */
 t_ricetta richiediRicetta(int* flag_home){
 
 	t_ricetta ricetta_trovata;
@@ -65,7 +118,7 @@ t_ricetta richiediRicetta(int* flag_home){
 	int flag_continue;
 	int flag_errore;
 
-	char nome[20];
+	char nome[50];
 	int input;
 
 	FILE* file_ricette;
@@ -76,21 +129,22 @@ t_ricetta richiediRicetta(int* flag_home){
 
 		do{
 			printf("Inserisci il nome della ricetta >> ");
-			inputStr(nome, 20, &flag_errore, &(*flag_home));
+			inputStr(nome, 50, &flag_errore, &(*flag_home));
 
 		}while(flag_errore && ((*flag_home)==0));
 
 
 		if(!(*flag_home)){
 
+			ordinaFileRicette_AZ(FILENAME_RICETTE);
+
 			if(apriFile(&file_ricette, FILENAME_RICETTE, "rb+")){
 
-				if( !ricerca_ricetta(nome, &ricetta_trovata, file_ricette) ){
+				if( !ricerca_ricetta_binaria(nome, &ricetta_trovata, file_ricette) ){
 
 					ricerca_ricettaSottstr(nome, ricette_trovate, &n_ricette_trovate, file_ricette);
 
-					if( n_ricette_trovate > 0){
-						// printa gli alimenti
+					if( n_ricette_trovate > 0){ // se è stata trovata almeno una ricetta
 
 						puts("forse cercavi ...");
 
@@ -103,6 +157,7 @@ t_ricetta richiediRicetta(int* flag_home){
 							printf("seleziona opzione >> ");
 							input = inputInt(&flag_errore, &(*flag_home));
 
+							// controlli sull input
 							if(!(*flag_home) && !flag_errore){
 
 								if( input == 0 ){
@@ -135,7 +190,14 @@ t_ricetta richiediRicetta(int* flag_home){
 
 
 
-
+/**
+ * @fn void ordinaFileRicette_AZ(char*)
+ * @brief ordina file_name di ricette in ordine alfabetico
+ * 		  usa l'ordinamento per selezione
+ * @pre file_name non ordinato
+ * @post file_name ordinato
+ * @param file_name
+ */
 void ordinaFileRicette_AZ(char *file_name){
 	FILE* file;
 
@@ -206,6 +268,16 @@ void ordinaFileRicette_AZ(char *file_name){
   }
 }
 
+
+/**
+ * @fn void print_ricette(int, char*)
+ * @brief visualizza a schermo tutte le ricette (in ordine alfabetico se ordina_file=1) presenti in filename_ricette
+ * 		  se ordina_file = 1 ordina filename_ricette
+ * 		  stampa a schermo tutte le ricette del file
+ * @post  dettagli ricette presenti in filename_ricette stampati a schermo
+ * @param ordina_file
+ * @param filename_ricette
+ */
 void print_ricette(int ordina_file, char* filename_ricette){
 	FILE* file_ricette;
 	t_ricetta ricetta_corrente;
@@ -220,7 +292,7 @@ void print_ricette(int ordina_file, char* filename_ricette){
 		fread( &ricetta_corrente, sizeof(t_ricetta), 1, file_ricette);
 
 		 while(!feof(file_ricette)){
-			 if(strcmp(ricetta_corrente.nome,"")!=0){
+			 if(strcmp(ricetta_corrente.nome,"")!=0){ // se non è una ricetta nulla
 				print_ricetta(ricetta_corrente);
 			 }
 		  fread( &ricetta_corrente, sizeof(t_ricetta), 1, file_ricette);
@@ -230,6 +302,14 @@ void print_ricette(int ordina_file, char* filename_ricette){
 	}
 }
 
+
+/**
+ * @fn void caricaRicette()
+ * @brief permette all'utente di aggiungere delle ricette al file ricette
+ * 		  chiede all'utente di inserire una ricetta o più ricette con i relativi campi e la aggiunge in coda al file ricette
+ * 		  - non permette l'aggiunta di una ricetta con lo stesso di nome di un altra già presente in file ricette
+ * @post file ricette con l'aggiunta delle nuove ricette inserite
+ */
 void caricaRicette(){
   int flag_home;
   int flag_continue;
@@ -247,15 +327,19 @@ void caricaRicette(){
 	ricetta = inputRicetta(&flag_home);
 
 	if (!flag_home) {
+
+		ordinaFileRicette_AZ(FILENAME_RICETTE);
+
 		if( apriFile(&file_ricette, FILENAME_RICETTE, "rb+") ){
 
-			if( ricerca_ricetta(ricetta.nome, &ricetta_trovata, file_ricette) ){
+			// se esiste gia' una ricetta con lo stesso nome nel file
+			if( ricerca_ricetta_binaria(ricetta.nome, &ricetta_trovata, file_ricette) ){
 
 				flag_errore = 1;
-				flag_continue = 1; // cioè che glielo fa rinserire
+				flag_continue = 1; // significa che glielo farà reinserire
 				printf("impossibile aggiungere la ricetta! esiste già una ricetta con lo stesso nome");
 			}else{
-				fseek(file_ricette, 0, SEEK_END); // posiziona alla fine
+				fseek(file_ricette, 0, SEEK_END); // posiziona alla fine per aggiungere la ricetta
 			}
 
 		   if (!flag_errore ) {
@@ -281,7 +365,17 @@ void caricaRicette(){
 
 
 
-
+/**
+ * @fn t_ricetta modificaRicetta(t_ricetta, int*)
+ * @brief permette all'utente di modificare i campi di una ricetta passata come argomento
+ * 		  - durante la modifica non permette all'utente di cambiare il nome con un altro di una ricetta già presente in file ricette
+ * 		    e tiene in considerazione che deve essere presente sempre almeno un ingrediente
+ * 		  - durante le molteplici richieste di input considera sempre il caso che l'utente possa inserire valori errati
+ * 		    o che possa inserire la costante BACK_HOME ed in quest'ultimo caso imposta *flag_home a 1 e termina la funzione
+ * @param ricetta
+ * @param flag_home
+ * @return ricetta modificata
+ */
 t_ricetta modificaRicetta(t_ricetta ricetta, int* flag_home){
 
 	int flag_errore;
@@ -291,14 +385,17 @@ t_ricetta modificaRicetta(t_ricetta ricetta, int* flag_home){
 	t_ricetta ricetta_modificata = ricetta;
 	int flag_continua_modifiche;
 
-	// memorizza il nome prima di far avvenire la modifica così in caso di scelta di eliminazione
-	// se non è possibile far avvenire l'eliminazione si reimposta il nome orginale
+	// variabili temporane
 	char temp_nome[50];
+	t_alimento ingrediente_rimosso;
+	t_alimento ingrediente_ultimapos;
+
 
 	do{
 		printf("1) elimina ricetta\n2) modifica ricetta\n >> ");
 		input = inputInt(&flag_errore, &(*flag_home));
 
+		// controlli sull input
 		if(!flag_errore && !(*flag_home)){
 			if(!(input==1 || input==2 )){
 				flag_errore=1;
@@ -324,6 +421,7 @@ t_ricetta modificaRicetta(t_ricetta ricetta, int* flag_home){
 
 				input = inputInt(&flag_errore, &(*flag_home));
 
+				// controlli sull input
 				if(!flag_errore && !(*flag_home)){
 					if(!( (input>=1) && (input<=4) )){
 						flag_errore=1;
@@ -341,8 +439,11 @@ t_ricetta modificaRicetta(t_ricetta ricetta, int* flag_home){
 
 						if(!(*flag_home)){
 
+							ordinaFileRicette_AZ(FILENAME_RICETTE);
+
 							if(apriFile(&file_ricette, FILENAME_RICETTE, "rb+")){
-								if( ricerca_ricetta(ricetta_modificata.nome, &ricetta_trovata, file_ricette)){ // se esiste già un alimento con il nuovo nome
+								// se esiste già una ricetta con lo stesso nome nel file
+								if( ricerca_ricetta_binaria(ricetta_modificata.nome, &ricetta_trovata, file_ricette)){
 									printf("impossibile modificare il nome, esiste già una ricetta con lo stesso nome\n");
 
 									flag_errore = 1;
@@ -371,6 +472,7 @@ t_ricetta modificaRicetta(t_ricetta ricetta, int* flag_home){
 							printf("1) modifica/rimuovi ingredienti\n2) aggiungi ingredienti\n3) salva modifiche ed esci\n >>");
 							input = inputInt(&flag_errore, &(*flag_home));
 
+							// controlli sull input
 							if(!flag_errore && !(*flag_home)){
 								if(!( (input==1) || (input==2) || (input==3) )){
 									flag_errore=1;
@@ -394,6 +496,7 @@ t_ricetta modificaRicetta(t_ricetta ricetta, int* flag_home){
 									printf("quale ingrediente vuoi modificare/rimuovere ? ");
 									input = inputInt( &flag_errore, &(*flag_home) );
 
+									// se è stato inserito un numero non associato a nessun ingrediente
 									if(!( (input >= 1) && (input <= ricetta_modificata.n_ingredienti) )){
 										flag_errore=1;
 									}
@@ -402,17 +505,18 @@ t_ricetta modificaRicetta(t_ricetta ricetta, int* flag_home){
 
 								if(!(*flag_home)){
 
+									// memorizza il nome originario prima di permetterne la modifica
 									strcpy(temp_nome, ricetta_modificata.ingredienti[input-1].nome);
 
-									ricetta_modificata.ingredienti[input-1] = modificaAlimento(ricetta_modificata.ingredienti[input-1], 1, &(*flag_home));
+									ricetta_modificata.ingredienti[input-1] = modificaAlimento(ricetta_modificata.ingredienti[input-1], 1, &(*flag_home));// 1 indica che permette la modifica della dispensa
 
 									if(!(*flag_home)){
 										if(strEqual(ricetta_modificata.ingredienti[input-1].nome,"")){// se vuol far rimuovere un ingrediente
 
 											if(ricetta_modificata.n_ingredienti >= 2){// ci deve essere sempre almeno un ingrediente
 												// scambia l'ingrediente rimosso con quello in ultima posizione
-												t_alimento ingrediente_rimosso = ricetta_modificata.ingredienti[input-1];
-												t_alimento ingrediente_ultimapos = ricetta_modificata.ingredienti[ricetta_modificata.n_ingredienti-1];
+												ingrediente_rimosso = ricetta_modificata.ingredienti[input-1];
+												ingrediente_ultimapos = ricetta_modificata.ingredienti[ricetta_modificata.n_ingredienti-1];
 
 												ricetta_modificata.ingredienti[input-1] = ingrediente_ultimapos;
 												ricetta_modificata.ingredienti[ricetta_modificata.n_ingredienti-1] = ingrediente_rimosso;
@@ -422,7 +526,7 @@ t_ricetta modificaRicetta(t_ricetta ricetta, int* flag_home){
 											}else{
 												puts("impossibile rimuovere l'ingrediente! la ricetta deve avere almeno un ingrediente!");
 
-												// rimposta il nome come era prima
+												// reimposta il nome come era prima
 												strcpy(ricetta_modificata.ingredienti[input-1].nome, temp_nome);
 
 												flag_errore = 1;
@@ -435,17 +539,14 @@ t_ricetta modificaRicetta(t_ricetta ricetta, int* flag_home){
 
 								ricetta_modificata.n_ingredienti++;
 								// vai ad aggiungere un ingrediente in ultima posizione
-								ricetta_modificata.ingredienti[ricetta_modificata.n_ingredienti-1] = inputAlimento(1, &(*flag_home));
+								ricetta_modificata.ingredienti[ricetta_modificata.n_ingredienti-1] = inputAlimento(1, &(*flag_home));// 1 indica che permette inserimento della dispensa
 
 							}else if(input == 3){
 								flag_continua_modifiche = 0;
 							}
-
 						}
 
-
 					}while(!(*flag_home) && (flag_continua_modifiche) );
-
 
 				}else if (input == 4){
 
@@ -455,23 +556,34 @@ t_ricetta modificaRicetta(t_ricetta ricetta, int* flag_home){
 		}
 	}
 
-
 	return ricetta_modificata;
 }
 
-// sostituisce nel file_ricette ricetta con ricetta_modificata
+
+
+/**
+ * @fn void sovrascrivi_ricetta(char*, t_ricetta)
+ * @brief sovrascrive nel file ricetta la ricetta con nome nome_ricetta con ricetta_modificata
+ * 	      - cerca nel file ricette la ricetta con nome_ricetta e la sovrascrive con ricetta_modificata
+ * @post  file ricette con la ricetta_modificata
+ * @param nome_ricetta
+ * @param ricetta_modificata
+ */
 void sovrascrivi_ricetta(char* nome_ricetta, t_ricetta ricetta_modificata){
 
 	FILE* file_ricette;
 	t_ricetta ricetta_trovata;
 
+	ordinaFileRicette_AZ(FILENAME_RICETTE);
+
 	if(apriFile(&file_ricette, FILENAME_RICETTE, "rb+")){
 
-		if( ricerca_ricetta(nome_ricetta, &ricetta_trovata, file_ricette) ){ // posiziona il puntatore sull alimento da moficare
+		 // posiziona il puntatore sulla ricetta da moficare
+		if( ricerca_ricetta_binaria(nome_ricetta, &ricetta_trovata, file_ricette) ){
 
 			fwrite(&ricetta_modificata, sizeof(t_ricetta), 1, file_ricette);
 
-			if( strEqual(ricetta_modificata.nome, "")){
+			if( strEqual(ricetta_modificata.nome, "")){ // se non è una ricetta nulla
 				printf("ricetta eliminata!\n");
 			}else{
 				printf("ricetta modificata!\n");
@@ -488,27 +600,48 @@ void sovrascrivi_ricetta(char* nome_ricetta, t_ricetta ricetta_modificata){
 
 
 
-
-
-
-// alimento1 <= alimento2 ===> 1
+/**
+ * @fn int isAlimento_compatibile(t_alimento, t_alimento, int)
+ * @brief determina se alimento1 è compatibile con alimento2
+ *		  - controlla se alimento1 e alimento hanno stesso nome e stessa unita di misura
+ *		  - se ignora_quantita==0 controlla anche che la quantità di alimento1 sia <= di alimento2
+ *		 	altrimenti non esegue questa condizione
+ * @param alimento1
+ * @param alimento2
+ * @param ignora_quantita (se ignora_quantita=1 ignora il controlla sulla quantità)
+ * @return se tutti le condizioni sono vere ritorna 1 altrimenti 0
+ */
 int isAlimento_compatibile(t_alimento alimento1, t_alimento alimento2, int ignora_quantita){
 
-  if( !strEqual(alimento1.nome,"") &&  !strEqual(alimento2.nome,"") ){ // se nessuno dei due � nullo
+  if( !strEqual(alimento1.nome,"") &&  !strEqual(alimento2.nome,"") ){ // se nessuno dei due e' nullo
+	// return 1 se hanno lo stesso nome e quantita e in caso di ingora_quantita=0 la quantita di alimento1 minore di quella di alimento2
     return ( strEqual(alimento1.nome, alimento2.nome) &&
-    (alimento1.unita == alimento2.unita) &&  (ignora_quantita ? 1 : (alimento1.quantita <= alimento2.quantita) ) );
+    (alimento1.unita == alimento2.unita) &&
+	(ignora_quantita ? 1 : (alimento1.quantita <= alimento2.quantita) ) );
   }else{
     return 0;
   }
 
 }
 
+
+/**
+ * @fn int isPreparabile(t_ricetta, char*)
+ * @brief determina se una ricetta è preparabile con gli alimenti presenti in filename_alimenti
+ * 		  - per ogni ingrediente della ricetta verifica che sia presente nel frigo e che sia nelle quantita giuste
+ * 		  - tutti gli ingredienti della ricetta con campo dispensa=1 vengono considerati come disponibili
+ * @param ricetta
+ * @param filename_alimenti
+ * @return se tutti le condizioni sono vere ritorna 1 altrimenti 0
+ */
 int isPreparabile(t_ricetta ricetta, char* filename_alimenti){
 
 	int flag_preparabile;
 	FILE* file_alimenti;
 	t_alimento alimento_trovato;
 	int i_alimenti_ricetta;
+
+	ordinaFileAlimenti_AZ(filename_alimenti);
 
 	if( apriFile(&file_alimenti, filename_alimenti, "rb+") ){
 
@@ -518,21 +651,18 @@ int isPreparabile(t_ricetta ricetta, char* filename_alimenti){
 		while ( (i_alimenti_ricetta<ricetta.n_ingredienti) && (flag_preparabile==1) ) {
 			flag_preparabile = 0;
 
-      // se ricetta.ingredienti[i_alimenti_ricetta].dispensa == true:
-      //    preparabile = 1
-      // else:�
+			  if(ricetta.ingredienti[i_alimenti_ricetta].dispensa){ // se e' un ingrediente da dispensa consideralo sempre disponibile
 
-      if(ricetta.ingredienti[i_alimenti_ricetta].dispensa){
+				flag_preparabile = 1;
 
-        flag_preparabile = 1;
+				// se l'ingrediente esiste nel file alimenti
+			  }else if(ricerca_alimento_binaria(ricetta.ingredienti[i_alimenti_ricetta].nome, &alimento_trovato, file_alimenti)){
 
-      }else if(ricerca_alimento(ricetta.ingredienti[i_alimenti_ricetta].nome, &alimento_trovato, file_alimenti)){
-
-				if(isAlimento_compatibile(ricetta.ingredienti[i_alimenti_ricetta], alimento_trovato, 0)){
-					flag_preparabile = 1;
+				  	  // se è compatibile
+					if(isAlimento_compatibile(ricetta.ingredienti[i_alimenti_ricetta], alimento_trovato, 0)){ // 0 perche tiene in considerazione la quantita
+						flag_preparabile = 1;
+					}
 				}
-
-			}
 
 			i_alimenti_ricetta++;
 		}
@@ -540,12 +670,20 @@ int isPreparabile(t_ricetta ricetta, char* filename_alimenti){
 		fclose(file_alimenti);
 	}
 
-
-
 	return flag_preparabile;
 }
 
-// tutti gli alimenti di alimenti1 sono presenti in alimenti2 e sono in quantità minore
+
+/**
+ * @fn int isContained(t_alimento[], t_alimento[], int, int)
+ * @brief determina se un array di alimenti è contenuto in un altro array di alimenti
+ *	      - verifica per ogni alimento in alimenti1[] sia presente presente un alimento in alimenti2[] con lo stesso nome e unita di misura
+ * @param alimenti1
+ * @param alimenti2
+ * @param n_alimenti1
+ * @param n_alimenti2
+ * @return 1 se la condizione è verificata altrimenti 0
+ */
 int isContained(t_alimento alimenti1[], t_alimento alimenti2[], int n_alimenti1, int n_alimenti2){
 
 	int flag_contained;
@@ -561,7 +699,7 @@ int isContained(t_alimento alimenti1[], t_alimento alimenti2[], int n_alimenti1,
 
 		i_alimenti2=0;
 		while ( (i_alimenti2<n_alimenti2) && (flag_contained==0) ){
-			if( isAlimento_compatibile(alimenti1[i_alimenti1], alimenti2[i_alimenti2], 1) ){
+			if( isAlimento_compatibile(alimenti1[i_alimenti1], alimenti2[i_alimenti2], 1) ){ // 1 perche' ignora il controllo sulla quantita
 				flag_contained = 1;
 			}
 			i_alimenti2++;
@@ -574,6 +712,17 @@ int isContained(t_alimento alimenti1[], t_alimento alimenti2[], int n_alimenti1,
 	return flag_contained;
 }
 
+
+/**
+ * @fn void ricettePreparabili(t_ricetta[], int*, char*)
+ * @brief resituisce tutte le ricette di filename_ricette preparabili con gli alimenti presenti nel file alimenti
+ *		  per ogni ricetta in filename_ricette verifica se è preparabile e la aggiunge all'array ricette_preparabili[]
+ * @pre ricette_preparabili[] vuoto, *n_ricette_preparabili di qualunque valore
+ * @post ricette_preparabili[] riempito con le ricette preparabili, e con n_ricette_preparabili >= 0
+ * @param ricette_preparabili
+ * @param n_ricette_preparabili
+ * @param filename_ricette
+ */
 void ricettePreparabili( t_ricetta ricette_preparabili[], int* n_ricette_preparabili, char* filename_ricette){
 	FILE* file_ricette;
 	t_ricetta ricetta_corrente;
@@ -586,9 +735,9 @@ void ricettePreparabili( t_ricetta ricette_preparabili[], int* n_ricette_prepara
 
 		while(!feof(file_ricette)){
 
-			if(  ! strEqual(ricetta_corrente.nome, "") ){
-				if( isPreparabile(ricetta_corrente, FILENAME_ALIMENTI)  ){
-					 ricette_preparabili[*n_ricette_preparabili] = ricetta_corrente;
+			if(  ! strEqual(ricetta_corrente.nome, "") ){ // se non e' una ricetta nulla
+				if( isPreparabile(ricetta_corrente, FILENAME_ALIMENTI)  ){ // se è una ricetta preparabile
+					 ricette_preparabili[*n_ricette_preparabili] = ricetta_corrente; // aggiungi all array
 					 (*n_ricette_preparabili)++;
 				 }
 			}
@@ -600,6 +749,19 @@ void ricettePreparabili( t_ricetta ricette_preparabili[], int* n_ricette_prepara
 	}
 }
 
+
+/**
+ * @fn void ricetteCompatibili(t_alimento[], int, t_ricetta[], int*, char*)
+ * @brief restituisce tutte le ricette di filename_ricette che sono preparabili e che contengono tra i loro ingredienti tutti gli alimenti di alimenti[]
+ * 	      per ogni ricetta in filename_ricette verifica se è compatibile e la aggiunge all'array ricette_compatibili[]
+ * @pre ricette_compatibili[] vuoto, *n_ricette_compatibili di qualunque valore
+ * @post ricette_preparabili[] riempito con le ricette compatibili, e con n_ricette_comatibili >= 0
+ * @param alimenti
+ * @param n_alimenti
+ * @param ricette_compatibili
+ * @param n_ricette_compatibili
+ * @param filename_ricette
+ */
 void ricetteCompatibili( t_alimento alimenti[], int n_alimenti, t_ricetta ricette_compatibili[], int* n_ricette_compatibili, char* filename_ricette){
 	FILE* file_ricette;
 	t_ricetta ricetta_corrente;
@@ -611,8 +773,8 @@ void ricetteCompatibili( t_alimento alimenti[], int n_alimenti, t_ricetta ricett
 		fread( &ricetta_corrente, sizeof(t_ricetta), 1, file_ricette);
 
 		while(!feof(file_ricette)){
-			// tutti gli alimenti[] devono essere presenti in ricetta.ingredienti[]
-			// ed in quantità maggiore
+
+			// se e' una ricetta preparabile e contiene tutti gli alimenti[]
 			 if( isPreparabile(ricetta_corrente, FILENAME_ALIMENTI)
 					&& isContained( alimenti, ricetta_corrente.ingredienti, n_alimenti, ricetta_corrente.n_ingredienti)){
 				 ricette_compatibili[*n_ricette_compatibili] = ricetta_corrente;
@@ -630,7 +792,17 @@ void ricetteCompatibili( t_alimento alimenti[], int n_alimenti, t_ricetta ricett
 
 
 
-
+/**
+ * @fn void shift_arrRicette_4cat(t_ricetta[], int, t_categoria)
+ * @brief imposta nelle prime posizioni le ricette con la categoria cat e "shifta" tutte le altre ricette mantenendo il loro ordine
+ *
+ * @pre ricette di ricette[] con la categoria cat in qualsiasi posizione
+ * 		(ricette[] può anche non contenere nessuna ricetta con categoria cat, in tal caso ricette[] rimarrà invariato)
+ * @post ricette di ricette[] con la categoria cat tutte nelle prime posizioni (se presenti)
+ * @param ricette
+ * @param n_ricette
+ * @param cat (categoria per cui si vuole "shiftare" l'array ricette[])
+ */
 void shift_arrRicette_4cat(t_ricetta ricette[], int n_ricette, t_categoria cat){
 	int i=0;
 	int j;
@@ -641,7 +813,7 @@ void shift_arrRicette_4cat(t_ricetta ricette[], int n_ricette, t_categoria cat){
 	while( (i<n_ricette) && (cat_found==1)){
 
 		cat_found = 0;
-		j=i;
+		j = i;
 
 		while((j<n_ricette) && (cat_found==0)){
 
@@ -656,6 +828,7 @@ void shift_arrRicette_4cat(t_ricetta ricette[], int n_ricette, t_categoria cat){
 		if( cat_found && (i_cat != i) ){
 			ric_cat = ricette[i_cat];
 
+			// shifta le ricette dopo quella con la categoria = cat
 			for(int z = (i_cat-1); z >=i ; z--){
 				ricette[z+1] = ricette[z];
 			}
@@ -666,6 +839,15 @@ void shift_arrRicette_4cat(t_ricetta ricette[], int n_ricette, t_categoria cat){
 	}
 }
 
+
+/**
+ * @fn void ordina_arrRicette_4giorni(t_ricetta[], int)
+ * @brief ordina ricette[], in ordine decrescente, per il campo counter_giorni
+ * @pre ricette non ordinato
+ * @post ricette ordinato
+ * @param ricette
+ * @param n_ricette
+ */
 void ordina_arrRicette_4giorni(t_ricetta ricette[], int n_ricette){
 
 	int i;
@@ -698,6 +880,17 @@ void ordina_arrRicette_4giorni(t_ricetta ricette[], int n_ricette){
 	}
 }
 
+
+/**
+ * @fn void prioritarizza_ricette(t_ricetta[], int)
+ * @brief ordina ricette in base alla categoria associata al giorno corrente e in base al counter_giorni di ogni ricetta
+ * @pre  ricette di ricette[] non ordinate in base a counter_giorni e categoria giorno corrente
+ * @post - ricette[] ordinato in modo tale che si trovino nelle prime posizioni le ricette la cui categoria è la stessa di quella associata al giorno corrente nel piano settimanale
+ * 		    e queste ricette saranno ordinate in ordine decrescente secondo il campo counter_giorni
+ * 		  - le restanti ricette saranno comunque ordinate in ordine decrescente secondo il campo counter_giorni
+ * @param ricette
+ * @param n_ricette
+ */
 void prioritarizza_ricette( t_ricetta ricette[], int n_ricette ){
 
 	// ottiene la categoria dal giorno
@@ -714,7 +907,17 @@ void prioritarizza_ricette( t_ricetta ricette[], int n_ricette ){
 
 
 
-
+/**
+ * @fn void preparaRicetta(t_ricetta)
+ * @brief "prepara" la ricetta
+ * @post - incrementa di uno il giorno corrente
+ * 		 - riduce dal file alimenti la quantità per ogni ingrediente di ricetta.ingredienti[]
+ * 		   nel caso in cui la quantità dell'alimento del file alimenti aggiornato sia 0 l'alimento verrà rimosso dal file
+ * 		 - incrementa di uno il counter_giorni per ogni ricetta presente nel file ricette
+ * 		   eccetto per quella che viene preparata il, cui counter_giorno è posto uguale a 0
+ * 		 - aggiunge la ricetta preparata in ultima posizione del file cronologia ricette
+ * @param ricetta
+ */
 void preparaRicetta(t_ricetta ricetta){
 	FILE* file_pianosettimanale;
 	FILE* file_alimenti;
@@ -725,9 +928,8 @@ void preparaRicetta(t_ricetta ricetta){
 	t_alimento alimento;
 	t_ricetta ricetta_corrente;
 
-	//aggiungi la ricetta alla cronologia
 
-	// file giorni ++
+	// incrementa il giorno corrente
 	if (apriFile(&file_pianosettimanale, FILENAME_PIANO_SETTIMANALE, "rb+")){
 
 		fread( &giorno, sizeof(t_giorno), 1, file_pianosettimanale);
@@ -745,13 +947,14 @@ void preparaRicetta(t_ricetta ricetta){
 	}
 
 
-	// deve scalare la quantità dal frigo
+	// scala la quantità dal frigo
+	ordinaFileAlimenti_AZ(FILENAME_ALIMENTI);
 	if (apriFile(&file_alimenti, FILENAME_ALIMENTI, "rb+")){
 
 		for(int i=0; i<ricetta.n_ingredienti; i++){
 
 			if( ricetta.ingredienti[i].dispensa == 0 ){ // se l alimento non è da dispensa
-				if( ricerca_alimento(ricetta.ingredienti[i].nome, &alimento, file_alimenti  ) ){
+				if( ricerca_alimento_binaria(ricetta.ingredienti[i].nome, &alimento, file_alimenti  ) ){
 					alimento.quantita -= ricetta.ingredienti[i].quantita;
 
 					if(alimento.quantita<=0){
@@ -759,8 +962,6 @@ void preparaRicetta(t_ricetta ricetta){
 					}
 
 					fwrite(&alimento, sizeof(t_alimento), 1, file_alimenti);
-				}else{
-					printf("GRAAAAAAAANDE BUUUUUG\n");
 				}
 			}
 
@@ -770,15 +971,8 @@ void preparaRicetta(t_ricetta ricetta){
 	}
 
 
-	// counter_giorni = 0
-	// preparata = true
-
-	// per ogni ricetta eccetto quella preparata:
-
-	//	counter_giorni++
-	//  if (prepara==true) AND (counter_giorni > 7):
-	//		preparata = false
-
+	// incrementa a tutte le ricette del file ricette il counter_giorni di 1
+	ordinaFileRicette_AZ(FILENAME_RICETTE);
 	if( apriFile( &file_ricette, FILENAME_RICETTE, "rb+") ){
 
 		t_ricetta ric_corrente;
@@ -787,11 +981,11 @@ void preparaRicetta(t_ricetta ricetta){
 		rewind(file_ricette);
 		fread(&ric_corrente, sizeof(t_ricetta), 1, file_ricette);
 
+
 		while( !(feof(file_ricette)) ){
 
-
 			ric_corrente.counter_giorni += 1;
-			//print_ricetta(ric_corrente);
+
 			fseek(file_ricette, -sizeof(t_ricetta), SEEK_CUR);
 			fwrite(&ric_corrente, sizeof(t_ricetta), 1, file_ricette);
 			i++;
@@ -803,10 +997,10 @@ void preparaRicetta(t_ricetta ricetta){
 		}
 
 
-		if(ricerca_ricetta(ricetta.nome, &ricetta_corrente, file_ricette)){
+		// imposta counter_giorni = 0 della ricetta preparata nel file ricette
+		if(ricerca_ricetta_binaria(ricetta.nome, &ricetta_corrente, file_ricette)){
 
 			ricetta_corrente.counter_giorni = 0;
-			ricetta_corrente.preparata = 1;
 			fwrite(&ricetta_corrente, sizeof(t_ricetta), 1, file_ricette);
 
 		}else{
@@ -834,6 +1028,15 @@ void preparaRicetta(t_ricetta ricetta){
 
 }
 
+
+/**
+ * @fn void consigliaRicette()
+ * @brief consiglia all'utente che ricetta preparare e gli permette di prepararla
+ * 		  - propone all'utente le ricette preparabili ordinate con prioritarizza_ricette(t_ricetta[], int)
+ * 	      - l'utente in fase iniziale può anche decidere di inserire degli alimenti che dovranno necessariamente essere presenti tra gli ingredienti delle ricette proposte
+ * 	      - se sono presenti ricette che rispecchiano queste caratterstiche viene permesso all'utente di prepararle e di inserire una valutazione
+ * @post  ha li stessi effetti di preparaRicetta(t_ricetta) e valutaRicetta(char*, int*), in caso l'utente scelga di preparare e valutare la ricetta
+ */
 void consigliaRicette(){
 	int input;
 	int input_ins_al;
@@ -859,8 +1062,9 @@ void consigliaRicette(){
 			n_alimenti_scelti = 0;
 			n_ricette_selezionate = 0;
 
-			if(input_ins_al){ // se è stato detto di inserire gli alimenti
+			if(input_ins_al){ // se è stato scelto di inserire gli alimenti
 
+				// fa inserire gli alimenti e gli inserisce in alimenti_scelti[]
 				do{
 					alimenti_scelti[n_alimenti_scelti] = richiediAlimento(&flag_home);
 					if (!flag_home){
@@ -874,16 +1078,19 @@ void consigliaRicette(){
 				}while(input && (flag_home==0));
 
 				if(!flag_home){
+					// trova le ricette compatibili e preparabili con gli alimenti inseriti e le inserisce in ricette_selezionate[]
 					ricetteCompatibili(alimenti_scelti, n_alimenti_scelti, ricette_selezionate, &n_ricette_selezionate, FILENAME_RICETTE);
 
 				}
 
-			}else{ // se non è stato detto di inserire gli alimenti
+			}else{ // se è stato scelto di inserire gli alimenti
+				// trova le ricette preparabili e le inserisce in ricette_selezionate[]
 				ricettePreparabili(ricette_selezionate, &n_ricette_selezionate, FILENAME_RICETTE);
 			}
 
 			if(!flag_home){
 
+				// ordina ricette_selezionate[]
 				prioritarizza_ricette(ricette_selezionate, n_ricette_selezionate);
 
 				if( n_ricette_selezionate > 0){ // se sono state trovate ricette possibili
@@ -891,6 +1098,7 @@ void consigliaRicette(){
 					input = 0;
 					int i = 0;
 
+					// propone una ricetta di ricette_selezionate finchè non la prepara o gli vengono proposte tutte
 					while( (i<n_ricette_selezionate) && (flag_home == 0) && (input==0) ){
 
 						print_ricetta( ricette_selezionate[i] );
@@ -920,10 +1128,10 @@ void consigliaRicette(){
 								}
 
 							}else{
-								if(i == (n_ricette_selezionate-1)){
+								if(i == (n_ricette_selezionate-1)){ // se gli sono state proposte tutte le ricette di ricette_selezionate[]
 									printf("non sono presenti altre ricette preparabili\n");
 
-									if(input_ins_al){
+									if(input_ins_al){ // se inizialmente è stato scelto di inserire gli alimenti
 										do{
 											printf("cambiare gli alimenti? ");
 											flag_continue = inputBool(&flag_errore, &flag_home);
@@ -938,7 +1146,7 @@ void consigliaRicette(){
 						}
 					}
 				}else{ // se non sono state trovate ricette possibili
-					if(input_ins_al){
+					if(input_ins_al){ // se è stato scelto di inserire gli alimenti
 						printf("nessuna ricetta preparabile con gli alimenti scelti!\n");
 						do{
 							printf("cambiare gli alimenti ?");
@@ -959,12 +1167,18 @@ void consigliaRicette(){
 
 
 
-
+/**
+ * @fn void valutaRicetta(char*, int*)
+ * @brief permette all'utente di inserire una valutazione per la ricetta nel file ricette il cui nome corrisponte al nome passato per parametro
+ * @post ricetta nel file ricette il cui nome corrisponte al nome passato per parametro con la valutazione inserita dall'utente
+ * @param nome_ricetta
+ * @param flag_home
+ */
 void valutaRicetta(char* nome_ricetta, int* flag_home){
 	int valutazione;
 	int flag_errore;
 	FILE* file_ricette;
-	t_ricetta ricetta_trovata; // che saraà uguale a ricetta
+	t_ricetta ricetta_trovata;
 
 
 	do{
@@ -979,9 +1193,12 @@ void valutaRicetta(char* nome_ricetta, int* flag_home){
 
 	if(!(*flag_home)){
 
+		ordinaFileRicette_AZ(FILENAME_RICETTE);
+
 		if(apriFile(&file_ricette, FILENAME_RICETTE, "rb+")){
 
-			if( ricerca_ricetta(nome_ricetta, &ricetta_trovata, file_ricette) ){
+			// ricerca la ricetta e va a modificarne il campo valutazione
+			if( ricerca_ricetta_binaria(nome_ricetta, &ricetta_trovata, file_ricette) ){
 
 				ricetta_trovata.valutazione = valutazione;
 
@@ -996,10 +1213,17 @@ void valutaRicetta(char* nome_ricetta, int* flag_home){
 }
 
 
+/**
+ * @fn void printStatistica_voti()
+ * @brief mostra a schermo l'istogramma delle valutazioni ricette
+ * 		  - l'istogramma mostra quante ricette hanno avuto una valutazione pari a 1,2,3,4,5
+ * 		    e il numero di ricette non valutate
+ * @post   stampa a schermo dell'istogramma
+ */
 void printStatistica_voti(){
   FILE* file_ricette;
 	t_ricetta ricetta_corrente;
-  int n_valutazioni[6] = {0,0,0,0,0,0}; // 0=non valutata,    [1-5]=valutazione
+  int n_valutazioni[6] = {0,0,0,0,0,0}; // indice0=non valutata, indici[1-5] = n°valutazioni
 
 
   if( apriFile(&file_ricette, FILENAME_RICETTE, "rb+") ){
@@ -1009,7 +1233,7 @@ void printStatistica_voti(){
 
 
     while(!feof(file_ricette)){
-      if(  !strEqual(ricetta_corrente.nome,"") ){
+      if(  !strEqual(ricetta_corrente.nome,"") ){ // se non e' una ricetta nulla
         n_valutazioni[ricetta_corrente.valutazione]++;
       }
 
@@ -1019,7 +1243,7 @@ void printStatistica_voti(){
     fclose(file_ricette);
   }
 
-
+  // stampa istogramma
   for(int i=1; i<6; i++){
     printf("VOTO %d  ", i);
     for(int j=0; j<n_valutazioni[i]; j++){

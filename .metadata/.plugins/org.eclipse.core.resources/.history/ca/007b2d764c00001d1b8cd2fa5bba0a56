@@ -1,0 +1,96 @@
+#include "menu_utente.h"
+#include <string.h>
+#include <stdio.h>
+#include "types.h"
+#include "utils.h"
+
+
+int main(void) {
+	setvbuf(stdout, NULL, _IONBF, 0);
+	// str1 < str2 ==> -1
+	// str1 > str2 ==>  1
+
+	// char str1[50] = "1233 le mie palle";
+	// char str2[50] = "1233 zoz";
+
+	// printf("->%d\n", strMin(str1,str2));
+
+
+	menuu();
+
+	return 0;
+}
+
+
+//todo: ricerca binaria per i file
+//todo: rimuovere preparata ultimi 7 giorni
+
+//todo: capire come funziona strUpper perche ho copiato e incollato
+//todo: capire le ifdef
+
+
+//todo: tipo t_bool
+//todo: commenti
+//todo: doxygen
+//todo: messaggi all utente
+//todo: riempire i file
+
+
+
+//todo: isNum, isPositive, isFloat tutte in utils
+
+
+
+
+
+/*
+int ricerca_alimento(char *nome, t_alimento *alimento, FILE *file_alimenti) {
+  int flag_alimento_trovato = 0;
+  t_alimento alimento_corrente;
+
+
+  strToUpper(nome);
+
+  // cerca nel file alimenti e ritorna 1/0 se lo trova e lo setta in *alimento
+  rewind(file_alimenti);
+  fread(&alimento_corrente, sizeof(t_alimento), 1, file_alimenti);
+
+  while (!feof(file_alimenti) && (flag_alimento_trovato == 0)) {
+    if (strcmp(alimento_corrente.nome, nome) == 0) {
+      flag_alimento_trovato = 1;
+      *alimento = alimento_corrente;
+      fseek(file_alimenti, -1 * sizeof(t_alimento),
+            SEEK_CUR); // sposta di uno indietro
+    } else {
+      fread(&alimento_corrente, sizeof(t_alimento), 1, file_alimenti);
+    }
+  }
+  return flag_alimento_trovato;
+}*/
+
+
+
+
+
+/*
+int ricerca_ricetta(char* nome, t_ricetta* ricetta, FILE* file_ricette){
+	int flag_ricetta_trovato=0;
+	t_ricetta ricetta_corrente;
+
+  strToUpper(nome);
+
+	rewind(file_ricette);
+	fread( &ricetta_corrente, sizeof(t_ricetta), 1, file_ricette);
+
+	 while(!feof(file_ricette) && (flag_ricetta_trovato==0)){
+	  if( strcmp(ricetta_corrente.nome, nome)==0 ){
+		  flag_ricetta_trovato=1;
+		  *ricetta = ricetta_corrente;
+		  fseek(file_ricette, -1*sizeof(t_ricetta), SEEK_CUR);//sposta di uno indietro
+	  }else{
+		  fread( &ricetta_corrente, sizeof(t_ricetta), 1, file_ricette);
+	  }
+	}
+	return flag_ricetta_trovato;
+}
+*/

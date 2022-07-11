@@ -1,0 +1,64 @@
+/**
+ * @def MENU_UTENTE_H_
+ * @brief contiene i sottoprammi che permettono l'interazione dell'utente con le varie funzionalità del programma
+ */
+
+#ifndef MENU_UTENTE_H_
+#define MENU_UTENTE_H_
+
+
+
+/**
+ * @fn void menu_modificaAlimento()
+ * @brief richiede all'utente un alimento presente nel file alimenti e gli permette di modificarlo
+ */
+void menu_modificaAlimento();
+
+/**
+ * @fn void menu_modificaRicetta()
+ * @brief richiede all'utente una ricetta presente nel file ricette gli permette di modifcarla
+ */
+void menu_modificaRicetta();
+
+/**
+ * @fn void menu_cercaAlimento()
+ * @brief richiede all'utente un alimento presente nel file alimenti e glielo mostra
+ */
+void menu_cercaAlimento();
+
+/**
+ * @fn void menu_cercaRicetta()
+ * @brief richiede all'utente una ricetta presente nel file ricette e gliela mostra
+ */
+void menu_cercaRicetta();
+
+/**
+ * @fn void menu_printRic_Preparabili()
+ * @brief cerca nel file ricette tutte le ricette preparabili con gli alimenti presenti nel file alimenti e le stampa a schermo
+ * @post stampa a schermo di tutte le ricette preparabili
+ */
+void menu_printRic_Preparabili();
+
+/**
+ * @fn void menu_valutaRicetta()
+ * @brief richiede all'utente una ricetta e gli permette di inserire una valutazione da 1 a 5
+ * @post stessi effetti di valutaRicetta(char*, int*)
+ */
+void menu_valutaRicetta();
+
+/**
+ * @fn void menu_preparaRicetta()
+ * @brief richiede all'utente una ricetta e gli permette di prepararla
+ * @post stessi effettti di preparaRicetta(t_ricetta)
+ */
+void menu_preparaRicetta();
+
+/**
+ * @fn void menuu()
+ * @brief permette all'utente di avere accesso alle varie funzionalità del programma
+ */
+void menuu();
+
+
+
+#endif /* MENU_UTENTE_H_ */

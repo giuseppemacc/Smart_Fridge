@@ -1,0 +1,31 @@
+/**
+ * @def MENU_UTENTE_H_
+ * @brief contiene i sottoprammi relativi al menu utente
+ */
+
+#ifndef MENU_UTENTE_H_
+#define MENU_UTENTE_H_
+
+
+
+
+void menu_modificaAlimento();
+
+void menu_modificaRicetta();
+
+void menu_cercaAlimento();
+
+void menu_cercaRicetta();
+
+void menu_printRic_Preparabili();
+
+void menu_valutaRicetta();
+
+void menu_preparaRicetta();
+
+
+void menuu();
+
+
+
+#endif /* MENU_UTENTE_H_ */

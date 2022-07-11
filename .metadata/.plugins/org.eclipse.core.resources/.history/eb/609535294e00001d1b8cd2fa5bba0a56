@@ -1,0 +1,669 @@
+#include "menu_utente.h"
+#include <string.h>
+#include <stdio.h>
+#include "types.h"
+#include "utils.h"
+#include "file_names.h"
+
+void default_alimenti(){
+	FILE* file_alimenti;
+	t_alimento alimento;
+
+	if(apriFile(&file_alimenti, FILENAME_ALIMENTI, "rb+")){
+
+		rewind(file_alimenti);
+
+		alimento.dispensa = 0;
+
+		//NONE_UNIT, N_UNIT, PESO_GR, PESO_KG, PESO_ML,
+
+		//1° alimento
+		strcpy(alimento.nome, "LATTE");
+		alimento.unita=PESO_L;
+		alimento.quantita=2.5;
+		fwrite(&alimento, sizeof(t_alimento), 1, file_alimenti);
+
+		//2° alimento
+		strcpy(alimento.nome, "PASTA_SFOGLIA");
+		alimento.unita = N_UNIT;
+		alimento.quantita = 2;
+		fwrite(&alimento, sizeof(t_alimento), 1, file_alimenti);
+
+		//3° alimento
+		strcpy(alimento.nome, "RICOTTA");
+		alimento.unita= PESO_GR;
+		alimento.quantita=800;
+		fwrite(&alimento, sizeof(t_alimento), 1, file_alimenti);
+
+		//4° alimento
+		strcpy(alimento.nome, "PROSCIUTTO_CRUDO");
+		alimento.unita = PESO_GR;
+		alimento.quantita = 200;
+		fwrite(&alimento, sizeof(t_alimento), 1, file_alimenti);
+
+		//5° alimento
+		strcpy(alimento.nome, "PROSCIUTTO_COTTO");
+		alimento.unita = PESO_GR;
+		alimento.quantita = 300;
+		fwrite(&alimento, sizeof(t_alimento), 1, file_alimenti);
+
+		//6° alimento
+		strcpy(alimento.nome, "YOGURT");
+		alimento.unita = PESO_KG;
+		alimento.quantita = 1;
+		fwrite(&alimento, sizeof(t_alimento), 1, file_alimenti);
+
+		//7° alimento
+		strcpy(alimento.nome, "UOVA");
+		alimento.unita = N_UNIT;
+		alimento.quantita = 12;
+		fwrite(&alimento, sizeof(t_alimento), 1, file_alimenti);
+
+		//8° alimento
+		strcpy(alimento.nome, "PANNA_FRESCA");
+		alimento.unita	= PESO_ML;
+		alimento.quantita = 400;
+		fwrite(&alimento, sizeof(t_alimento), 1, file_alimenti);
+
+		//9° alimento
+		strcpy(alimento.nome, "SALMONE");
+		alimento.unita = PESO_GR;
+		alimento.quantita = 200;
+		fwrite(&alimento, sizeof(t_alimento), 1, file_alimenti);
+
+		//10° alimento
+		strcpy(alimento.nome, "TONNO");
+		alimento.unita = PESO_GR;
+		alimento.quantita = 240;
+		fwrite(&alimento, sizeof(t_alimento), 1, file_alimenti);
+
+		//11° alimento
+		strcpy(alimento.nome, "SPINACI");
+		alimento.unita = PESO_GR;
+		alimento.quantita = 600;
+		fwrite(&alimento, sizeof(t_alimento), 1, file_alimenti);
+
+		//13° alimento
+		strcpy(alimento.nome, "PATATE");
+		alimento.unita = PESO_GR;
+		alimento.quantita = 1500;
+		fwrite(&alimento, sizeof(t_alimento), 1, file_alimenti);
+
+		//14° alimento
+		strcpy(alimento.nome, "BURRO");
+		alimento.unita = PESO_GR;
+		alimento.quantita = 120;
+		fwrite(&alimento, sizeof(t_alimento), 1, file_alimenti);
+
+		//15° alimento
+		strcpy(alimento.nome, "PIADINA");
+		alimento.unita = N_UNIT;
+		alimento.quantita = 4;
+		fwrite(&alimento, sizeof(t_alimento), 1, file_alimenti);
+
+		//16° alimento
+		strcpy(alimento.nome, "INSALATA");
+		alimento.unita = PESO_GR;
+		alimento.quantita = 1000;
+		fwrite(&alimento, sizeof(t_alimento), 1, file_alimenti);
+
+		//17° alimento
+		strcpy(alimento.nome, "FETTINA_DI_VITELLO");
+		alimento.unita = PESO_GR;
+		alimento.quantita = 200;
+		fwrite(&alimento, sizeof(t_alimento), 1, file_alimenti);
+
+		//18° alimento
+		strcpy(alimento.nome, "COSCIE_DI_POLLO");
+		alimento.unita = N_UNIT;
+		alimento.quantita = 6;
+		fwrite(&alimento, sizeof(t_alimento), 1, file_alimenti);
+
+		//19° alimento
+		strcpy(alimento.nome, "PETTO_DI_POLLO");
+		alimento.unita = PESO_GR;
+		alimento.quantita = 600;
+		fwrite(&alimento, sizeof(t_alimento), 1, file_alimenti);
+
+		//20° alimento
+		strcpy(alimento.nome, "FILETTO_DI_TONNO");
+		alimento.unita = PESO_GR;
+		alimento.quantita = 200;
+		fwrite(&alimento, sizeof(t_alimento), 1, file_alimenti);
+
+		//20° alimento
+		strcpy(alimento.nome, "FILETTO_DI_PESCE_SPADA");
+		alimento.unita = PESO_GR;
+		alimento.quantita = 250;
+		fwrite(&alimento, sizeof(t_alimento), 1, file_alimenti);
+
+		//21° alimento
+		strcpy(alimento.nome, "MOZZARELLA_DI_BUFALA");
+		alimento.unita = PESO_GR;
+		alimento.quantita = 600;
+		fwrite(&alimento, sizeof(t_alimento), 1, file_alimenti);
+
+		//22° alimento
+		strcpy(alimento.nome, "MOZZARELLA_FIORDILATTE");
+		alimento.unita = PESO_GR;
+		alimento.quantita = 400;
+		fwrite(&alimento, sizeof(t_alimento), 1, file_alimenti);
+
+		//23° alimento
+		strcpy(alimento.nome, "PASTE_PER_PIZZA");
+		alimento.unita = N_UNIT;
+		alimento.quantita = 2;
+		fwrite(&alimento, sizeof(t_alimento), 1, file_alimenti);
+
+		//24° alimento
+		strcpy(alimento.nome, "SALSA_DI_POMODORO");
+		alimento.unita = PESO_ML;
+		alimento.quantita = 1200;
+		fwrite(&alimento, sizeof(t_alimento), 1, file_alimenti);
+
+		//25° alimento
+		strcpy(alimento.nome, "PARMIGIANO");
+		alimento.unita = PESO_GR;
+		alimento.quantita = 250;
+		fwrite(&alimento, sizeof(t_alimento), 1, file_alimenti);
+
+		//26° alimento
+		strcpy(alimento.nome, "POLPO");
+		alimento.unita = PESO_GR;
+		alimento.quantita = 600;
+		fwrite(&alimento, sizeof(t_alimento), 1, file_alimenti);
+
+		//27° alimento
+		strcpy(alimento.nome, "CALAMARI");
+		alimento.unita = PESO_GR;
+		alimento.quantita = 400;
+		fwrite(&alimento, sizeof(t_alimento), 1, file_alimenti);
+
+		//28° alimento
+		strcpy(alimento.nome, "SEPPIA");
+		alimento.unita = PESO_GR;
+		alimento.quantita = 400;
+		fwrite(&alimento, sizeof(t_alimento), 1, file_alimenti);
+
+		//29° alimento
+		strcpy(alimento.nome, "SALSICCIA");
+		alimento.unita = PESO_KG;
+		alimento.quantita = 1.5;
+		fwrite(&alimento, sizeof(t_alimento), 1, file_alimenti);
+
+		//30° alimento
+		strcpy(alimento.nome, "CAPOCOLLO");
+		alimento.unita = PESO_GR;
+		alimento.quantita = 400;
+		fwrite(&alimento, sizeof(t_alimento), 1, file_alimenti);
+
+		//31° alimento
+		strcpy(alimento.nome, "CAROTE");
+		alimento.unita = PESO_GR;
+		alimento.quantita = 800;
+		fwrite(&alimento, sizeof(t_alimento), 1, file_alimenti);
+
+		//33° alimento
+		strcpy(alimento.nome, "ASPARAGI");
+		alimento.unita = PESO_GR;
+		alimento.quantita = 600;
+		fwrite(&alimento, sizeof(t_alimento), 1, file_alimenti);
+
+		fclose(file_alimenti);
+		}
+}
+
+
+
+void default_ricette(){
+
+	FILE* file_ricette;
+	t_ricetta ricetta;
+
+	if(apriFile(&file_ricette, FILENAME_RICETTE, "rb+")){
+
+		rewind(file_ricette);
+
+		ricetta.valutazione = 0;
+		//ricetta.preparata = 0;
+		ricetta.counter_giorni = 0;
+
+
+							//------RICETTA 1-------
+		strcpy(ricetta.nome, "CAROTE ALLA JULIENNE");
+		ricetta.categoria = VERDURA;
+		ricetta.n_ingredienti = 1;
+
+		//alimento 1: CAROTE
+		strcpy(ricetta.ingredienti[0].nome,"CAROTE");
+		ricetta.ingredienti[0].unita = PESO_GR;
+		ricetta.ingredienti[0].quantita = 200;
+		ricetta.ingredienti[0].dispensa = 0;
+
+		strcpy(ricetta.procedimento, "taglia le carote a striscioline e condisci con sale olio e aceto");
+
+		fwrite(&ricetta, sizeof(t_ricetta), 1, file_ricette);
+
+
+
+							//------RICETTA 2-------
+		strcpy(ricetta.nome, "ZUCCHINE");
+		ricetta.categoria = VERDURA;
+
+		ricetta.n_ingredienti = 1;
+
+			//alimento 1: ZUCCHINE
+			strcpy(ricetta.ingredienti[0].nome,"ZUCCHINE");
+			ricetta.ingredienti[0].unita = PESO_GR;
+			ricetta.ingredienti[0].quantita = 350;
+			ricetta.ingredienti[0].dispensa = 0;
+
+		strcpy(ricetta.procedimento, "Lessa le zucchine e condisci con sale olio e aceto");
+
+		fwrite(&ricetta, sizeof(t_ricetta), 1, file_ricette);
+
+
+
+							//------RICETTA 3-------
+		strcpy(ricetta.nome, "PASTA SFOGLIA (Ricotta e Spinaci)");
+		ricetta.categoria = VERDURA;
+
+		ricetta.n_ingredienti = 3;
+
+			//alimento 1: PASTA SFOGLIA
+			strcpy(ricetta.ingredienti[0].nome,"PASTA SFOGLIA");
+			ricetta.ingredienti[0].unita = N_UNIT;
+			ricetta.ingredienti[0].quantita = 1;
+			ricetta.ingredienti[0].dispensa = 0;
+
+			//alimento 2: RICOTTA
+			strcpy(ricetta.ingredienti[0].nome,"RICOTTA");
+			ricetta.ingredienti[1].unita = PESO_GR;
+			ricetta.ingredienti[1].quantita = 200;
+			ricetta.ingredienti[1].dispensa = 0;
+
+			//alimento 3:SPINACI
+			strcpy(ricetta.ingredienti[0].nome,"SPINACI");
+			ricetta.ingredienti[2].unita = PESO_GR;
+			ricetta.ingredienti[2].quantita = 250;
+			ricetta.ingredienti[2].dispensa = 0;
+
+		strcpy(ricetta.procedimento, "Condisci la pasta sfoglia con ricotta e spinaci, dopo metti in forno e dopo 20 min è pronta ");
+
+		fwrite(&ricetta, sizeof(t_ricetta), 1, file_ricette);
+
+
+
+							//------RICETTA 4-------
+		strcpy(ricetta.nome, "INSALATONA");
+		ricetta.categoria = VERDURA;
+		ricetta.valutazione = 0;
+		ricetta.counter_giorni = 0;
+		ricetta.n_ingredienti = 1;
+
+			//alimento 1: INSALATA
+			strcpy(ricetta.ingredienti[0].nome,"INSALATA");
+			ricetta.ingredienti[0].unita = PESO_GR;
+			ricetta.ingredienti[0].quantita = 500;
+			ricetta.ingredienti[0].dispensa = 0;
+
+			//alimento 2: POMODORINI
+			strcpy(ricetta.ingredienti[0].nome,"POMODORINI");
+			ricetta.ingredienti[1].unita = PESO_GR;
+			ricetta.ingredienti[1].quantita = 250;
+			ricetta.ingredienti[1].dispensa = 0;
+
+			//alimento 3: PARMIGIANO
+			strcpy(ricetta.ingredienti[0].nome,"PARMIGINAO");
+			ricetta.ingredienti[2].unita = PESO_GR;
+			ricetta.ingredienti[2].quantita = 150;
+			ricetta.ingredienti[2].dispensa = 0;
+
+		strcpy(ricetta.procedimento, "Taglia insalata, pomodrini e formaggio, metti tutto in una ciotola e mischia, alla fine condisci con olio, sale e aceto");
+
+		fwrite(&ricetta, sizeof(t_ricetta), 1, file_ricette);
+
+
+
+							//------RICETTA 5-------
+		strcpy(ricetta.nome, "MELANZANE RIPIENE");
+		ricetta.categoria = VERDURA;
+		ricetta.n_ingredienti = 1;
+
+			//alimento 1: MELANZANE
+			strcpy(ricetta.ingredienti[0].nome,"MELANZANE");
+			ricetta.ingredienti[0].unita = PESO_GR;
+			ricetta.ingredienti[0].quantita = 1000;
+			ricetta.ingredienti[0].dispensa = 0;
+
+			//alimento 2: POMODORINI
+			strcpy(ricetta.ingredienti[1].nome,"POMODORINI");
+			ricetta.ingredienti[1].unita = PESO_GR;
+			ricetta.ingredienti[1].quantita = 250;
+			ricetta.ingredienti[1].dispensa = 0;
+
+			//alimento 3: PARMIGIANO
+			strcpy(ricetta.ingredienti[2].nome,"PARMIGINAO");
+			ricetta.ingredienti[2].unita = PESO_GR;
+			ricetta.ingredienti[2].quantita = 500;
+			ricetta.ingredienti[2].dispensa = 0;
+
+		strcpy(ricetta.procedimento, "Svuota le melanzane e riempi con parmigiano  e pomodorini, metti in forno per 20 min ed è pronta");
+
+		fwrite(&ricetta, sizeof(t_ricetta), 1, file_ricette);
+
+
+
+							//------RICETTA 6-------
+		strcpy(ricetta.nome, "FIORI DI ZUCCA (Gratinati)");
+		ricetta.categoria = VERDURA;
+		ricetta.n_ingredienti = 4;
+
+			//alimento 1:
+			strcpy(ricetta.ingredienti[0].nome,"FIORI DI ZUCCA");
+			ricetta.ingredienti[0].unita = N_UNIT;
+			ricetta.ingredienti[0].quantita = 16;
+			ricetta.ingredienti[0].dispensa = 0;
+
+			//alimento 2:
+			strcpy(ricetta.ingredienti[1].nome,"UOVA");
+			ricetta.ingredienti[1].unita = N_UNIT;
+			ricetta.ingredienti[1].quantita = 2;
+			ricetta.ingredienti[1].dispensa = 0;
+
+			//alimento 3:
+			strcpy(ricetta.ingredienti[2].nome,"FARINA");
+			ricetta.ingredienti[2].unita = PESO_GR;
+			ricetta.ingredienti[2].quantita = 100;
+			ricetta.ingredienti[2].dispensa = 1;
+
+			//alimento 4:
+			strcpy(ricetta.ingredienti[3].nome,"PAN GRATTATO");
+			ricetta.ingredienti[3].unita = PESO_GR;
+			ricetta.ingredienti[3].quantita = 100;
+			ricetta.ingredienti[3].dispensa = 1;
+
+
+			strcpy(ricetta.procedimento, "Passa i fiori di zucca nella farina, nell'uovo e nel pan grattato,\n riponili in una teglia e inforna per 15 m");
+
+			fwrite(&ricetta, sizeof(t_ricetta), 1, file_ricette);
+
+
+
+							//--- RICETTA 7 ---
+		strcpy(ricetta.nome, "SALSICCIA E PATATE");
+		ricetta.categoria = CARNE;
+		ricetta.n_ingredienti = 2;
+
+				//alimento 1:
+				strcpy(ricetta.ingredienti[0].nome,"SALSICCIA");
+				ricetta.ingredienti[0].unita = PESO_GR;
+				ricetta.ingredienti[0].quantita = 600;
+				ricetta.ingredienti[0].dispensa = 0;
+
+				//alimento 2:
+				strcpy(ricetta.ingredienti[1].nome,"PATATE");
+				ricetta.ingredienti[1].unita = PESO_GR;
+				ricetta.ingredienti[1].quantita = 400;
+				ricetta.ingredienti[1].dispensa = 0;
+
+
+				strcpy(ricetta.procedimento, "Taglia salsiccia e patate,riponili in una teglia,\n cospargi di olio e sale e inforna per 40 min");
+
+				fwrite(&ricetta, sizeof(t_ricetta), 1, file_ricette);
+
+
+							//--- RICETTA 8 ---
+		strcpy(ricetta.nome, "POLPETTONE");
+		ricetta.categoria = CARNE;
+		ricetta.n_ingredienti = 3;
+
+				//alimento 1:
+				strcpy(ricetta.ingredienti[0].nome,"CARNE MACINATA");
+				ricetta.ingredienti[0].unita = PESO_GR;
+				ricetta.ingredienti[0].quantita = 800;
+				ricetta.ingredienti[0].dispensa = 0;
+
+				//alimento 2:
+				strcpy(ricetta.ingredienti[1].nome,"PARMIGIANO");
+				ricetta.ingredienti[1].unita = PESO_GR;
+				ricetta.ingredienti[1].quantita = 300;
+				ricetta.ingredienti[1].dispensa = 0;
+
+				//alimento 3:
+				strcpy(ricetta.ingredienti[2].nome,"PROSCIUTTO COTTO");
+				ricetta.ingredienti[2].unita = PESO_GR;
+				ricetta.ingredienti[2].quantita = 300;
+				ricetta.ingredienti[2].dispensa = 0;
+
+
+				strcpy(ricetta.procedimento, "Stendi la carne macinata in modo da formare un rettangolo,\n"
+						"posiziona al centro il parmigiano e il prosciutto cotto e dopo arrotola,\n"
+						"riponilo in una teglia e inforna per 40 min");
+
+				fwrite(&ricetta, sizeof(t_ricetta), 1, file_ricette);
+
+
+						//--- RICETTA 9 ---
+		strcpy(ricetta.nome, "POLLO AL CURRY");
+		ricetta.categoria = CARNE;
+		ricetta.n_ingredienti = 4;
+
+				//alimento 1:
+				strcpy(ricetta.ingredienti[0].nome,"PETTO DI POLLO");
+				ricetta.ingredienti[0].unita = PESO_GR;
+				ricetta.ingredienti[0].quantita = 400;
+				ricetta.ingredienti[0].dispensa = 0;
+
+				//alimento 2:
+				strcpy(ricetta.ingredienti[1].nome,"BURRO");
+				ricetta.ingredienti[1].unita = PESO_GR;
+				ricetta.ingredienti[1].quantita = 30;
+				ricetta.ingredienti[1].dispensa = 0;
+
+				//alimento 3:
+				strcpy(ricetta.ingredienti[2].nome,"CURRY");
+				ricetta.ingredienti[2].unita = PESO_GR;
+				ricetta.ingredienti[2].quantita = 10;
+				ricetta.ingredienti[2].dispensa = 1;
+
+				//alimento 3:
+				strcpy(ricetta.ingredienti[3].nome,"LATTE DI COCCO");
+				ricetta.ingredienti[3].unita = PESO_ML;
+				ricetta.ingredienti[3].quantita = 100;
+				ricetta.ingredienti[3].dispensa = 0;
+
+	 strcpy(ricetta.procedimento, "Taglia il petto di pollo a cubetti, scoglio burro il burro insieme al latte e al curry,\n"
+								"quando il burro sarà completamente fuso aggiungi il pollo e in 10 min sarà pronto");
+
+	 fwrite(&ricetta, sizeof(t_ricetta), 1, file_ricette);
+
+
+
+		//--- RICETTA 10 ---
+	 strcpy(ricetta.nome, "SCHIACCIATINE");
+	 ricetta.categoria = CARNE;
+	 ricetta.n_ingredienti = 4;
+
+		//alimento 1:
+		strcpy(ricetta.ingredienti[0].nome,"CARNE MACINATA");
+		ricetta.ingredienti[0].unita = PESO_GR;
+		ricetta.ingredienti[0].quantita = 750;
+		ricetta.ingredienti[0].dispensa = 0;
+
+		//alimento 2:
+		strcpy(ricetta.ingredienti[1].nome,"LATTE");
+		ricetta.ingredienti[1].unita = PESO_ML;
+		ricetta.ingredienti[1].quantita = 150;
+		ricetta.ingredienti[1].dispensa = 0;
+
+		//alimento 3:
+		strcpy(ricetta.ingredienti[2].nome,"UOVA");
+		ricetta.ingredienti[2].unita = N_UNIT;
+		ricetta.ingredienti[2].quantita = 3;
+		ricetta.ingredienti[2].dispensa = 0;
+
+		//alimento 4:
+		strcpy(ricetta.ingredienti[3].nome,"PAN GRATTATO");
+		ricetta.ingredienti[3].unita = PESO_GR;
+		ricetta.ingredienti[3].quantita = 4;
+		ricetta.ingredienti[3].dispensa = 1;
+
+	strcpy(ricetta.procedimento, "Mischia tutti gli alimenti insieme e con l'impasto ottenuto andrai a formare le schiacciatine,\n"
+			"riponile in forno per 20 min e sono pronte");
+
+	fwrite(&ricetta, sizeof(t_ricetta), 1, file_ricette);
+
+
+
+		//--- RICETTA 11 ---
+		strcpy(ricetta.nome, "POLLO ALLA GRIGLIA");
+		ricetta.categoria = CARNE;
+		ricetta.n_ingredienti = 1;
+
+		//alimento 1:
+		strcpy(ricetta.ingredienti[0].nome,"PETTO DI POLLO");
+		ricetta.ingredienti[0].unita = PESO_GR;
+		ricetta.ingredienti[0].quantita = 400;
+		ricetta.ingredienti[0].dispensa = 0;
+
+
+		strcpy(ricetta.procedimento, "Metti il petto di pollo su una griglia e cuocilo");
+
+		fwrite(&ricetta, sizeof(t_ricetta), 1, file_ricette);
+
+
+
+		//--- RICETTA 12 ---
+		strcpy(ricetta.nome, "TAGLIERE DI SALUMI ");
+		ricetta.categoria = CARNE;
+		ricetta.n_ingredienti = 3;
+
+		//alimento 1:
+		strcpy(ricetta.ingredienti[0].nome,"PROSCIUTTO COTTO");
+		ricetta.ingredienti[0].unita = PESO_GR;
+		ricetta.ingredienti[0].quantita = 200;
+		ricetta.ingredienti[0].dispensa = 0;
+
+		//alimenti 2:
+		strcpy(ricetta.ingredienti[1].nome,"PROSCIUTTO CRUDO");
+		ricetta.ingredienti[1].unita = PESO_GR;
+		ricetta.ingredienti[1].quantita = 200;
+		ricetta.ingredienti[1].dispensa = 0;
+
+		//alimenti 3:
+		strcpy(ricetta.ingredienti[2].nome,"SALAME");
+		ricetta.ingredienti[2].unita = PESO_GR;
+		ricetta.ingredienti[2].quantita = 200;
+		ricetta.ingredienti[2].dispensa = 0;
+
+		strcpy(ricetta.procedimento, "Metti i salumi su un tagliere");
+
+		fwrite(&ricetta, sizeof(t_ricetta), 1, file_ricette);
+
+		fclose(file_ricette);
+		}
+}
+
+
+
+
+int main(void) {
+	setvbuf(stdout, NULL, _IONBF, 0);
+
+	clearFile(FILENAME_ALIMENTI);
+	clearFile(FILENAME_CRONOLOGIA_RICETTE);
+	clearFile(FILENAME_RICETTE);
+
+	default_alimenti();
+	default_ricette();
+
+	menuu();
+
+	return 0;
+}
+
+
+//todo: ricerca binaria per i file
+//todo: rimuovere preparata ultimi 7 giorni
+
+//todo: capire come funziona strUpper perche ho copiato e incollato
+//todo: capire le ifdef
+
+
+//todo: tipo t_bool
+//todo: commenti
+//todo: doxygen
+//todo: messaggi all utente
+//todo: riempire i file
+
+
+
+//todo: isNum, isPositive, isFloat tutte in utils
+
+
+
+
+// str1 < str2 ==> -1
+// str1 > str2 ==>  1
+
+// char str1[50] = "1233 le mie palle";
+// char str2[50] = "1233 zoz";
+
+// printf("->%d\n", strMin(str1,str2));
+
+
+
+
+
+/*
+int ricerca_alimento(char *nome, t_alimento *alimento, FILE *file_alimenti) {
+  int flag_alimento_trovato = 0;
+  t_alimento alimento_corrente;
+
+
+  strToUpper(nome);
+
+  // cerca nel file alimenti e ritorna 1/0 se lo trova e lo setta in *alimento
+  rewind(file_alimenti);
+  fread(&alimento_corrente, sizeof(t_alimento), 1, file_alimenti);
+
+  while (!feof(file_alimenti) && (flag_alimento_trovato == 0)) {
+    if (strcmp(alimento_corrente.nome, nome) == 0) {
+      flag_alimento_trovato = 1;
+      *alimento = alimento_corrente;
+      fseek(file_alimenti, -1 * sizeof(t_alimento),
+            SEEK_CUR); // sposta di uno indietro
+    } else {
+      fread(&alimento_corrente, sizeof(t_alimento), 1, file_alimenti);
+    }
+  }
+  return flag_alimento_trovato;
+}*/
+
+
+
+
+
+/*
+int ricerca_ricetta(char* nome, t_ricetta* ricetta, FILE* file_ricette){
+	int flag_ricetta_trovato=0;
+	t_ricetta ricetta_corrente;
+
+  strToUpper(nome);
+
+	rewind(file_ricette);
+	fread( &ricetta_corrente, sizeof(t_ricetta), 1, file_ricette);
+
+	 while(!feof(file_ricette) && (flag_ricetta_trovato==0)){
+	  if( strcmp(ricetta_corrente.nome, nome)==0 ){
+		  flag_ricetta_trovato=1;
+		  *ricetta = ricetta_corrente;
+		  fseek(file_ricette, -1*sizeof(t_ricetta), SEEK_CUR);//sposta di uno indietro
+	  }else{
+		  fread( &ricetta_corrente, sizeof(t_ricetta), 1, file_ricette);
+	  }
+	}
+	return flag_ricetta_trovato;
+}
+*/

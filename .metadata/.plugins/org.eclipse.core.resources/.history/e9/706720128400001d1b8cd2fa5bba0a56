@@ -1,0 +1,198 @@
+/**
+ * @def GESTIONE_RICETTE_H_
+ * @brief contiene i sottoprogrammi che operano sul file ricette e cronologia ricette, e la relativa interazione con l'utente
+ */
+
+#ifndef GESTIONE_RICETTE_H_
+#define GESTIONE_RICETTE_H_
+
+#include "types.h"
+#include <stdio.h>
+
+/**
+ * @fn void ordinaFileRicette_AZ(char*)
+ * @brief ordina file_name dalla A alla Z
+ * 		  apre file_name
+ * 		  lo ordina usando un ordinamento per selezione
+ * 		  chiude il file
+ * @pre file_name non ordinato
+ * @post file_name ordinato
+ * @param file_name
+ */
+void ordinaFileRicette_AZ(char *file_name);
+
+
+/**
+ * @fn int ricerca_ricetta_binaria(char*, t_ricetta*, FILE*)
+ * @brief ricerca una ricetta tramite il nome in file_ricette
+ * 		  usa la ricerca binaria quindi necessita che file_ricette sia ordinato!
+ * @pre   file_ricette aperto, file_ricette ordinato
+ * @post  puntatore del file posizionato per leggere/modificare la ricetta trovata
+ * 		  se la ricetta non viene trovata il puntatore è posizionato alla fine del file
+ * @param nome
+ * @param ricetta
+ * @param file_ricette
+ * @return 0 se non è stata trovata la ricetta
+ *         1 se è stata trovata e viene memorizzata in ricetta
+ */
+int ricerca_ricetta_binaria (char *nome, t_ricetta *ricetta, FILE *file_ricette);
+
+
+/**
+ * @fn void ricerca_ricettaSottstr(char*, t_ricetta[], int*, FILE*)
+ * @brief cerca e restituisce tutte le ricette che contengono *nome per sottostringa
+ *		  scorre tutto il file dall'inizio e memorizza in ricette[] tutte le ricette trovate nel file
+ *		  che contengono *nome come sottistringa nel loro corrispondente campo nome
+ *		  e memorizza il numero di ricette trovate in *n_ricette
+ * @pre  file_ricette aperto
+ * @post puntatore del file posizionato alla fine
+ * @param nome : sottostringa da cercare
+ * @param ricette : array di ricette trovate
+ * @param n_ricette
+ * @param file_ricette
+ */
+void ricerca_ricettaSottstr(char *nome, t_ricetta ricette[], int* n_ricette, FILE *file_ricette);
+
+
+
+/**
+ * @fn t_ricetta richiediRicetta(int*)
+ * @brief chiede all'utente di cercare una ricetta e resituisce la ricetta voluta trovata nel file ricette
+ * 		  chiede di inserire un nome
+ * 		  se il è stato trovata una ricetta nel file ricette con lo stesso nome allora la resituisce
+ * 		  altrimenti esegue la ricerca su sottostringa e mostra all'utente l' elenco di ricette trovate -
+ * 		   - e chiede di selezionare quella voluta e la resituisce
+ * 		  se non viene trovata nessuna ricetta neanche tramite la ricerca per sottostringa allora chiede all'utente di inserire un altro nome
+ * @param flag_home viene impostato ad 1 se l'utente inserisci la costante BACK_HOME altrimenti 0
+ * @return ricetta desiderata
+ */
+t_ricetta richiediRicetta(int* flag_home);
+
+
+/**
+ * @fn void print_ricette(int, char*)
+ * @brief visualizza a schermo tutte le ricette (in ordine alfabetico se ordina_file=1) presenti in filename_ricette
+ * 		  se ordina_file = 1 ordina filename_ricette
+ * 		  apre filename_ricette
+ * 		  stampa a schermo tutte le ricette del file
+ * 		  chiude filename_ricette
+ * @post  dettagli ricette presenti in filename_ricette stampati a schermo
+ * @param ordina_file
+ * @param filename_ricette
+ */
+void print_ricette(int ordina_file, char* filename_ricette);
+
+
+/**
+ * @fn void caricaRicette()
+ * @brief permette all'utente di aggiungere delle ricette al file ricette
+ * 		  chiede all'utente di inserire una ricetta o più ricette con i relativi campi al file ricette
+ * @post file ricette con l'aggiunta di nuove ricette inserite
+ */
+void caricaRicette();
+
+
+
+/**
+ * @fn t_ricetta modificaRicetta(t_ricetta, int*)
+ * @brief permette all'utente di modificare i campi di una ricetta passata come argomento
+ * 		  - durante la modifica non permette all'utente di cambiare il nome con un altro di una ricetta già presente in file ricette
+ * 		    e tiene in considerazione che deve essere presente sempre almeno un ingrediente
+ * 		  - durante le molteplici richieste di input considera sempre il caso che l'utente possa inserire valori errati
+ * 		    o che possa inserire la costante BACK_HOME ed in quest'ultimo caso imposta *flag_home a 1 e termina la funzione
+ * @param ricetta
+ * @param flag_home
+ * @return ricetta modificata
+ */
+t_ricetta modificaRicetta(t_ricetta ricetta, int* flag_home);
+
+
+/**
+ * @fn void sovrascrivi_ricetta(char*, t_ricetta)
+ * @brief sovrascrive nel file ricetta la ricetta con nome nome_ricetta con ricetta_modificata
+ * 	      - cerca nel file ricette la ricetta con nome_ricetta e la sovrascrive con ricetta_modificata
+ * @post  file ricette con la ricetta_modificata
+ * @param nome_ricetta
+ * @param ricetta_modificata
+ */
+void sovrascrivi_ricetta(char* nome_ricetta, t_ricetta ricetta_modificata);
+
+
+
+/**
+ * @fn int isAlimento_compatibile(t_alimento, t_alimento, int)
+ * @brief determina se alimento1 è compatibile con alimento2
+ *		  - controlla se alimento1 e alimento hanno stesso nome e stessa unita di misura
+ *		  - se ignora_quantita==0 controlla anche che la quantità di alimento1 sia <= di alimento2
+ *		 	altrimenti non esegue questa condizione
+ * @param alimento1
+ * @param alimento2
+ * @param ignora_quantita (se ignora_quantita=1 ignora il controlla sulla quantità)
+ * @return se tutti le condizioni sono vere ritorna 1 altrimenti 0
+ */
+int isAlimento_compatibile(t_alimento alimento1, t_alimento alimento2, int ignora_quantita);
+
+/**
+ * @fn int isPreparabile(t_ricetta, char*)
+ * @brief determina se una ricetta è preparabile con gli alimenti presenti in filename_alimenti
+ * 		  - per ogni ingrediente della ricetta verifica che sia presente nel frigo e che sia nelle quantita giuste
+ * 		  - tutti gli ingredienti della ricetta con campo dispensa=1 vengono considerati come disponibili
+ * @param ricetta
+ * @param filename_alimenti
+ * @return se tutti le condizioni sono vere ritorna 1 altrimenti 0
+ */
+int isPreparabile(t_ricetta ricetta, char* filename_alimenti );
+
+
+/**
+ * @fn int isContained(t_alimento[], t_alimento[], int, int)
+ * @brief determina se un array di alimenti è contenuto in un altro array di alimenti
+ *	      - verifica per ogni alimento in alimenti1[] sia presente presente un alimento in alimenti2[] con lo stesso nome e unita di misura
+ * @param alimenti1
+ * @param alimenti2
+ * @param n_alimenti1
+ * @param n_alimenti2
+ * @return 1 se la condizione è verificata altrimenti 0
+ */
+int isContained(t_alimento alimenti1[], t_alimento alimenti2[], int n_alimenti1, int n_alimenti2);
+
+/**
+ * @fn void ricettePreparabili(t_ricetta[], int*, char*)
+ * @brief
+ *
+ * @pre
+ * @post
+ * @param ricette_preparabili
+ * @param n_ricette_preparabili
+ * @param filename_ricette
+ */
+void ricettePreparabili( t_ricetta ricette_preparabili[], int* n_ricette_preparabili, char* filename_ricette);
+
+void ricetteCompatibili( t_alimento alimenti[], int n_alimenti, t_ricetta ricette_compatibili[], int* n_ricette_compatibili, char* filename_ricette);
+
+
+
+
+void ordina_arrRicette_4giorni(t_ricetta ricette[], int n_ricette);
+
+void shift_arrRicette_4cat(t_ricetta ricette[], int n_ricette, t_categoria cat);
+
+void prioritarizza_ricette( t_ricetta ricette[], int n_ricette );
+
+
+void consigliaRicette();
+
+void preparaRicetta(t_ricetta ricetta);
+
+
+
+
+void valutaRicetta(char* nome_ricetta, int* flag_home);
+
+void printStatistica_voti();
+
+
+
+
+
+#endif /* GESTIONE_RICETTE_H_ */

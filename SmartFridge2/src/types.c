@@ -1,14 +1,18 @@
 #include "types.h"
 #include "utils.h"
-#include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
 
-
+/**
+ * @fn char returnGiorno*(t_giorno)
+ * @brief converte da t_giorno a stringa
+ * @param giorno
+ * @return ritorna la stringa corrispondente al giorno inserito come argomento
+ */
 char *returnGiorno(t_giorno giorno) {
-  char *s = (char *)calloc(15,sizeof(char)); // alloca dinamicamente la memoria per contenere 10 caratteri
+  char *s = (char *)calloc(15,sizeof(char)); // alloca la memoria per contenere 15 caratteri
 
   if (giorno == NONE){
 	  strcpy(s, "NULL");
@@ -38,41 +42,39 @@ char *returnGiorno(t_giorno giorno) {
   return s;
 }
 
-// RESTITUISCE L'UNITA' DI MISURA(stringa) CORRISPONDENTE ALL'UNITA' DI MISURA
-// PASSATA
+/**
+ * @fn char returnUnita*(t_unita_misura)
+ * @brief converte da t_unita a stringa
+ * @param unita
+ * @return ritorna la stringa corrispondente all'unita di misura passata come argomento
+ */
 char *returnUnita(t_unita_misura unita) {
-  char *s = (char *)calloc(
-      10,
-      sizeof(
-          char)); // alloca dinamicamente la memoria per contenere 10 caratteri
+  char *s = (char *)calloc(10,sizeof(char)); // alloca la memoria per contenere 10 caratteri
 
-  // assegna a s l'unitï¿½ di misura corrispondente
+  // assegna a s l'unita di misura corrispondente
   if (unita == N_UNIT)
-    strcpy(s, "");
-  else {
-    if (unita == PESO_GR)
-      strcpy(s, "g");
-    else {
-      if (unita == PESO_KG)
-        strcpy(s, "kg");
-      else {
-        if (unita == PESO_ML)
-          strcpy(s, "ml");
-        else {
-          if (unita == PESO_L)
-            strcpy(s, "lt");
-          else
-            strcpy(s, "ERROR");
-        }
-      }
-    }
-  }
+     strcpy(s, "");
+  else if (unita == PESO_GR)
+     strcpy(s, "g");
+  else if (unita == PESO_KG)
+     strcpy(s, "kg");
+  else if (unita == PESO_ML)
+     strcpy(s, "ml");
+  else if (unita == PESO_L)
+     strcpy(s, "lt");
+  else
+     strcpy(s, "ERROR");
+
 
   return s;
 }
 
-// RESTITUISCE L'UNITA' DI MISURA(t_unita_misura) CORRISPONDENTE ALLA STRINGA
-// PASSATA
+/**
+ * @fn t_unita_misura getUnita(char*)
+ * @brief converte da stringa a t_giorno
+ * @param str
+ * @return ritorna l'unità di misura corrispondente alla stringa passata come argomento
+ */
 t_unita_misura getUnita(char *str) {
   t_unita_misura unita;
 
@@ -93,7 +95,12 @@ t_unita_misura getUnita(char *str) {
 }
 
 
-//da una stringa resitituisce l'enum corrispondente
+/**
+ * @fn t_categoria getCategoria(char*)
+ * @brief converte da stringa a t_categoria
+ * @param str
+ * @return ritorna la categoria corrispondente alla stringa passata come argomento
+ */
 t_categoria getCategoria(char* str){
 	t_categoria cat;
 	strToUpper(str);
@@ -113,37 +120,39 @@ t_categoria getCategoria(char* str){
 	return cat;
 }
 
-
+/**
+ * @fn char returnCategoria*(t_categoria)
+ * @brief converte da t_categoria a stringa
+ * @param categoria
+ * @return ritorna la stringa corrispondente alla categoria passata come argomento
+ */
 char *returnCategoria(t_categoria categoria) {
-  char *s = (char *)calloc(10,sizeof(char)); // alloca dinamicamente la memoria per contenere 10 caratteri
+  char *s = (char *)calloc(10,sizeof(char)); // alloca la memoria per contenere 10 caratteri
   //NONE_CAT, CARNE, PESCE, VERDURA, PASTA
 
   if (categoria == NONE_CAT)
     strcpy(s, "NULL");
-  else {
-    if (categoria == CARNE)
-      strcpy(s, "CARNE");
-    else {
-      if (categoria == PESCE)
-        strcpy(s, "PESCE");
-      else {
-        if (categoria == VERDURA)
-          strcpy(s, "VERDURA");
-        else {
-          if (categoria == PASTA)
-            strcpy(s, "PASTA");
-          else
-            strcpy(s, "ERROR");
-        }
-      }
-    }
-  }
+  else if (categoria == CARNE)
+    strcpy(s, "CARNE");
+  else if (categoria == PESCE)
+    strcpy(s, "PESCE");
+  else if (categoria == VERDURA)
+    strcpy(s, "VERDURA");
+  else if (categoria == PASTA)
+    strcpy(s, "PASTA");
+  else
+    strcpy(s, "ERROR");
+
 
   return s;
 }
 
 
-
+/**
+ * @fn void print_ricetta(t_ricetta)
+ * @brief stampa a schermo i campi della ricetta passata come parametro
+ * @param ricetta
+ */
 void print_ricetta(t_ricetta ricetta){
 
   puts("--------------------------------------------------");
@@ -172,6 +181,12 @@ void print_ricetta(t_ricetta ricetta){
   puts("--------------------------------------------------");
 }
 
+
+/**
+ * @fn void print_alimento(t_alimento)
+ * @brief stampa a schermo i campi dell'alimento passato come parametro
+ * @param alimento
+ */
 void print_alimento(t_alimento alimento) {
   printf("\t%s:", alimento.nome);
   // se g/ml>=1000 si stampa convertito in kg/lt

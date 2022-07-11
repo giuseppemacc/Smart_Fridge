@@ -1,0 +1,41 @@
+/**
+ * @def MENU_UTENTE_H_
+ * @brief contiene i sottoprammi che permettono l'interazione dell'utente con le varie funzionalità del programma
+ */
+
+#ifndef MENU_UTENTE_H_
+#define MENU_UTENTE_H_
+
+
+
+/**
+ * @fn void menu_modificaAlimento()
+ * @brief richiede all'utente un alimento presente nel file alimenti e gli permette di modificarlo
+ * @post file alimento con un alimento modificato
+ */
+void menu_modificaAlimento();
+
+/**
+ * @fn void menu_modificaRicetta()
+ * @brief richiede all'utente una ricetta presente nel file ricette gli permette di modifcarla
+ * @pre
+ * @post
+ */
+void menu_modificaRicetta();
+
+void menu_cercaAlimento();
+
+void menu_cercaRicetta();
+
+void menu_printRic_Preparabili();
+
+void menu_valutaRicetta();
+
+void menu_preparaRicetta();
+
+
+void menuu();
+
+
+
+#endif /* MENU_UTENTE_H_ */

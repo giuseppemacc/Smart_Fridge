@@ -1,0 +1,29 @@
+/**
+ * @def PIANO_SETTIMANALE_H_
+ * @brief contiene i sottoprogrammi che operano sul file piano settimanale e la relativa interazione con l'utente
+ */
+
+#ifndef PIANO_SETTIMANALE_H_
+#define PIANO_SETTIMANALE_H_
+
+#include "types.h"
+
+
+
+
+void default_piano_settimanale();
+
+void print_piano_settimanale();
+
+void modificaPiano_settimanale();
+
+
+
+
+t_giorno get_giorno_attuale();
+
+t_categoria return_categoria_giorno_attuale();
+
+
+
+#endif /* PIANO_SETTIMANALE_H_ */

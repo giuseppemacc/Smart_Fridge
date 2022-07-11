@@ -1,8 +1,4 @@
-#include <ctype.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
+#include "menu_utente.h"
 #include "file_names.h"
 #include "gestione_alimenti.h"
 #include "gestione_ricette.h"
@@ -10,11 +6,17 @@
 #include "piano_settimanale.h"
 #include "types.h"
 #include "utils.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 
 
-
-
+/**
+ * @fn void menu_modificaAlimento()
+ * @brief richiede all'utente un alimento presente nel file alimenti e gli permette di modificarlo
+ * @post file alimento l'alimento modificato
+ */
 void menu_modificaAlimento(){
 	int flag_home;
 	t_alimento alimento;
@@ -24,7 +26,7 @@ void menu_modificaAlimento(){
 
 	if(!flag_home){
 
-		alimento_modificato = modificaAlimento(alimento, 0, &flag_home);
+		alimento_modificato = modificaAlimento(alimento, 0, &flag_home); // 0 perche' non permette di modificare dispensa
 
 		if(!flag_home){
 			sovrascrivi_alimento(alimento.nome, alimento_modificato);
@@ -32,6 +34,12 @@ void menu_modificaAlimento(){
 	}
 }
 
+
+/**
+ * @fn void menu_modificaRicetta()
+ * @brief richiede all'utente una ricetta presente nel file ricette gli permette di modifcarla
+ * @post file ricette con la ricetta modificata
+ */
 void menu_modificaRicetta(){
 	int flag_home;
 	t_ricetta ricetta;
@@ -49,6 +57,12 @@ void menu_modificaRicetta(){
 	}
 }
 
+
+/**
+ * @fn void menu_printRic_Preparabili()
+ * @brief cerca nel file ricette tutte le ricette preparabili con gli alimenti presenti nel file alimenti e le stampa a schermo
+ * @post stampa a schermo di tutte le ricette preparabili
+ */
 void menu_printRic_Preparabili(){
 	t_ricetta ricette_preparabili[50]; // deve essere il numero di ricette presenti
 	int n_ricette_preparabili;
@@ -58,7 +72,6 @@ void menu_printRic_Preparabili(){
 
 		for(int i=0; i<n_ricette_preparabili; i++){
 			print_ricetta(ricette_preparabili[i]);
-
 		}
 		puts("");
 	}else{
@@ -66,7 +79,11 @@ void menu_printRic_Preparabili(){
 	}
 
 }
-
+/**
+ * @fn void menu_cercaAlimento()
+ * @brief richiede all'utente un alimento presente nel file alimento e glielo mostra
+ * @post stampa a schermo dell'alimento
+ */
 void menu_cercaAlimento(){
 	int flag_home;
 	t_alimento alimento = richiediAlimento(&flag_home);
@@ -76,6 +93,11 @@ void menu_cercaAlimento(){
 	  }
 }
 
+/**
+ * @fn void menu_cercaRicetta()
+ * @brief richiede all'utente una ricetta presente nel file ricette e gliela mostra
+ * @post stampa a schermo della ricetta
+ */
 void menu_cercaRicetta(){
 	int flag_home;
 	t_ricetta ricetta = richiediRicetta(&flag_home);
@@ -85,6 +107,12 @@ void menu_cercaRicetta(){
 	  }
 }
 
+
+/**
+ * @fn void menu_valutaRicetta()
+ * @brief richiede all'utente una ricetta e gli permette di inserire una valutazione da 1 a 5
+ * @post stessi effetti di valutaRicetta(char*, int*)
+ */
 void menu_valutaRicetta(){
 
 	int flag_home;
@@ -96,6 +124,12 @@ void menu_valutaRicetta(){
 	  }
 }
 
+
+/**
+ * @fn void menu_preparaRicetta()
+ * @brief richiede all'utente una ricetta e gli permette di prepararla
+ * @post stessi effettti di preparaRicetta(t_ricetta)
+ */
 void menu_preparaRicetta(){
 	int flag_home;
 
@@ -114,7 +148,10 @@ void menu_preparaRicetta(){
 }
 
 
-
+/**
+ * @fn void menuu()
+ * @brief permette all'utente di avere accesso alle varie funzionalità del programma
+ */
 void menuu(){
 
 
@@ -135,7 +172,7 @@ void menuu(){
 
 
 	do{
-		printf("\n\n------------- OGGI E' %s ------------\n", returnGiorno( get_giorno_attuale()));
+		printf("\n\n------------- OGGI E' %s ------------\n", returnGiorno( get_giorno_attuale())); // visualizza giorno attuale
 		printf("%s", opzioni_menu[menu_selezionato]);
 		printf("[help] per visualizzare comandi aggiuntivi\n");
 		printf("\n\t\t\tV\n");
@@ -250,7 +287,7 @@ void menuu(){
 					}else if(strEqual(input, "3")){
 
 						puts("Cronologia pasti, dalla meno recente alla più recente");
-						print_ricette(0, FILENAME_CRONOLOGIA_RICETTE);
+						print_ricette(0, FILENAME_CRONOLOGIA_RICETTE); // 0 perche' il file non deve essere ordinato
 
 					}
 				}

@@ -7699,3 +7699,645 @@ Info: Internal Builder is used for build
 gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\inputs.o" "..\\src\\inputs.c" 
 gcc -o SmartFridge2.exe "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\inputs.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
 Info: Nothing to build for SmartFridge2
+11:12:20 **** Rebuild of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\utils.o" "..\\src\\utils.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+..\src\main.c:5:43: error: unknown type name 't_alimento'
+    5 | int ricerca_alimento_binaria (char *nome, t_alimento *alimento, FILE *file_alimenti){
+      |                                           ^~~~~~~~~~
+11:12:38 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+..\src\main.c: In function 'ricerca_alimento_binaria':
+..\src\main.c:12:2: warning: implicit declaration of function 'strToUpper' [-Wimplicit-function-declaration]
+   12 |  strToUpper(nome);
+      |  ^~~~~~~~~~
+gcc -o SmartFridge2.exe "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\inputs.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+11:13:43 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+..\src\main.c: In function 'ricerca_alimento_binaria':
+..\src\main.c:12:2: warning: implicit declaration of function 'strToUpper' [-Wimplicit-function-declaration]
+   12 |  strToUpper(nome);
+      |  ^~~~~~~~~~
+gcc -o SmartFridge2.exe "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\inputs.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+11:13:59 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+..\src\main.c: In function 'ricerca_alimento_binaria':
+..\src\main.c:12:2: warning: implicit declaration of function 'strToUpper' [-Wimplicit-function-declaration]
+   12 |  strToUpper(nome);
+      |  ^~~~~~~~~~
+gcc -o SmartFridge2.exe "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\inputs.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+11:14:13 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+..\src\main.c: In function 'ricerca_alimento_binaria':
+..\src\main.c:12:2: warning: implicit declaration of function 'strToUpper' [-Wimplicit-function-declaration]
+   12 |  strToUpper(nome);
+      |  ^~~~~~~~~~
+gcc -o SmartFridge2.exe "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\inputs.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+11:14:48 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+..\src\main.c: In function 'ricerca_alimento_binaria':
+..\src\main.c:12:2: warning: implicit declaration of function 'strToUpper' [-Wimplicit-function-declaration]
+   12 |  strToUpper(nome);
+      |  ^~~~~~~~~~
+gcc -o SmartFridge2.exe "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\inputs.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+11:16:17 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+..\src\main.c: In function 'ricerca_alimento_binaria':
+..\src\main.c:12:2: warning: implicit declaration of function 'strToUpper' [-Wimplicit-function-declaration]
+   12 |  strToUpper(nome);
+      |  ^~~~~~~~~~
+gcc -o SmartFridge2.exe "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\inputs.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+11:16:31 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+..\src\main.c: In function 'ricerca_alimento_binaria':
+..\src\main.c:12:2: warning: implicit declaration of function 'strToUpper' [-Wimplicit-function-declaration]
+   12 |  strToUpper(nome);
+      |  ^~~~~~~~~~
+gcc -o SmartFridge2.exe "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\inputs.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+11:16:42 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+..\src\main.c: In function 'ricerca_alimento_binaria':
+..\src\main.c:12:2: warning: implicit declaration of function 'strToUpper' [-Wimplicit-function-declaration]
+   12 |  strToUpper(nome);
+      |  ^~~~~~~~~~
+gcc -o SmartFridge2.exe "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\inputs.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+11:16:53 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+..\src\main.c: In function 'ricerca_alimento_binaria':
+..\src\main.c:12:2: warning: implicit declaration of function 'strToUpper' [-Wimplicit-function-declaration]
+   12 |  strToUpper(nome);
+      |  ^~~~~~~~~~
+gcc -o SmartFridge2.exe "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\inputs.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+11:17:02 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+..\src\main.c: In function 'ricerca_alimento_binaria':
+..\src\main.c:12:2: warning: implicit declaration of function 'strToUpper' [-Wimplicit-function-declaration]
+   12 |  strToUpper(nome);
+      |  ^~~~~~~~~~
+gcc -o SmartFridge2.exe "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\inputs.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+11:17:16 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+..\src\main.c: In function 'ricerca_alimento_binaria':
+..\src\main.c:12:2: warning: implicit declaration of function 'strToUpper' [-Wimplicit-function-declaration]
+   12 |  strToUpper(nome);
+      |  ^~~~~~~~~~
+gcc -o SmartFridge2.exe "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\inputs.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+11:18:29 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+..\src\main.c: In function 'ricerca_alimento_binaria':
+..\src\main.c:12:2: warning: implicit declaration of function 'strToUpper' [-Wimplicit-function-declaration]
+   12 |  strToUpper(nome);
+      |  ^~~~~~~~~~
+gcc -o SmartFridge2.exe "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\inputs.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+11:19:35 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+..\src\main.c: In function 'ricerca_alimento_binaria':
+..\src\main.c:12:2: warning: implicit declaration of function 'strToUpper' [-Wimplicit-function-declaration]
+   12 |  strToUpper(nome);
+      |  ^~~~~~~~~~
+gcc -o SmartFridge2.exe "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\inputs.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+11:21:15 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+..\src\main.c: In function 'ricerca_alimento_binaria':
+..\src\main.c:12:2: warning: implicit declaration of function 'strToUpper' [-Wimplicit-function-declaration]
+   12 |  strToUpper(nome);
+      |  ^~~~~~~~~~
+gcc -o SmartFridge2.exe "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\inputs.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+11:21:30 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+..\src\main.c: In function 'ricerca_alimento_binaria':
+..\src\main.c:12:2: warning: implicit declaration of function 'strToUpper' [-Wimplicit-function-declaration]
+   12 |  strToUpper(nome);
+      |  ^~~~~~~~~~
+gcc -o SmartFridge2.exe "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\inputs.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+11:21:45 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+..\src\main.c: In function 'ricerca_alimento_binaria':
+..\src\main.c:12:2: warning: implicit declaration of function 'strToUpper' [-Wimplicit-function-declaration]
+   12 |  strToUpper(nome);
+      |  ^~~~~~~~~~
+gcc -o SmartFridge2.exe "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\inputs.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+11:21:56 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+..\src\main.c: In function 'ricerca_alimento_binaria':
+..\src\main.c:12:2: warning: implicit declaration of function 'strToUpper' [-Wimplicit-function-declaration]
+   12 |  strToUpper(nome);
+      |  ^~~~~~~~~~
+gcc -o SmartFridge2.exe "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\inputs.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+11:22:33 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+..\src\main.c: In function 'ricerca_alimento_binaria':
+..\src\main.c:12:2: warning: implicit declaration of function 'strToUpper' [-Wimplicit-function-declaration]
+   12 |  strToUpper(nome);
+      |  ^~~~~~~~~~
+gcc -o SmartFridge2.exe "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\inputs.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+11:22:44 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+..\src\main.c: In function 'ricerca_alimento_binaria':
+..\src\main.c:12:2: warning: implicit declaration of function 'strToUpper' [-Wimplicit-function-declaration]
+   12 |  strToUpper(nome);
+      |  ^~~~~~~~~~
+gcc -o SmartFridge2.exe "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\inputs.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+11:22:54 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+..\src\main.c: In function 'ricerca_alimento_binaria':
+..\src\main.c:12:2: warning: implicit declaration of function 'strToUpper' [-Wimplicit-function-declaration]
+   12 |  strToUpper(nome);
+      |  ^~~~~~~~~~
+gcc -o SmartFridge2.exe "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\inputs.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+11:23:15 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+..\src\main.c: In function 'ricerca_alimento_binaria':
+..\src\main.c:12:2: warning: implicit declaration of function 'strToUpper' [-Wimplicit-function-declaration]
+   12 |  strToUpper(nome);
+      |  ^~~~~~~~~~
+gcc -o SmartFridge2.exe "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\inputs.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+11:23:22 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+..\src\main.c: In function 'ricerca_alimento_binaria':
+..\src\main.c:12:2: warning: implicit declaration of function 'strToUpper' [-Wimplicit-function-declaration]
+   12 |  strToUpper(nome);
+      |  ^~~~~~~~~~
+gcc -o SmartFridge2.exe "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\inputs.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+12:02:24 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\utils.o" "..\\src\\utils.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\gestione_alimenti.o" "..\\src\\gestione_alimenti.c" 
+gcc -o SmartFridge2.exe "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\inputs.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+12:02:38 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+gcc -o SmartFridge2.exe "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\inputs.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+12:02:55 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+gcc -o SmartFridge2.exe "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\inputs.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+12:03:46 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+gcc -o SmartFridge2.exe "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\inputs.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+12:03:57 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+gcc -o SmartFridge2.exe "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\inputs.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+12:04:18 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+gcc -o SmartFridge2.exe "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\inputs.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+12:04:33 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+gcc -o SmartFridge2.exe "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\inputs.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+12:04:52 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+gcc -o SmartFridge2.exe "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\inputs.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+12:11:19 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\gestione_ricette.o" "..\\src\\gestione_ricette.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\gestione_alimenti.o" "..\\src\\gestione_alimenti.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\menu_utente.o" "..\\src\\menu_utente.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\piano_settimanale.o" "..\\src\\piano_settimanale.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\inputs.o" "..\\src\\inputs.c" 
+gcc -o SmartFridge2.exe "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\inputs.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+12:28:04 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\gestione_alimenti.o" "..\\src\\gestione_alimenti.c" 
+..\src\gestione_alimenti.c: In function 'richiediAlimento':
+..\src\gestione_alimenti.c:125:4: warning: implicit declaration of function 'ordinaFileAlimenti_AZ' [-Wimplicit-function-declaration]
+  125 |    ordinaFileAlimenti_AZ(FILENAME_ALIMENTI);
+      |    ^~~~~~~~~~~~~~~~~~~~~
+..\src\gestione_alimenti.c: At top level:
+..\src\gestione_alimenti.c:179:6: warning: conflicting types for 'ordinaFileAlimenti_AZ'
+  179 | void ordinaFileAlimenti_AZ(char *file_name) {
+      |      ^~~~~~~~~~~~~~~~~~~~~
+..\src\gestione_alimenti.c:125:4: note: previous implicit declaration of 'ordinaFileAlimenti_AZ' was here
+  125 |    ordinaFileAlimenti_AZ(FILENAME_ALIMENTI);
+      |    ^~~~~~~~~~~~~~~~~~~~~
+gcc -o SmartFridge2.exe "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\inputs.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+c:/mingw/bin/../lib/gcc/mingw32/9.2.0/../../../../mingw32/bin/ld.exe: cannot open output file SmartFridge2.exe: Permission denied
+collect2.exe: error: ld returned 1 exit status
+12:30:22 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\gestione_alimenti.o" "..\\src\\gestione_alimenti.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\gestione_ricette.o" "..\\src\\gestione_ricette.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\inputs.o" "..\\src\\inputs.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\menu_utente.o" "..\\src\\menu_utente.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\piano_settimanale.o" "..\\src\\piano_settimanale.c" 
+gcc -o SmartFridge2.exe "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\inputs.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+12:40:19 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\gestione_alimenti.o" "..\\src\\gestione_alimenti.c" 
+gcc -o SmartFridge2.exe "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\inputs.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+12:44:14 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\piano_settimanale.o" "..\\src\\piano_settimanale.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\inputs.o" "..\\src\\inputs.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\menu_utente.o" "..\\src\\menu_utente.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\gestione_alimenti.o" "..\\src\\gestione_alimenti.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\gestione_ricette.o" "..\\src\\gestione_ricette.c" 
+..\src\gestione_ricette.c: In function 'isPreparabile':
+..\src\gestione_ricette.c:533:16: warning: implicit declaration of function 'ricerca_alimento'; did you mean 'ricerca_ricetta'? [-Wimplicit-function-declaration]
+  533 |       }else if(ricerca_alimento(ricetta.ingredienti[i_alimenti_ricetta].nome, &alimento_trovato, file_alimenti)){
+      |                ^~~~~~~~~~~~~~~~
+      |                ricerca_ricetta
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\utils.o" "..\\src\\utils.c" 
+gcc -o SmartFridge2.exe "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\inputs.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+c:/mingw/bin/../lib/gcc/mingw32/9.2.0/../../../../mingw32/bin/ld.exe: src\gestione_ricette.o: in function `isPreparabile':
+C:\Users\giuse\eclipse-workspace\SmartFridge2\Debug/../src/gestione_ricette.c:533: undefined reference to `ricerca_alimento'
+c:/mingw/bin/../lib/gcc/mingw32/9.2.0/../../../../mingw32/bin/ld.exe: src\gestione_ricette.o: in function `preparaRicetta':
+C:\Users\giuse\eclipse-workspace\SmartFridge2\Debug/../src/gestione_ricette.c:758: undefined reference to `ricerca_alimento'
+collect2.exe: error: ld returned 1 exit status
+12:47:04 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -o SmartFridge2.exe "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\inputs.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+c:/mingw/bin/../lib/gcc/mingw32/9.2.0/../../../../mingw32/bin/ld.exe: src\gestione_ricette.o: in function `isPreparabile':
+C:\Users\giuse\eclipse-workspace\SmartFridge2\Debug/../src/gestione_ricette.c:533: undefined reference to `ricerca_alimento'
+c:/mingw/bin/../lib/gcc/mingw32/9.2.0/../../../../mingw32/bin/ld.exe: src\gestione_ricette.o: in function `preparaRicetta':
+C:\Users\giuse\eclipse-workspace\SmartFridge2\Debug/../src/gestione_ricette.c:758: undefined reference to `ricerca_alimento'
+collect2.exe: error: ld returned 1 exit status
+12:56:49 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\gestione_alimenti.o" "..\\src\\gestione_alimenti.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\gestione_ricette.o" "..\\src\\gestione_ricette.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\inputs.o" "..\\src\\inputs.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\menu_utente.o" "..\\src\\menu_utente.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\piano_settimanale.o" "..\\src\\piano_settimanale.c" 
+gcc -o SmartFridge2.exe "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\inputs.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+13:19:13 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\gestione_alimenti.o" "..\\src\\gestione_alimenti.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\menu_utente.o" "..\\src\\menu_utente.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\piano_settimanale.o" "..\\src\\piano_settimanale.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\gestione_ricette.o" "..\\src\\gestione_ricette.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\inputs.o" "..\\src\\inputs.c" 
+gcc -o SmartFridge2.exe "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\inputs.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+14:32:09 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\inputs.o" "..\\src\\inputs.c" 
+..\src\inputs.c: In function 'inputRicetta':
+..\src\inputs.c:224:9: error: 't_ricetta' {aka 'struct <anonymous>'} has no member named 'preparata'
+  224 |  ricetta.preparata = 0;
+      |         ^
+14:32:29 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\menu_utente.o" "..\\src\\menu_utente.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\types.o" "..\\src\\types.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\piano_settimanale.o" "..\\src\\piano_settimanale.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\utils.o" "..\\src\\utils.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\gestione_alimenti.o" "..\\src\\gestione_alimenti.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\gestione_ricette.o" "..\\src\\gestione_ricette.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\inputs.o" "..\\src\\inputs.c" 
+gcc -o SmartFridge2.exe "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\inputs.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+c:/mingw/bin/../lib/gcc/mingw32/9.2.0/../../../../mingw32/bin/ld.exe: cannot open output file SmartFridge2.exe: Permission denied
+collect2.exe: error: ld returned 1 exit status
+14:34:01 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+gcc -o SmartFridge2.exe "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\inputs.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+Info: Nothing to build for SmartFridge2
+14:41:58 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+gcc -o SmartFridge2.exe "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\inputs.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+14:45:25 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+gcc -o SmartFridge2.exe "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\inputs.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+14:46:38 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+gcc -o SmartFridge2.exe "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\inputs.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+14:53:26 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+gcc -o SmartFridge2.exe "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\inputs.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+15:22:17 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+gcc -o SmartFridge2.exe "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\inputs.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+15:50:50 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\gestione_ricette.o" "..\\src\\gestione_ricette.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\utils.o" "..\\src\\utils.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\piano_settimanale.o" "..\\src\\piano_settimanale.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\gestione_alimenti.o" "..\\src\\gestione_alimenti.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\inputs.o" "..\\src\\inputs.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\types.o" "..\\src\\types.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\menu_utente.o" "..\\src\\menu_utente.c" 
+gcc -o SmartFridge2.exe "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\inputs.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+18:52:39 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\piano_settimanale.o" "..\\src\\piano_settimanale.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\gestione_alimenti.o" "..\\src\\gestione_alimenti.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\gestione_ricette.o" "..\\src\\gestione_ricette.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\menu_utente.o" "..\\src\\menu_utente.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\types.o" "..\\src\\types.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\inputs.o" "..\\src\\inputs.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\utils.o" "..\\src\\utils.c" 
+gcc -o SmartFridge2.exe "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\inputs.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+23:00:38 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\inputs.o" "..\\src\\inputs.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\menu_utente.o" "..\\src\\menu_utente.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\gestione_alimenti.o" "..\\src\\gestione_alimenti.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\types.o" "..\\src\\types.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\gestione_ricette.o" "..\\src\\gestione_ricette.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\utils.o" "..\\src\\utils.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\piano_settimanale.o" "..\\src\\piano_settimanale.c" 
+gcc -o SmartFridge2.exe "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\inputs.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+15:18:40 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\inputs.o" "..\\src\\inputs.c" 
+..\src\inputs.c: In function 'inputAlimento_unita':
+..\src\inputs.c:33:22: warning: implicit declaration of function 'inputUnitaMisura' [-Wimplicit-function-declaration]
+   33 |    alimento->unita = inputUnitaMisura(&flag_errore, &(*flag_home));
+      |                      ^~~~~~~~~~~~~~~~
+..\src\inputs.c: In function 'inputAlimento_quantita':
+..\src\inputs.c:50:17: warning: implicit declaration of function 'inputFloat' [-Wimplicit-function-declaration]
+   50 |    f_quantita = inputFloat(&flag_errore, &(*flag_home));
+      |                 ^~~~~~~~~~
+..\src\inputs.c: In function 'inputAlimento_nome':
+..\src\inputs.c:94:3: warning: implicit declaration of function 'inputStr' [-Wimplicit-function-declaration]
+   94 |   inputStr(alimento->nome, 50, &flag_errore, &(*flag_home) );
+      |   ^~~~~~~~
+..\src\inputs.c: In function 'inputAlimento_dispensa':
+..\src\inputs.c:114:24: warning: implicit declaration of function 'inputBool' [-Wimplicit-function-declaration]
+  114 |   alimento->dispensa = inputBool(&flag_errore, &(*flag_home));
+      |                        ^~~~~~~~~
+..\src\inputs.c: In function 'inputRicetta_categoria':
+..\src\inputs.c:180:25: warning: implicit declaration of function 'inputCategoria'; did you mean 'getCategoria'? [-Wimplicit-function-declaration]
+  180 |    ricetta->categoria = inputCategoria(&flag_errore, &(*flag_home));
+      |                         ^~~~~~~~~~~~~~
+      |                         getCategoria
+..\src\inputs.c: At top level:
+..\src\inputs.c:287:6: warning: conflicting types for 'inputStr'
+  287 | void inputStr(char *str,int l_max, int *flag_errore, int *flag_home) {
+      |      ^~~~~~~~
+..\src\inputs.c:94:3: note: previous implicit declaration of 'inputStr' was here
+   94 |   inputStr(alimento->nome, 50, &flag_errore, &(*flag_home) );
+      |   ^~~~~~~~
+..\src\inputs.c:388:7: error: conflicting types for 'inputFloat'
+  388 | float inputFloat(int *flag_errore, int *flag_home) {
+      |       ^~~~~~~~~~
+..\src\inputs.c:50:17: note: previous implicit declaration of 'inputFloat' was here
+   50 |    f_quantita = inputFloat(&flag_errore, &(*flag_home));
+      |                 ^~~~~~~~~~
+..\src\inputs.c:457:16: error: conflicting types for 'inputUnitaMisura'
+  457 | t_unita_misura inputUnitaMisura(int *flag_errore, int *flag_home) {
+      |                ^~~~~~~~~~~~~~~~
+..\src\inputs.c:33:22: note: previous implicit declaration of 'inputUnitaMisura' was here
+   33 |    alimento->unita = inputUnitaMisura(&flag_errore, &(*flag_home));
+      |                      ^~~~~~~~~~~~~~~~
+..\src\inputs.c:483:13: error: conflicting types for 'inputCategoria'
+  483 | t_categoria inputCategoria(int *flag_errore, int *flag_home) {
+      |             ^~~~~~~~~~~~~~
+..\src\inputs.c:180:25: note: previous implicit declaration of 'inputCategoria' was here
+  180 |    ricetta->categoria = inputCategoria(&flag_errore, &(*flag_home));
+      |                         ^~~~~~~~~~~~~~
+15:19:18 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\gestione_ricette.o" "..\\src\\gestione_ricette.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\utils.o" "..\\src\\utils.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\inputs.o" "..\\src\\inputs.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\menu_utente.o" "..\\src\\menu_utente.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\piano_settimanale.o" "..\\src\\piano_settimanale.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\types.o" "..\\src\\types.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\gestione_alimenti.o" "..\\src\\gestione_alimenti.c" 
+gcc -o SmartFridge2.exe "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\inputs.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+17:52:14 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\menu_utente.o" "..\\src\\menu_utente.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\types.o" "..\\src\\types.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\utils.o" "..\\src\\utils.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\gestione_alimenti.o" "..\\src\\gestione_alimenti.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\inputs.o" "..\\src\\inputs.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\piano_settimanale.o" "..\\src\\piano_settimanale.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\gestione_ricette.o" "..\\src\\gestione_ricette.c" 
+gcc -o SmartFridge2.exe "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\inputs.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+21:49:45 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\inputs.o" "..\\src\\inputs.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\gestione_alimenti.o" "..\\src\\gestione_alimenti.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\gestione_ricette.o" "..\\src\\gestione_ricette.c" 
+gcc -o SmartFridge2.exe "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\inputs.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+22:11:31 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\gestione_alimenti.o" "..\\src\\gestione_alimenti.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\gestione_ricette.o" "..\\src\\gestione_ricette.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\menu_utente.o" "..\\src\\menu_utente.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\types.o" "..\\src\\types.c" 
+gcc -o SmartFridge2.exe "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\inputs.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+22:19:58 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\piano_settimanale.o" "..\\src\\piano_settimanale.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\main.o" "..\\src\\main.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\types.o" "..\\src\\types.c" 
+gcc -o SmartFridge2.exe "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\inputs.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+Info: Nothing to build for SmartFridge2
+22:39:37 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\utils.o" "..\\src\\utils.c" 
+..\src\utils.c: In function 'strToUpper':
+..\src\utils.c:122:10: warning: implicit declaration of function 'toupper' [-Wimplicit-function-declaration]
+  122 |     *s = toupper((unsigned char)*s);
+      |          ^~~~~~~
+gcc -o SmartFridge2.exe "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\inputs.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+c:/mingw/bin/../lib/gcc/mingw32/9.2.0/../../../../mingw32/bin/ld.exe: cannot open output file SmartFridge2.exe: Permission denied
+collect2.exe: error: ld returned 1 exit status
+22:39:44 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\utils.o" "..\\src\\utils.c" 
+gcc -o SmartFridge2.exe "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\inputs.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+c:/mingw/bin/../lib/gcc/mingw32/9.2.0/../../../../mingw32/bin/ld.exe: cannot open output file SmartFridge2.exe: Permission denied
+collect2.exe: error: ld returned 1 exit status
+22:39:48 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -o SmartFridge2.exe "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\inputs.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+22:39:58 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\utils.o" "..\\src\\utils.c" 
+gcc -o SmartFridge2.exe "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\inputs.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+22:40:39 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\utils.o" "..\\src\\utils.c" 
+gcc -o SmartFridge2.exe "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\inputs.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+22:41:00 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\gestione_alimenti.o" "..\\src\\gestione_alimenti.c" 
+..\src\gestione_alimenti.c: In function 'ricerca_alimento_binaria':
+..\src\gestione_alimenti.c:119:7: warning: implicit declaration of function 'strcmp' [-Wimplicit-function-declaration]
+  119 |   if (strcmp(alimento_corrente.nome, nome) == 0){
+      |       ^~~~~~
+..\src\gestione_alimenti.c: In function 'modificaAlimento':
+..\src\gestione_alimenti.c:394:4: warning: implicit declaration of function 'strcpy' [-Wimplicit-function-declaration]
+  394 |    strcpy(alimento_modificato.nome,"");
+      |    ^~~~~~
+..\src\gestione_alimenti.c:394:4: warning: incompatible implicit declaration of built-in function 'strcpy'
+..\src\gestione_alimenti.c:5:1: note: include '<string.h>' or provide a declaration of 'strcpy'
+    4 | #include "inputs.h"
+  +++ |+#include <string.h>
+    5 | 
+gcc -o SmartFridge2.exe "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\inputs.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+22:41:09 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\gestione_alimenti.o" "..\\src\\gestione_alimenti.c" 
+gcc -o SmartFridge2.exe "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\inputs.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+22:41:59 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\gestione_ricette.o" "..\\src\\gestione_ricette.c" 
+..\src\gestione_ricette.c: In function 'richiediRicetta':
+..\src\gestione_ricette.c:147:4: warning: implicit declaration of function 'ordinaFileRicette_AZ' [-Wimplicit-function-declaration]
+  147 |    ordinaFileRicette_AZ(FILENAME_RICETTE);
+      |    ^~~~~~~~~~~~~~~~~~~~
+..\src\gestione_ricette.c: At top level:
+..\src\gestione_ricette.c:209:6: warning: conflicting types for 'ordinaFileRicette_AZ'
+  209 | void ordinaFileRicette_AZ(char *file_name){
+      |      ^~~~~~~~~~~~~~~~~~~~
+..\src\gestione_ricette.c:147:4: note: previous implicit declaration of 'ordinaFileRicette_AZ' was here
+  147 |    ordinaFileRicette_AZ(FILENAME_RICETTE);
+      |    ^~~~~~~~~~~~~~~~~~~~
+..\src\gestione_ricette.c: In function 'modificaRicetta':
+..\src\gestione_ricette.c:519:52: warning: implicit declaration of function 'modificaAlimento'; did you mean 'modificaRicetta'? [-Wimplicit-function-declaration]
+  519 |          ricetta_modificata.ingredienti[input-1] = modificaAlimento(ricetta_modificata.ingredienti[input-1], 1, &(*flag_home));// 1 indica che permette la modifica della dispensa
+      |                                                    ^~~~~~~~~~~~~~~~
+      |                                                    modificaRicetta
+..\src\gestione_ricette.c:519:52: error: incompatible types when assigning to type 't_alimento' {aka 'struct <anonymous>'} from type 'int'
+..\src\gestione_ricette.c: In function 'isPreparabile':
+..\src\gestione_ricette.c:652:2: warning: implicit declaration of function 'ordinaFileAlimenti_AZ'; did you mean 'ordinaFileRicette_AZ'? [-Wimplicit-function-declaration]
+  652 |  ordinaFileAlimenti_AZ(filename_alimenti);
+      |  ^~~~~~~~~~~~~~~~~~~~~
+      |  ordinaFileRicette_AZ
+..\src\gestione_ricette.c:667:15: warning: implicit declaration of function 'ricerca_alimento_binaria'; did you mean 'ricerca_ricetta_binaria'? [-Wimplicit-function-declaration]
+  667 |      }else if(ricerca_alimento_binaria(ricetta.ingredienti[i_alimenti_ricetta].nome, &alimento_trovato, file_alimenti)){
+      |               ^~~~~~~~~~~~~~~~~~~~~~~~
+      |               ricerca_ricetta_binaria
+..\src\gestione_ricette.c: In function 'prioritarizza_ricette':
+..\src\gestione_ricette.c:905:27: warning: implicit declaration of function 'return_categoria_giorno_attuale' [-Wimplicit-function-declaration]
+  905 |  t_categoria cat_giorno = return_categoria_giorno_attuale();
+      |                           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+..\src\gestione_ricette.c: In function 'consigliaRicette':
+..\src\gestione_ricette.c:1077:43: warning: implicit declaration of function 'richiediAlimento'; did you mean 'richiediRicetta'? [-Wimplicit-function-declaration]
+ 1077 |      alimenti_scelti[n_alimenti_scelti] = richiediAlimento(&flag_home);
+      |                                           ^~~~~~~~~~~~~~~~
+      |                                           richiediRicetta
+..\src\gestione_ricette.c:1077:43: error: incompatible types when assigning to type 't_alimento' {aka 'struct <anonymous>'} from type 'int'
+..\src\gestione_ricette.c:1133:11: warning: implicit declaration of function 'valutaRicetta'; did you mean 'inputRicetta'? [-Wimplicit-function-declaration]
+ 1133 |           valutaRicetta(ricette_selezionate[i].nome, &flag_home);
+      |           ^~~~~~~~~~~~~
+      |           inputRicetta
+..\src\gestione_ricette.c: At top level:
+..\src\gestione_ricette.c:1185:6: warning: conflicting types for 'valutaRicetta'
+ 1185 | void valutaRicetta(char* nome_ricetta, int* flag_home){
+      |      ^~~~~~~~~~~~~
+..\src\gestione_ricette.c:1133:11: note: previous implicit declaration of 'valutaRicetta' was here
+ 1133 |           valutaRicetta(ricette_selezionate[i].nome, &flag_home);
+      |           ^~~~~~~~~~~~~
+22:42:45 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\gestione_alimenti.o" "..\\src\\gestione_alimenti.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\gestione_ricette.o" "..\\src\\gestione_ricette.c" 
+..\src\gestione_ricette.c: In function 'modificaRicetta':
+..\src\gestione_ricette.c:520:52: warning: implicit declaration of function 'modificaAlimento'; did you mean 'modificaRicetta'? [-Wimplicit-function-declaration]
+  520 |          ricetta_modificata.ingredienti[input-1] = modificaAlimento(ricetta_modificata.ingredienti[input-1], 1, &(*flag_home));// 1 indica che permette la modifica della dispensa
+      |                                                    ^~~~~~~~~~~~~~~~
+      |                                                    modificaRicetta
+..\src\gestione_ricette.c:520:52: error: incompatible types when assigning to type 't_alimento' {aka 'struct <anonymous>'} from type 'int'
+..\src\gestione_ricette.c: In function 'isPreparabile':
+..\src\gestione_ricette.c:653:2: warning: implicit declaration of function 'ordinaFileAlimenti_AZ'; did you mean 'ordinaFileRicette_AZ'? [-Wimplicit-function-declaration]
+  653 |  ordinaFileAlimenti_AZ(filename_alimenti);
+      |  ^~~~~~~~~~~~~~~~~~~~~
+      |  ordinaFileRicette_AZ
+..\src\gestione_ricette.c:668:15: warning: implicit declaration of function 'ricerca_alimento_binaria'; did you mean 'ricerca_ricetta_binaria'? [-Wimplicit-function-declaration]
+  668 |      }else if(ricerca_alimento_binaria(ricetta.ingredienti[i_alimenti_ricetta].nome, &alimento_trovato, file_alimenti)){
+      |               ^~~~~~~~~~~~~~~~~~~~~~~~
+      |               ricerca_ricetta_binaria
+..\src\gestione_ricette.c: In function 'prioritarizza_ricette':
+..\src\gestione_ricette.c:906:27: warning: implicit declaration of function 'return_categoria_giorno_attuale' [-Wimplicit-function-declaration]
+  906 |  t_categoria cat_giorno = return_categoria_giorno_attuale();
+      |                           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+..\src\gestione_ricette.c: In function 'consigliaRicette':
+..\src\gestione_ricette.c:1078:43: warning: implicit declaration of function 'richiediAlimento'; did you mean 'richiediRicetta'? [-Wimplicit-function-declaration]
+ 1078 |      alimenti_scelti[n_alimenti_scelti] = richiediAlimento(&flag_home);
+      |                                           ^~~~~~~~~~~~~~~~
+      |                                           richiediRicetta
+..\src\gestione_ricette.c:1078:43: error: incompatible types when assigning to type 't_alimento' {aka 'struct <anonymous>'} from type 'int'
+22:42:56 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\gestione_ricette.o" "..\\src\\gestione_ricette.c" 
+..\src\gestione_ricette.c: In function 'prioritarizza_ricette':
+..\src\gestione_ricette.c:906:27: warning: implicit declaration of function 'return_categoria_giorno_attuale' [-Wimplicit-function-declaration]
+  906 |  t_categoria cat_giorno = return_categoria_giorno_attuale();
+      |                           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+gcc -o SmartFridge2.exe "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\inputs.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+22:43:21 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\gestione_ricette.o" "..\\src\\gestione_ricette.c" 
+gcc -o SmartFridge2.exe "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\inputs.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+22:43:28 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\gestione_ricette.o" "..\\src\\gestione_ricette.c" 
+gcc -o SmartFridge2.exe "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\inputs.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+22:44:26 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\gestione_ricette.o" "..\\src\\gestione_ricette.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\menu_utente.o" "..\\src\\menu_utente.c" 
+..\src\menu_utente.c: In function 'menuu':
+..\src\menu_utente.c:188:8: warning: implicit declaration of function 'strEqual' [-Wimplicit-function-declaration]
+  188 |    if( strEqual(input, "help") ){
+      |        ^~~~~~~~
+gcc -o SmartFridge2.exe "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\inputs.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+22:44:39 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\menu_utente.o" "..\\src\\menu_utente.c" 
+gcc -o SmartFridge2.exe "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\inputs.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+22:45:32 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\types.o" "..\\src\\types.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\menu_utente.o" "..\\src\\menu_utente.c" 
+gcc -o SmartFridge2.exe "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\inputs.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+22:47:08 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\piano_settimanale.o" "..\\src\\piano_settimanale.c" 
+gcc -o SmartFridge2.exe "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\inputs.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
+22:48:47 **** Incremental Build of configuration Debug for project SmartFridge2 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\types.o" "..\\src\\types.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\gestione_alimenti.o" "..\\src\\gestione_alimenti.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\menu_utente.o" "..\\src\\menu_utente.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\utils.o" "..\\src\\utils.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\piano_settimanale.o" "..\\src\\piano_settimanale.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\gestione_ricette.o" "..\\src\\gestione_ricette.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\inputs.o" "..\\src\\inputs.c" 
+gcc -o SmartFridge2.exe "src\\gestione_alimenti.o" "src\\gestione_ricette.o" "src\\inputs.o" "src\\main.o" "src\\menu_utente.o" "src\\piano_settimanale.o" "src\\types.o" "src\\utils.o" 
